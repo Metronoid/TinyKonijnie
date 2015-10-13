@@ -10,7 +10,7 @@ namespace TinyGame
         Konijn Player;
 
         public void FuelMeter()
-        {
+        { 
 
         }
         public void SpeedMeter()
