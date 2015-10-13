@@ -11,6 +11,7 @@ namespace TinyGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        GUIM screenInterface = new GUIM();
 
         public MainGame()
         {

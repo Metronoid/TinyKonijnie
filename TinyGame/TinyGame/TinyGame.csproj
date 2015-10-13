@@ -39,7 +39,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Code\MainGame.cs" />
+    <Compile Include="GUIM.cs" />
+    <Compile Include="Code\Objects\Konijn.cs" />
     <Compile Include="Code\Objects\Pitstop.cs" />
+    <Compile Include="Code\Objects\World.cs" />
     <Compile Include="Code\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
