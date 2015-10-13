@@ -60,7 +60,9 @@ namespace TinyGame
 
         public void Draw(SpriteBatch sb)
         {
+            sb.Begin();
             sb.Draw(image, location, Color.White);
+            sb.End();
         }
 
 
