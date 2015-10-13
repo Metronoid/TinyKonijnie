@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Input;
 namespace TinyGame
 {
     /// <summary>
-    /// This is the main type for your game.
+    /// This is the main type for your game
     /// </summary>
     public class MainGame : Game
     {
