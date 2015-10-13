@@ -38,12 +38,10 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sandbox\SandboxAnimatedSprite.cs" />
-    <Compile Include="Sandbox\SandboxGame1.cs" />
-    <Compile Include="Sandbox\SandboxProgram.cs" />
+    <Compile Include="Game1.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

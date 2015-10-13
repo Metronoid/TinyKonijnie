@@ -7,31 +7,42 @@ namespace SandboxHenkjan
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class Sandboxgame : Game
     {
+        private int score;
+        private Texture2D konijn;
+        private float angle = 0;
+        private SpriteFont scorefont;
+        private SandboxAnimatedSprite animatedSprite;
+        private Texture2D trackcol;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        public Game1()
+        public Sandboxgame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
 
+
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components lolololollol
+        /// related content.  Calling base.Initialize will enumerate through any components
         /// and initialize them as well.
         /// </summary>
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            graphics.PreferredBackBufferWidth = 1024;
+            graphics.PreferredBackBufferHeight = 768;
+            graphics.ApplyChanges();
             base.Initialize();
+
         }
 
-        /// <summary> hhhhhhhhhhhhhh
+        /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
         /// </summary>
@@ -41,11 +52,18 @@ namespace SandboxHenkjan
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            trackcol = Content.Load<Texture2D>("Graphics/TrackCol");
+            Texture2D image = Content.Load<Texture2D>("Graphics/Snuffel");
+            konijn = Content.Load<Texture2D>("Graphics/Snuffel");
+            scorefont = Content.Load<SpriteFont>("Fonts/Score");
+            Texture2D smiley = Content.Load<Texture2D>("Graphics/SmileyWalk");
+            //haha
+            animatedSprite = new SandboxAnimatedSprite(smiley, 4, 4);
         }
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
-        /// game-specific content.
+        /// all content.
         /// </summary>
         protected override void UnloadContent()
         {
@@ -59,11 +77,14 @@ namespace SandboxHenkjan
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            // Allows the game to exit
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+                this.Exit();
 
             // TODO: Add your update logic here
-
+            score++;
+            animatedSprite.Update();
+            angle += 0.01f;
             base.Update(gameTime);
         }
 
@@ -73,9 +94,20 @@ namespace SandboxHenkjan
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Tomato);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            spriteBatch.Draw(trackcol, new Rectangle(0, 0, trackcol.Width, trackcol.Height), Color.White);
+            Vector2 location = new Vector2(400, 240);
+            Rectangle sourceRectangle = new Rectangle(0, 0, konijn.Width, konijn.Height);
+            Vector2 origin = new Vector2(konijn.Width / 2, konijn.Height / 2);
+
+            spriteBatch.Draw(konijn, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
+            spriteBatch.DrawString(scorefont, "Score" + score, new Vector2(0, 0), Color.Black);
+            spriteBatch.End();
+
+            animatedSprite.Draw(spriteBatch, new Vector2(400, 200));
 
             base.Draw(gameTime);
         }
