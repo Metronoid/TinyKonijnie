@@ -26,36 +26,20 @@ namespace TinyGame
 
             // TODO: Add your update logic here
 
-
-
-            //sprite.velocity = new Vector2(60, 0);
-
-            this.velocity = new Vector2(0, 0);
-
-            ////if (Keyboard.GetState().IsKeyDown(Keys.Left))
-            ////    sprite.velocity.X = -80;
-
-            ////if (Keyboard.GetState().IsKeyDown(Keys.Right))
-            ////    sprite.velocity.X = 80;
-
-            ////if (Keyboard.GetState().IsKeyDown(Keys.Down))
-            ////    sprite.velocity.Y = 80;
-
-            ////if (Keyboard.GetState().IsKeyDown(Keys.Up))
-            ////    sprite.velocity.Y = -80;
+            velocity = new Vector2(0, 0);
 
 
             if (Keyboard.GetState().IsKeyDown(Keys.A))
-                this.velocity.X = -80;
+                velocity.X = -80;
 
             if (Keyboard.GetState().IsKeyDown(Keys.D))
-                this.velocity.X = 80;
+                velocity.X = 80;
 
             if (Keyboard.GetState().IsKeyDown(Keys.S))
-                this.velocity.Y = 80;
+                velocity.Y = 80;
 
             if (Keyboard.GetState().IsKeyDown(Keys.W))
-                this.velocity.Y = -80;
+                velocity.Y = -80;
         }
 
         public void Draw(SpriteBatch sb)
