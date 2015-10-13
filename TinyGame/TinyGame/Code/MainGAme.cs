@@ -42,8 +42,7 @@ namespace TinyGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            speler = new Konijn(new Vector2(0, 0),
-            Content.Load<Texture2D>("Snuffel"));
+            speler = new Konijn(new Vector2(0, 0), Content.Load<Texture2D>("Snuffel"));
             // TODO: use this.Content to load your game content here
         }
 
@@ -67,6 +66,9 @@ namespace TinyGame
                 Exit();
 
             // TODO: Add your update logic here
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            speler.Update(elapsed);
 
             base.Update(gameTime);
         }
@@ -80,15 +82,11 @@ namespace TinyGame
             GraphicsDevice.Clear(Color.Tomato);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
 
+            speler.Draw(spriteBatch);
 
-            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            //sprite.velocity = new Vector2(60, 0);
-
-            speler.velocity = new Vector2(0, 0);
-
-            speler.Update(elapsed);
+            spriteBatch.End();
 
             base.Update(gameTime);
         }

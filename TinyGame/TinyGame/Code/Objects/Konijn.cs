@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -10,6 +11,8 @@ namespace TinyGame
         public Texture2D image;
         public Vector2 velocity;
         public GameTime gameTime;
+        public float angle = 0;
+        public float speed = 160F;
 
         public Konijn(Vector2 location, Texture2D image)
         {
@@ -26,43 +29,35 @@ namespace TinyGame
 
             // TODO: Add your update logic here
 
-
-
-            //sprite.velocity = new Vector2(60, 0);
-
-            this.velocity = new Vector2(0, 0);
-
-            ////if (Keyboard.GetState().IsKeyDown(Keys.Left))
-            ////    sprite.velocity.X = -80;
-
-            ////if (Keyboard.GetState().IsKeyDown(Keys.Right))
-            ////    sprite.velocity.X = 80;
-
-            ////if (Keyboard.GetState().IsKeyDown(Keys.Down))
-            ////    sprite.velocity.Y = 80;
-
-            ////if (Keyboard.GetState().IsKeyDown(Keys.Up))
-            ////    sprite.velocity.Y = -80;
+            velocity = new Vector2(0, 0);
 
 
             if (Keyboard.GetState().IsKeyDown(Keys.A))
-                this.velocity.X = -80;
+                angle -= 0.1f;
 
             if (Keyboard.GetState().IsKeyDown(Keys.D))
-                this.velocity.X = 80;
+                angle += 0.1f;
 
             if (Keyboard.GetState().IsKeyDown(Keys.S))
-                this.velocity.Y = 80;
+            {
+                velocity.Y -= (float)Math.Sin(angle) * speed;
+                velocity.X -= (float)Math.Cos(angle) * speed;
+            }
+
 
             if (Keyboard.GetState().IsKeyDown(Keys.W))
-                this.velocity.Y = -80;
+            {
+                velocity.Y += (float)Math.Sin(angle) * speed;
+                velocity.X += (float)Math.Cos(angle) * speed;
+            }
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sb.Begin();
-            sb.Draw(image, location, Color.White);
-            sb.End();
+            Vector2 origin = new Vector2(image.Width / 2, image.Height / 2);
+            Rectangle sourceRectangle = new Rectangle(0, 0, image.Width, image.Height);
+
+            sb.Draw(image, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
         }
 
 
