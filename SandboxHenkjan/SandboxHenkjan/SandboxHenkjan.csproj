@@ -51,11 +51,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Graphics\SmileyWalk.png" />
     <Content Include="Content\Graphics\Snuffel.png" />
+    <Content Include="Content\Graphics\TrackCol.png" />
+    <Content Include="Content\Graphics\Confetti.jpg" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <MonoGameContentReference Include="Content\Content.mgcb" />
+    <MonoGameContentReference Include="Content\Graphics\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Fonts\" />
