@@ -16,7 +16,7 @@ namespace TinyGame
 
             foreach(Rectangle a in lijst)
             {
-                if (a.Intersects(box))
+                if (a.Intersects(box) && box != a)
                     return true;
             }
             return false;

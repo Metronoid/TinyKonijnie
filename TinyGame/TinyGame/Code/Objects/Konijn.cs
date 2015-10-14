@@ -11,7 +11,6 @@ namespace TinyGame
         public Texture2D image;
         public Vector2 velocity;
         public GameTime gameTime;
-        public int playerId = 0;
         public Rectangle bounds;
         public float angle = 0;
         public float speed = 0F;
@@ -35,15 +34,21 @@ namespace TinyGame
 
             // TODO: Add your update logic here
 
+            if (CollisionSystem.CollisionDetection(bounds))
+            {
+
+
+            }
+
             velocity = new Vector2(0, 0);
 
             if (playerid == 1)
             {
                 if (Keyboard.GetState().IsKeyDown(Keys.A))
-                    angle -= 0.1f;
+                    angle -= speed/3000;
 
                 if (Keyboard.GetState().IsKeyDown(Keys.D))
-                    angle += 0.1f;
+                    angle += speed/3000;
 
                 if (Keyboard.GetState().IsKeyDown(Keys.S))
                 {
@@ -77,15 +82,16 @@ namespace TinyGame
             else if (playerid == 2)
             {
                 if (Keyboard.GetState().IsKeyDown(Keys.Left))
-                    angle -= 0.1f;
+                    angle -= speed / 3000;
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Right))
-                    angle += 0.1f;
+                    angle += speed / 3000;
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Down))
                 {
-                    velocity.Y -= (float)Math.Sin(angle) * speed;
-                    velocity.X -= (float)Math.Cos(angle) * speed;
+                    if (speed > -80)
+                        speed -= 2 * boost;
+
                 }
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Up))
@@ -101,6 +107,12 @@ namespace TinyGame
                 {
                     if (speed > 0)
                         speed -= boost;
+
+                    if (speed < 0)
+                        speed += boost;
+
+                    velocity.Y += (float)Math.Sin(angle) * speed;
+                    velocity.X += (float)Math.Cos(angle) * speed;
                 }
             }
         }
