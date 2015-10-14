@@ -13,6 +13,7 @@ namespace TinyGame
         SpriteBatch spriteBatch;
         GUIM screenInterface = new GUIM();
         Konijn speler;
+        Konijn speler2;
 
         public MainGame()
         {
@@ -42,7 +43,8 @@ namespace TinyGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            speler = new Konijn(new Vector2(0, 0), Content.Load<Texture2D>("Snuffel"));
+            speler = new Konijn(1, new Vector2(60, 40), Content.Load<Texture2D>("Snuffel"));
+            speler2 = new Konijn(2, new Vector2(60, 120), Content.Load<Texture2D>("Snuffel"));
             // TODO: use this.Content to load your game content here
         }
 
@@ -69,6 +71,7 @@ namespace TinyGame
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             speler.Update(elapsed);
+            speler2.Update(elapsed);
 
             base.Update(gameTime);
         }
@@ -85,6 +88,7 @@ namespace TinyGame
             spriteBatch.Begin();
 
             speler.Draw(spriteBatch);
+            speler2.Draw(spriteBatch);
 
             spriteBatch.End();
 

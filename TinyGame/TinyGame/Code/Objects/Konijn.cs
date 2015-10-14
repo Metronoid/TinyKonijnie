@@ -11,17 +11,20 @@ namespace TinyGame
         public Texture2D image;
         public Vector2 velocity;
         public GameTime gameTime;
+        public int playerId = 0;
         public float angle = 0;
-        public float speed = 80F;
+        public float speed = 160F;
+        public int playerid;
         public float boost = 1;
         public float slow = 1;
 
-        public Konijn(Vector2 location, Texture2D image)
+        public Konijn(int playerid, Vector2 location, Texture2D image)
         {
             this.location = location;
             this.image = image;
+            this.playerid = playerid;
+            
         }
-
 
 
         public void Update(float elapsed)
@@ -33,7 +36,8 @@ namespace TinyGame
 
             velocity = new Vector2(0, 0);
 
-
+            if (playerid == 1)
+            {
             if (Keyboard.GetState().IsKeyDown(Keys.A))
                 angle -= 0.1f;
 
@@ -45,7 +49,6 @@ namespace TinyGame
                 velocity.Y -= (float)Math.Sin(angle) * speed;
                 velocity.X -= (float)Math.Cos(angle) * speed;
             }
-
 
             if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
@@ -60,6 +63,39 @@ namespace TinyGame
             {
                 if (speed >80)
                     speed -= boost;
+            }
+        }
+
+            else if (playerid == 2)
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                    angle -= 0.1f;
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                    angle += 0.1f;
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Down))
+                {
+                    if (speed < 320)
+                        speed += boost;
+
+
+
+                    velocity.Y -= (float)Math.Sin(angle) * speed;
+                    velocity.X -= (float)Math.Cos(angle) * speed;
+                }
+
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Up))
+                {
+                    velocity.Y += (float)Math.Sin(angle) * speed;
+                    velocity.X += (float)Math.Cos(angle) * speed;
+                }
+                else
+                {
+                    if (speed > 80)
+                        speed -= boost;
+                }
             }
         }
 

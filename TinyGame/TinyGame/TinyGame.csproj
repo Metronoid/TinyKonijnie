@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Snuffel.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
