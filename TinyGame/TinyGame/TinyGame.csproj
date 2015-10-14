@@ -38,6 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Code\CollisionSystem.cs" />
     <Compile Include="Code\MainGame.cs" />
     <Compile Include="Code\GUIM.cs" />
     <Compile Include="Code\Objects\Blok.cs" />
