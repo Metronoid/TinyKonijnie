@@ -12,7 +12,9 @@ namespace TinyGame
         public Vector2 velocity;
         public GameTime gameTime;
         public float angle = 0;
-        public float speed = 160F;
+        public float speed = 80F;
+        public float boost = 1;
+        public float slow = 1;
 
         public Konijn(Vector2 location, Texture2D image)
         {
@@ -47,8 +49,17 @@ namespace TinyGame
 
             if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
+                if(speed < 320)
+                speed += boost;
+              
+
                 velocity.Y += (float)Math.Sin(angle) * speed;
                 velocity.X += (float)Math.Cos(angle) * speed;
+            }
+            else
+            {
+                if (speed >80)
+                    speed -= boost;
             }
         }
 
