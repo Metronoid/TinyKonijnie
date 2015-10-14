@@ -15,7 +15,6 @@ namespace TinyGame
         public float angle = 0;
         public float speed = 160F;
         public int playerid;
-        public float speed = 80F;
         public float boost = 1;
         public float slow = 1;
 
