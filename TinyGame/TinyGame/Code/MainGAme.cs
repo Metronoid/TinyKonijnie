@@ -15,6 +15,8 @@ namespace TinyGame
         Konijn speler;
         Konijn speler2;
         Blok rood;
+        Finishlijn finish;
+        
 
         public MainGame()
         {
@@ -44,6 +46,7 @@ namespace TinyGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            finish = new Finishlijn(new Vector2(100, 100), Content.Load<Texture2D>("Finish"));
             speler = new Konijn(1, new Vector2(60, 40), Content.Load<Texture2D>("Snuffel"));
             speler2 = new Konijn(2, new Vector2(60, 120), Content.Load<Texture2D>("Snuffel"));
             rood = new Blok(new Vector2(200, 200), Content.Load<Texture2D>("RodeBalk"));
@@ -88,7 +91,7 @@ namespace TinyGame
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-
+            finish.Draw(spriteBatch);
             speler.Draw(spriteBatch);
             speler2.Draw(spriteBatch);
             rood.Draw(spriteBatch);
