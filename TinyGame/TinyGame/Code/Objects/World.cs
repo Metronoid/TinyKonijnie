@@ -7,6 +7,6 @@ namespace TinyGame.Code.Objects
 {
     class World
     {
-
+        
     }
 }
