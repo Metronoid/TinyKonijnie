@@ -11,6 +11,7 @@ namespace TinyGame
         public Texture2D image;
         public Vector2 velocity;
         public GameTime gameTime;
+        public Rectangle bounds;
         public float angle = 0;
         public float speed = 160F;
 
@@ -54,6 +55,7 @@ namespace TinyGame
 
         public void Draw(SpriteBatch sb)
         {
+            bounds = new Rectangle((int)(location.X - image.Width / 2), (int)(location.Y - image.Height / 2), image.Width, image.Height);
             Vector2 origin = new Vector2(image.Width / 2, image.Height / 2);
             Rectangle sourceRectangle = new Rectangle(0, 0, image.Width, image.Height);
 

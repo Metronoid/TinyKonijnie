@@ -13,6 +13,7 @@ namespace TinyGame
         SpriteBatch spriteBatch;
         GUIM screenInterface = new GUIM();
         Konijn speler;
+        Blok rood;
 
         public MainGame()
         {
@@ -43,6 +44,7 @@ namespace TinyGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             speler = new Konijn(new Vector2(0, 0), Content.Load<Texture2D>("Snuffel"));
+            rood = new Blok(new Vector2(200, 200), Content.Load<Texture2D>("RodeBalk"));
             // TODO: use this.Content to load your game content here
         }
 
@@ -85,6 +87,7 @@ namespace TinyGame
             spriteBatch.Begin();
 
             speler.Draw(spriteBatch);
+            rood.Draw(spriteBatch);
 
             spriteBatch.End();
 
