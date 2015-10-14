@@ -17,6 +17,7 @@ namespace TinyGame
             this.image = image;
             CollisionSystem.lijst.Add(bounds);
         }
+
         public void Draw(SpriteBatch sb)
         {
             bounds = new Rectangle((int)(location.X - image.Width / 2), (int)(location.Y - image.Height / 2), image.Width, image.Height);
