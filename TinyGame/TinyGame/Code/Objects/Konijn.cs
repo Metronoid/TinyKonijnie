@@ -13,7 +13,7 @@ namespace TinyGame
         public GameTime gameTime;
         public int playerId = 0;
         public float angle = 0;
-        public float speed = 160F;
+        public float speed = 0F;
         public int playerid;
         public float boost = 1;
         public float slow = 1;
@@ -46,8 +46,9 @@ namespace TinyGame
 
                 if (Keyboard.GetState().IsKeyDown(Keys.S))
                 {
-                    velocity.Y -= (float)Math.Sin(angle) * speed;
-                    velocity.X -= (float)Math.Cos(angle) * speed;
+                    if (speed > -80)
+                        speed -= 2 * boost;
+
                 }
 
                 if (Keyboard.GetState().IsKeyDown(Keys.W))
@@ -61,8 +62,14 @@ namespace TinyGame
                 }
                 else
                 {
-                    if (speed > 80)
+                    if (speed > 0)
                         speed -= boost;
+
+                    if (speed < 0)
+                        speed += boost;
+
+                    velocity.Y += (float)Math.Sin(angle) * speed;
+                    velocity.X += (float)Math.Cos(angle) * speed;
                 }
             }
 
@@ -91,7 +98,7 @@ namespace TinyGame
                 }
                 else
                 {
-                    if (speed > 80)
+                    if (speed > 0)
                         speed -= boost;
                 }
             }
