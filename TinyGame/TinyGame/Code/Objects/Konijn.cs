@@ -11,9 +11,13 @@ namespace TinyGame
         public Texture2D image;
         public Vector2 velocity;
         public GameTime gameTime;
+        public int playerId = 0;
         public float angle = 0;
         public float speed = 160F;
         public int playerid;
+        public float speed = 80F;
+        public float boost = 1;
+        public float slow = 1;
 
         public Konijn(int playerid, Vector2 location, Texture2D image)
         {
@@ -22,7 +26,6 @@ namespace TinyGame
             this.playerid = playerid;
             
         }
-
 
 
         public void Update(float elapsed)
@@ -36,25 +39,33 @@ namespace TinyGame
 
             if (playerid == 1)
             {
-                if (Keyboard.GetState().IsKeyDown(Keys.A))
-                    angle -= 0.1f;
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+                angle -= 0.1f;
 
-                if (Keyboard.GetState().IsKeyDown(Keys.D))
-                    angle += 0.1f;
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
+                angle += 0.1f;
 
-                if (Keyboard.GetState().IsKeyDown(Keys.S))
-                {
-                    velocity.Y -= (float)Math.Sin(angle) * speed;
-                    velocity.X -= (float)Math.Cos(angle) * speed;
-                }
-
-
-                if (Keyboard.GetState().IsKeyDown(Keys.W))
-                {
-                    velocity.Y += (float)Math.Sin(angle) * speed;
-                    velocity.X += (float)Math.Cos(angle) * speed;
-                }
+            if (Keyboard.GetState().IsKeyDown(Keys.S))
+            {
+                velocity.Y -= (float)Math.Sin(angle) * speed;
+                velocity.X -= (float)Math.Cos(angle) * speed;
             }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
+            {
+                if(speed < 320)
+                speed += boost;
+              
+
+                velocity.Y += (float)Math.Sin(angle) * speed;
+                velocity.X += (float)Math.Cos(angle) * speed;
+            }
+            else
+            {
+                if (speed >80)
+                    speed -= boost;
+            }
+        }
 
             else if (playerid == 2)
             {
