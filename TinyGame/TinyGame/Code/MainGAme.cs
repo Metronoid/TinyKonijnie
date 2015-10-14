@@ -46,7 +46,6 @@ namespace TinyGame
 
             speler = new Konijn(1, new Vector2(60, 40), Content.Load<Texture2D>("Snuffel"));
             speler2 = new Konijn(2, new Vector2(60, 120), Content.Load<Texture2D>("Snuffel"));
-            speler = new Konijn(new Vector2(0, 0), Content.Load<Texture2D>("Snuffel"));
             rood = new Blok(new Vector2(200, 200), Content.Load<Texture2D>("RodeBalk"));
             // TODO: use this.Content to load your game content here
         }
