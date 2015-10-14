@@ -76,6 +76,11 @@ namespace TinyGame
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Down))
                 {
+                    if (speed < 320)
+                        speed += boost;
+
+
+
                     velocity.Y -= (float)Math.Sin(angle) * speed;
                     velocity.X -= (float)Math.Cos(angle) * speed;
                 }
@@ -85,6 +90,11 @@ namespace TinyGame
                 {
                     velocity.Y += (float)Math.Sin(angle) * speed;
                     velocity.X += (float)Math.Cos(angle) * speed;
+                }
+                else
+                {
+                    if (speed > 80)
+                        speed -= boost;
                 }
             }
         }
