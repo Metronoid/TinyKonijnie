@@ -23,7 +23,6 @@ namespace TinyGame
             this.location = location;
             this.image = image;
             this.playerid = playerid;
-            
         }
 
 
