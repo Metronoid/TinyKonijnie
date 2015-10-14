@@ -13,11 +13,14 @@ namespace TinyGame
         public GameTime gameTime;
         public float angle = 0;
         public float speed = 160F;
+        public int playerid;
 
-        public Konijn(Vector2 location, Texture2D image)
+        public Konijn(int playerid, Vector2 location, Texture2D image)
         {
             this.location = location;
             this.image = image;
+            this.playerid = playerid;
+            
         }
 
 
@@ -31,24 +34,48 @@ namespace TinyGame
 
             velocity = new Vector2(0, 0);
 
-
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
-                angle -= 0.1f;
-
-            if (Keyboard.GetState().IsKeyDown(Keys.D))
-                angle += 0.1f;
-
-            if (Keyboard.GetState().IsKeyDown(Keys.S))
+            if (playerid == 1)
             {
-                velocity.Y -= (float)Math.Sin(angle) * speed;
-                velocity.X -= (float)Math.Cos(angle) * speed;
+                if (Keyboard.GetState().IsKeyDown(Keys.A))
+                    angle -= 0.1f;
+
+                if (Keyboard.GetState().IsKeyDown(Keys.D))
+                    angle += 0.1f;
+
+                if (Keyboard.GetState().IsKeyDown(Keys.S))
+                {
+                    velocity.Y -= (float)Math.Sin(angle) * speed;
+                    velocity.X -= (float)Math.Cos(angle) * speed;
+                }
+
+
+                if (Keyboard.GetState().IsKeyDown(Keys.W))
+                {
+                    velocity.Y += (float)Math.Sin(angle) * speed;
+                    velocity.X += (float)Math.Cos(angle) * speed;
+                }
             }
 
-
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
+            else if (playerid == 2)
             {
-                velocity.Y += (float)Math.Sin(angle) * speed;
-                velocity.X += (float)Math.Cos(angle) * speed;
+                if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                    angle -= 0.1f;
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                    angle += 0.1f;
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Down))
+                {
+                    velocity.Y -= (float)Math.Sin(angle) * speed;
+                    velocity.X -= (float)Math.Cos(angle) * speed;
+                }
+
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Up))
+                {
+                    velocity.Y += (float)Math.Sin(angle) * speed;
+                    velocity.X += (float)Math.Cos(angle) * speed;
+                }
             }
         }
 
