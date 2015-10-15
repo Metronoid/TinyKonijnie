@@ -42,6 +42,7 @@
     <Compile Include="Code\MainGame.cs" />
     <Compile Include="Code\GUIM.cs" />
     <Compile Include="Code\Objects\Blok.cs" />
+    <Compile Include="Code\Objects\Finishlijn.cs" />
     <Compile Include="Code\Objects\Konijn.cs" />
     <Compile Include="Code\Objects\Pitstop.cs" />
     <Compile Include="Code\Objects\World.cs" />
