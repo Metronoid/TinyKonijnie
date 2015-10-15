@@ -21,6 +21,7 @@ namespace TinyGame
         {
             bounds = new Rectangle((int)(location.X - image.Width / 2), (int)(location.Y - image.Height / 2), image.Width, image.Height);
             sb.Draw(image, location, Color.White);
+            
         }
     }
 }
