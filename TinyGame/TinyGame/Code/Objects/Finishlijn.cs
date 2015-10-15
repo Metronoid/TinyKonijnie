@@ -11,6 +11,7 @@ namespace TinyGame
     public class Finishlijn : CollisionComponent
     {
         public Texture2D image;
+        
         public Vector2 location;
         public Finishlijn (Vector2 location, Texture2D image)
         {

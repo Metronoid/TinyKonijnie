@@ -44,7 +44,7 @@ namespace TinyGame
                 if (name == "trap")
                 {
                       angle += 3;
-                }
+            }
                 if (name == "Finish")
                 {
                     laps++;
