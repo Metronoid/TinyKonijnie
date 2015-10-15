@@ -35,15 +35,26 @@ namespace TinyGame
             }
             return "";
         }
-
-        public static string TriggerDetection(Rectangle box)
+        /// <summary>
+        /// Get back the string id when you enter a trigger;
+        /// </summary>
+        /// <param name="box"></param>
+        /// <returns></returns>
+        public static string TriggerDetection(CollisionComponent caller)
         {
             List<Rectangle> t = new List<Rectangle>();
+
             foreach (CollisionComponent a in triggers)
             {
-                if (a.bounds.Intersects(box) && box != a.bounds)
+                if (a.bounds.Intersects(caller.bounds) && caller.bounds != a.bounds)
+                {
+                    if (caller.triggerEntered)
+                        return "";
+                    caller.triggerEntered = true;
                     return a.id;
+                }
             }
+            caller.triggerEntered = false;
             return "";
         }
     }

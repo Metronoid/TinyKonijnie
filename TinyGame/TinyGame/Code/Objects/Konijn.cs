@@ -5,13 +5,12 @@ using Microsoft.Xna.Framework.Input;
 
 namespace TinyGame
 {
-    public class Konijn
+    public class Konijn : CollisionComponent
     {
         public Vector2 location;
         public Texture2D image;
         public Vector2 velocity;
         public GameTime gameTime;
-        public Rectangle bounds;
         public float angle = 0;
         public float speed = 0F;
         public int playerid;
@@ -34,7 +33,7 @@ namespace TinyGame
 
             // TODO: Add your update logic here
 
-            string name = CollisionSystem.TriggerDetection(bounds);
+            string name = CollisionSystem.TriggerDetection(this);
             if (name!="")
             {
                 if (name == "Powerup")
