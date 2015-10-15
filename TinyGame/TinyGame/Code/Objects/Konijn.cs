@@ -34,12 +34,16 @@ namespace TinyGame
 
             // TODO: Add your update logic here
 
-            if (CollisionSystem.CollisionDetection(bounds)!=null)
+            string name = CollisionSystem.TriggerDetection(bounds);
+            if (name!="")
             {
-                
+                if (name == "Powerup")
+                {
+                    speed = 600;
+                }
 
             }
-            
+
             velocity = new Vector2(0, 0);
 
             if (playerid == 1)
