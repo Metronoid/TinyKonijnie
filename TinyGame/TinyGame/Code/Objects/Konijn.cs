@@ -49,7 +49,7 @@ namespace TinyGame
             {
                 if (naam == "trap")
                 {
-
+                   
                       angle += 3;
                     
                 }
