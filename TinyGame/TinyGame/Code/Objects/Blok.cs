@@ -5,17 +5,16 @@ using Microsoft.Xna.Framework.Input;
 
 namespace TinyGame
 {
-    public class Blok
+    public class Blok : CollisionComponent
     {
         public Texture2D image;
         public Vector2 location;
-        public Rectangle bounds;
 
         public Blok (Vector2 location,Texture2D image )
         {
             this.location = location;
             this.image = image;
-            CollisionSystem.colliders.Add(bounds);
+            CollisionSystem.colliders.Add(this);
         }
 
         public void Draw(SpriteBatch sb)
