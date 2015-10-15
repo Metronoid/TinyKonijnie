@@ -85,3 +85,9 @@
 /processorParam:TextureFormat=Color
 /build:AngerOrb.png
 
+#begin NewSpriteFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:NewSpriteFont.spritefont
+

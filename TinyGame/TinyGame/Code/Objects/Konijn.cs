@@ -18,6 +18,7 @@ namespace TinyGame
         public float boost = 1;
         public float slow = 1;
         public int laps = 0;
+        public int checks = 0;
 
         public Konijn(int playerid, Vector2 location, Texture2D image)
         {
@@ -41,7 +42,11 @@ namespace TinyGame
                 {
                     speed = 600;
                 }
-
+                if (name == "Finish")
+                {
+                    laps++;
+                    checks = 0;
+                }
             }
 
             velocity = new Vector2(0, 0);
