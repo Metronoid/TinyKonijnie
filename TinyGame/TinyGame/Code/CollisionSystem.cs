@@ -13,9 +13,12 @@ namespace TinyGame
     class CollisionSystem
     {
         /// <summary>
-        /// Add to this list the moment
+        /// Add to this list the objects for collision.
         /// </summary>
         public static List<CollisionComponent> colliders = new List<CollisionComponent>();
+        /// <summary>
+        /// Add to this list the objects for triggers.
+        /// </summary>
         public static List<CollisionComponent> triggers = new List<CollisionComponent>();
 
         public static object CollisionDetection(Rectangle box)
