@@ -29,7 +29,7 @@ namespace TinyGame
 
         public void Draw(SpriteBatch sb)
         {
-            bounds = new Rectangle((int)(location.X - image.Width / 2), (int)(location.Y - image.Height / 2), image.Width, image.Height);
+            bounds = new Rectangle((int)(0,0, image.Width, image.Height);
             sb.Draw(image, location, Color.White);
         }
     }
