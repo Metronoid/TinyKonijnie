@@ -9,17 +9,16 @@ using Microsoft.Xna.Framework.Input;
 
 namespace TinyGame
 {
-    class Powerup
+    class Powerup : CollisionComponent
     {
         public Texture2D image;
         public Vector2 location;
-        public Rectangle bounds;
 
         public Powerup(Vector2 location, Texture2D image)
         {
             this.location = location;
             this.image = image;
-            CollisionSystem.colliders.Add(bounds);
+            CollisionSystem.colliders.Add(this);
 
             if (CollisionSystem.CollisionDetection(bounds) != null)
             {
