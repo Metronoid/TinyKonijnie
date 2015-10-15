@@ -20,7 +20,11 @@ namespace TinyGame
         /// Add to this list the objects for triggers.
         /// </summary>
         public static List<CollisionComponent> triggers = new List<CollisionComponent>();
-
+        /// <summary>
+        /// Get back the string id when you have a collision;
+        /// </summary>
+        /// <param name="box"></param>
+        /// <returns></returns>
         public static string CollisionDetection(Rectangle box)
         {
             List<Rectangle> t = new List<Rectangle>();

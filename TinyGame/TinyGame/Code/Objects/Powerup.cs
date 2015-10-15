@@ -22,11 +22,9 @@ namespace TinyGame
             CollisionSystem.triggers.Add(this);
         }
 
-
-
         public void Draw(SpriteBatch sb)
         {
-            bounds = new Rectangle((int)(location.X - image.Width / 2), (int)(location.Y - image.Height / 2), image.Width, image.Height);
+            bounds = new Rectangle((int)location.X, (int)location.Y, image.Width, image.Height);
             sb.Draw(image, location, Color.White);
         }
     }
