@@ -11,14 +11,17 @@ namespace TinyGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        GUIM screenInterface = new GUIM();
+        //GUIM screenInterface = new GUIM();
+        GUIM GUI;
         Konijn speler;
         Konijn speler2;
         Blok rood;
         Finishlijn finish;
         Powerup speedboost;
         trap spin;
+        public static SpriteFont font;
         
+
 
         public MainGame()
         {
@@ -58,7 +61,10 @@ namespace TinyGame
             finish = new Finishlijn(new Vector2(300, 100), Content.Load<Texture2D>("Finish"));
             speedboost = new Powerup(new Vector2(500, 500), Content.Load<Texture2D>("SmileOrb"));
             spin = new trap(new Vector2(300, 300), Content.Load<Texture2D>("AngerOrb"));
+            GUI = new GUIM();
+           
             // TODO: use this.Content to load your game content here
+            font = Content.Load<SpriteFont>("NewSpriteFont");
         }
 
         /// <summary>
@@ -105,6 +111,7 @@ namespace TinyGame
             speler.Draw(spriteBatch);
             speler2.Draw(spriteBatch);
             spin.Draw(spriteBatch);
+            GUI.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Update(gameTime);
