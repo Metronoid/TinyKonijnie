@@ -17,6 +17,7 @@ namespace TinyGame
         public int playerid;
         public float boost = 1;
         public float slow = 1;
+        public int laps = 0;
 
         public Konijn(int playerid, Vector2 location, Texture2D image)
         {
@@ -115,6 +116,7 @@ namespace TinyGame
                 }
             }
         }
+
 
         public void Draw(SpriteBatch sb)
         {

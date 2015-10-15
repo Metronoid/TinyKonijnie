@@ -33,7 +33,9 @@ namespace TinyGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            graphics.PreferredBackBufferWidth = 1024;  // set this value to the desired width of your window
+            graphics.PreferredBackBufferHeight = 768;   // set this value to the desired height of your window
+            graphics.ApplyChanges();
             base.Initialize();
         }
 
