@@ -18,7 +18,7 @@ namespace TinyGame
         public float slow = 1;
         public int laps = 0;
         public int checks = 0;
-
+        
         public Konijn(int playerid, Vector2 location, Texture2D image)
         {
             this.location = location;
@@ -92,6 +92,7 @@ namespace TinyGame
                     if (speed < 0)
                         speed += boost;
                 }
+                GUIM.speed1 = speed;
             }
 
             else if (playerid == 2)
@@ -122,6 +123,7 @@ namespace TinyGame
                     if (speed < 0)
                         speed += boost;
                 }
+                GUIM.speed2 = speed;
             }
 
             velocity.Y += (float)Math.Sin(angle) * speed;
@@ -130,7 +132,7 @@ namespace TinyGame
 
 
         public void Draw(SpriteBatch sb)
-        {
+        { 
             bounds = new Rectangle((int)(location.X - image.Width / 2), (int)(location.Y - image.Height / 2), image.Width, image.Height);
             Vector2 origin = new Vector2(image.Width / 2, image.Height / 2);
             Rectangle sourceRectangle = new Rectangle(0, 0, image.Width, image.Height);
