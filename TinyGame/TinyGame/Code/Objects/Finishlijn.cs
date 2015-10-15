@@ -21,8 +21,7 @@ namespace TinyGame
 
             if (CollisionSystem.CollisionDetection(bounds) != null)
             {
-
-
+             
             }
         }
 
