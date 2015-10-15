@@ -18,7 +18,7 @@ namespace TinyGame
         public float slow = 1;
         public int laps = 0;
         public int checks = 0;
-
+        
         public Konijn(int playerid, Vector2 location, Texture2D image)
         {
             this.location = location;
@@ -89,6 +89,7 @@ namespace TinyGame
                     velocity.Y += (float)Math.Sin(angle) * speed;
                     velocity.X += (float)Math.Cos(angle) * speed;
                 }
+                GUIM.speed1 = speed;
             }
 
             else if (playerid == 2)
@@ -126,6 +127,7 @@ namespace TinyGame
                     velocity.Y += (float)Math.Sin(angle) * speed;
                     velocity.X += (float)Math.Cos(angle) * speed;
                 }
+                GUIM.speed2 = speed;
             }
         }
 
