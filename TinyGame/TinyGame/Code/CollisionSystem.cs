@@ -22,7 +22,7 @@ namespace TinyGame
             return null;
         }
 
-        public static object TriggerDetection(Rectangle box)
+        public static object TriggerDetection(Rectangle box) 
         {
             foreach (Rectangle a in triggers)
             {
