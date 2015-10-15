@@ -8,6 +8,8 @@ namespace TinyGame
     class GUIM
     {
         Konijn Player;
+        private SpriteFont font;
+        private int score = 0;
 
         public void FuelMeter()
         { 
