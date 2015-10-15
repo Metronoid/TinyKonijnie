@@ -73,6 +73,12 @@
 /processorParam:TextureFormat=Color
 /build:SmileOrb.png
 
+#begin NewSpriteFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:NewSpriteFont.spritefont
+
 #begin AngerOrb.png
 /importer:TextureImporter
 /processor:TextureProcessor

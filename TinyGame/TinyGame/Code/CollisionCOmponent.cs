@@ -9,6 +9,7 @@ namespace TinyGame
     public class CollisionComponent
     {
         public Rectangle bounds;
+        public bool triggerEntered = false;
         public string id;
     }
 }
