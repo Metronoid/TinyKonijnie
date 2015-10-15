@@ -1,4 +1,5 @@
-﻿using System;
+﻿//PLEASE DO NOT CHANGE THE CODE
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,29 +7,37 @@ using Microsoft.Xna.Framework;
 
 namespace TinyGame
 {
-
+    /// <summary>
+    /// CollisionSystem for checking collision based stuff.
+    /// </summary>
     class CollisionSystem
     {
-        public static List<object> colliders = new List<object>();
-
-        public static List<object> triggers = new List<object>();
+        /// <summary>
+        /// Add to this list the objects for collision.
+        /// </summary>
+        public static List<CollisionComponent> colliders = new List<CollisionComponent>();
+        /// <summary>
+        /// Add to this list the objects for triggers.
+        /// </summary>
+        public static List<CollisionComponent> triggers = new List<CollisionComponent>();
 
         public static object CollisionDetection(Rectangle box)
         {
-            foreach(Rectangle a in colliders)
+            List<Rectangle> t = new List<Rectangle>();
+            foreach (CollisionComponent a in colliders)
             {
-                if (a.Intersects(box) && box != a)
-
+                if (a.bounds.Intersects(box) && box != a.bounds)
                     return a;
             }
             return null;
         }
 
-        public static object TriggerDetection(Rectangle box) 
+        public static object TriggerDetection(Rectangle box)
         {
-            foreach (Rectangle a in triggers)
+            List<Rectangle> t = new List<Rectangle>();
+            foreach (CollisionComponent a in colliders)
             {
-                if (a.Intersects(box) && box != a)
+                if (a.bounds.Intersects(box) && box != a.bounds)
                     return a;
             }
             return null;
