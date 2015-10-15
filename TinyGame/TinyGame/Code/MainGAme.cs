@@ -50,10 +50,12 @@ namespace TinyGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            finish = new Finishlijn(new Vector2(100, 100), Content.Load<Texture2D>("Finish"));
             speler = new Konijn(1, new Vector2(60, 40), Content.Load<Texture2D>("Snuffel"));
             speler2 = new Konijn(2, new Vector2(60, 120), Content.Load<Texture2D>("Snuffel"));
-            rood = new Blok(new Vector2(200, 200), Content.Load<Texture2D>("RodeBalk"));
+
+            rood = new Blok(new Vector2(0, 200), Content.Load<Texture2D>("RodeBalk"));
+
+            finish = new Finishlijn(new Vector2(300, 100), Content.Load<Texture2D>("Finish"));
             speedboost = new Powerup(new Vector2(500, 500), Content.Load<Texture2D>("SmileOrb"));
             spin = new trap(new Vector2(300, 300), Content.Load<Texture2D>("AngerOrb"));
             // TODO: use this.Content to load your game content here

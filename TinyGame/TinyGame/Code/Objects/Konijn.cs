@@ -41,23 +41,15 @@ namespace TinyGame
                 {
                     speed = 600;
                 }
+                if (name == "trap")
+                {
+                      angle += 3;
+            }
                 if (name == "Finish")
                 {
                     laps++;
                     checks = 0;
                 }
-            }
-
-            string naam = CollisionSystem.TriggerDetection(bounds);
-            if (naam != "")
-            {
-                if (naam == "trap")
-                {
-
-                      angle += 3;
-                    
-                }
-
             }
 
             velocity = new Vector2(0, 0);
