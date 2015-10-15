@@ -22,7 +22,7 @@ namespace TinyGame
             this.image = image;
             CollisionSystem.colliders.Add(this);
 
-            if (CollisionSystem.CollisionDetection(bounds) != null)
+            if (CollisionSystem.CollisionDetection(this) != null)
             {
              
             }
