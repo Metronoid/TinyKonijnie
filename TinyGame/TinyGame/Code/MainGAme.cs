@@ -64,7 +64,7 @@ namespace TinyGame
             GUI = new GUIM();
            
             // TODO: use this.Content to load your game content here
-            font = Content.Load<SpriteFont>("NewSpriteFont");
+            font = Content.Load<SpriteFont>("Cartoon12");
         }
 
         /// <summary>
