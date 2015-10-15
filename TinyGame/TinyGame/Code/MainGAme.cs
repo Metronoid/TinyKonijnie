@@ -96,10 +96,10 @@ namespace TinyGame
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             finish.Draw(spriteBatch);
-            speler.Draw(spriteBatch);
-            speler2.Draw(spriteBatch);
             rood.Draw(spriteBatch);
             speedboost.Draw(spriteBatch);
+            speler.Draw(spriteBatch);
+            speler2.Draw(spriteBatch);
 
             spriteBatch.End();
 

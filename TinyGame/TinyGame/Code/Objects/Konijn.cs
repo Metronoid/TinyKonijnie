@@ -36,10 +36,10 @@ namespace TinyGame
 
             if (CollisionSystem.CollisionDetection(bounds)!=null)
             {
-
+                
 
             }
-
+            
             velocity = new Vector2(0, 0);
 
             if (playerid == 1)
