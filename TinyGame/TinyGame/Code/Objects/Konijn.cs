@@ -34,7 +34,7 @@ namespace TinyGame
 
             // TODO: Add your update logic here
 
-            if (CollisionSystem.CollisionDetection(bounds))
+            if (CollisionSystem.CollisionDetection(bounds)!=null)
             {
 
 

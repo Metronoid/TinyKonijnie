@@ -9,27 +9,27 @@ namespace TinyGame
 
     class CollisionSystem
     {
-        public static List<Rectangle> colliders = new List<Rectangle>();
-        public static List<Rectangle> triggers = new List<Rectangle>();
+        public static List<object> colliders = new List<object>();
+        public static List<object> triggers = new List<object>();
 
-        public static bool CollisionDetection(Rectangle box)
+        public static object CollisionDetection(Rectangle box)
         {
             foreach(Rectangle a in colliders)
             {
                 if (a.Intersects(box) && box != a)
-                    return true;
+                    return a;
             }
-            return false;
+            return null;
         }
 
-        public static bool TriggerDetection(Rectangle box)
+        public static object TriggerDetection(Rectangle box) 
         {
             foreach (Rectangle a in triggers)
             {
                 if (a.Intersects(box) && box != a)
-                    return true;
+                    return a;
             }
-            return false;
+            return null;
         }
     }
 }
