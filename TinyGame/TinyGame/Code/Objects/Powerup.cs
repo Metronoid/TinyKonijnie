@@ -22,8 +22,6 @@ namespace TinyGame
             CollisionSystem.triggers.Add(this);
         }
 
-
-
         public void Draw(SpriteBatch sb)
         {
             bounds = new Rectangle((int)location.X, (int)location.Y, image.Width, image.Height);
