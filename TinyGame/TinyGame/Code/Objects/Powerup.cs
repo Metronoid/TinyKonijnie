@@ -18,13 +18,8 @@ namespace TinyGame
         {
             this.location = location;
             this.image = image;
-            CollisionSystem.colliders.Add(this);
-
-            if (CollisionSystem.CollisionDetection(bounds) != null)
-            {
-
-
-            }
+            id = "Powerup";
+            CollisionSystem.triggers.Add(this);
         }
 
 

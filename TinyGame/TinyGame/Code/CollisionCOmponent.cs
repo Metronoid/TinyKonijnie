@@ -9,11 +9,6 @@ namespace TinyGame
     public class CollisionComponent
     {
         public Rectangle bounds;
-
-        public virtual void Code()
-        {
-
-
-        }
+        public string id;
     }
 }

@@ -21,26 +21,26 @@ namespace TinyGame
         /// </summary>
         public static List<CollisionComponent> triggers = new List<CollisionComponent>();
 
-        public static object CollisionDetection(Rectangle box)
+        public static string CollisionDetection(Rectangle box)
         {
             List<Rectangle> t = new List<Rectangle>();
             foreach (CollisionComponent a in colliders)
             {
                 if (a.bounds.Intersects(box) && box != a.bounds)
-                    return a;
+                    return a.id;
             }
-            return null;
+            return "";
         }
 
-        public static object TriggerDetection(Rectangle box)
+        public static string TriggerDetection(Rectangle box)
         {
             List<Rectangle> t = new List<Rectangle>();
-            foreach (CollisionComponent a in colliders)
+            foreach (CollisionComponent a in triggers)
             {
                 if (a.bounds.Intersects(box) && box != a.bounds)
-                    return a;
+                    return a.id;
             }
-            return null;
+            return "";
         }
     }
 }
