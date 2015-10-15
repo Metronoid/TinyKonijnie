@@ -12,9 +12,11 @@ namespace TinyGame
     {
         public Texture2D image;
         public Vector2 location;
-
         public Finishlijn (Vector2 location, Texture2D image)
         {
+            this.location = location;
+            this.image = image;
+            id = "Finish";
             this.location = location;
             this.image = image;
             CollisionSystem.colliders.Add(this);
@@ -26,7 +28,7 @@ namespace TinyGame
         }
 
 
-
+         
         public void Draw(SpriteBatch sb)
         {
             bounds = new Rectangle((int)location.X, (int)location.Y, image.Width, image.Height);

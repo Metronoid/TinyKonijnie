@@ -17,6 +17,7 @@ namespace TinyGame
         public float boost = 1;
         public float slow = 1;
         public int laps = 0;
+        public int checks = 0;
 
         public Konijn(int playerid, Vector2 location, Texture2D image)
         {
@@ -42,9 +43,12 @@ namespace TinyGame
                 }
                 if (name == "trap")
                 {
-
-                    angle += 3;
-
+                      angle += 3;
+                }
+                if (name == "Finish")
+                {
+                    laps++;
+                    checks = 0;
                 }
             }
 
