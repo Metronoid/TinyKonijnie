@@ -15,7 +15,7 @@ namespace TinyGame
         {
             this.location = location;
             this.image = image;
-            CollisionSystem.colliders.Add(bounds);
+            CollisionSystem.colliders.Add(this);
         }
 
         public void Draw(SpriteBatch sb)
