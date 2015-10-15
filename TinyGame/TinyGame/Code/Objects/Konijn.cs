@@ -43,6 +43,18 @@ namespace TinyGame
 
             }
 
+            string naam = CollisionSystem.TriggerDetection(bounds);
+            if (naam != "")
+            {
+                if (naam == "trap")
+                {
+
+                      angle += 3;
+                    
+                }
+
+            }
+
             velocity = new Vector2(0, 0);
 
             if (playerid == 1)
