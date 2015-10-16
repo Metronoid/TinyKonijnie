@@ -25,12 +25,11 @@ namespace TinyGame
         /// </summary>
         /// <param name="box"></param>
         /// <returns></returns>
-        public static string CollisionDetection(Rectangle box)
+        public static string CollisionDetection(CollisionComponent caller)
         {
-            List<Rectangle> t = new List<Rectangle>();
             foreach (CollisionComponent a in colliders)
             {
-                if (a.bounds.Intersects(box) && box != a.bounds)
+                if (a.bounds.Intersects(caller.bounds) && caller.bounds != a.bounds)
                     return a.id;
             }
             return "";
@@ -42,7 +41,6 @@ namespace TinyGame
         /// <returns></returns>
         public static string TriggerDetection(CollisionComponent caller)
         {
-            List<Rectangle> t = new List<Rectangle>();
 
             foreach (CollisionComponent a in triggers)
             {

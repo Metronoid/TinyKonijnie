@@ -9,6 +9,7 @@ namespace TinyGame
     {
         public Vector2 location;
         public Texture2D image;
+        public Texture2D boundsimage;
         public Vector2 velocity;
         public GameTime gameTime;
         public float angle = 0;
@@ -18,12 +19,16 @@ namespace TinyGame
         public float slow = 1;
         public int laps = 0;
         public int checks = 0;
-        
-        public Konijn(int playerid, Vector2 location, Texture2D image)
+        public int powercounter = 0;
+    
+        public Konijn(int playerid, Vector2 location, Texture2D image, Texture2D boundImage)
         {
             this.location = location;
             this.image = image;
             this.playerid = playerid;
+            this.boundsimage = boundImage;
+            id = "Konijn";
+            CollisionSystem.colliders.Add(this);
         }
 
 
@@ -34,49 +39,61 @@ namespace TinyGame
 
             // TODO: Add your update logic here
 
-            string name = CollisionSystem.TriggerDetection(this);
-            if (name!="")
+            string trigger = CollisionSystem.TriggerDetection(this);
+            if (trigger!="")
             {
-                if (name == "Powerup")
+                if (trigger == "Powerup")
                 {
                     speed = 600;
+                    powercounter = 0;
                 }
-                if (name == "trap")
+                if (trigger == "trap")
                 {
                       angle += 3;
-            }
-                if (name == "Finish")
+                }
+                if (trigger == "Finish")
                 {
                     laps++;
                     checks = 0;
                 }
             }
 
+            string collision = CollisionSystem.CollisionDetection(this);
+            if (collision != "")
+            {
+                if (collision == "Konijn")
+                {
+                    speed = -100;
+                }
+            }
+
             velocity = new Vector2(0, 0);
 
-            if (playerid == 1)
-            {
-                if (Keyboard.GetState().IsKeyDown(Keys.A))
+                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.A) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Left))
                     angle -= speed/3000;
 
-                if (Keyboard.GetState().IsKeyDown(Keys.D))
+                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.D) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Right))
                     angle += speed/3000;
 
-                if (Keyboard.GetState().IsKeyDown(Keys.S))
+                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.S) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Down))
                 {
                     if (speed > -80)
                         speed -= 2 * boost;
-
+                    else if (speed == -80)
+                        speed -= boost;
                 }
 
-                if (Keyboard.GetState().IsKeyDown(Keys.W))
+                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.W) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Up))
                 {
                     if (speed < 320)
                         speed += boost;
 
+                    else if (speed > 320)
+                        if (powercounter < 100)
+                            powercounter++;
+                        else
+                            speed -= boost;
 
-                    velocity.Y += (float)Math.Sin(angle) * speed;
-                    velocity.X += (float)Math.Cos(angle) * speed;
                 }
                 else
                 {
@@ -85,60 +102,30 @@ namespace TinyGame
 
                     if (speed < 0)
                         speed += boost;
-
-                    velocity.Y += (float)Math.Sin(angle) * speed;
-                    velocity.X += (float)Math.Cos(angle) * speed;
                 }
-                GUIM.speed1 = speed;
-            }
-
-            else if (playerid == 2)
+            if (playerid == 1)
             {
-                if (Keyboard.GetState().IsKeyDown(Keys.Left))
-                    angle -= speed / 3000;
-
-                if (Keyboard.GetState().IsKeyDown(Keys.Right))
-                    angle += speed / 3000;
-
-                if (Keyboard.GetState().IsKeyDown(Keys.Down))
-                {
-                    if (speed > -80)
-                        speed -= 2 * boost;
-
-                }
-
-                if (Keyboard.GetState().IsKeyDown(Keys.Up))
-                {
-                    if (speed < 320)
-                        speed += boost;
-
-
-                    velocity.Y += (float)Math.Sin(angle) * speed;
-                    velocity.X += (float)Math.Cos(angle) * speed;
-                }
-                else
-                {
-                    if (speed > 0)
-                        speed -= boost;
-
-                    if (speed < 0)
-                        speed += boost;
-
-                    velocity.Y += (float)Math.Sin(angle) * speed;
-                    velocity.X += (float)Math.Cos(angle) * speed;
-                }
-                GUIM.speed2 = speed;
+                GUIM.speed1 = speed;
+                GUIM.angle1 = angle;
             }
+            if (playerid == 2)
+            {
+                GUIM.speed2 = speed;
+                GUIM.angle2 = angle;
+            }
+
+            velocity.Y += (float)Math.Sin(angle) * speed;
+            velocity.X += (float)Math.Cos(angle) * speed;
         }
 
 
         public void Draw(SpriteBatch sb)
         { 
-            bounds = new Rectangle((int)(location.X - image.Width / 2), (int)(location.Y - image.Height / 2), image.Width, image.Height);
+            bounds = new Rectangle((int)(location.X - image.Width / 4), (int)(location.Y - image.Height / 2), image.Width/2, image.Height);
             Vector2 origin = new Vector2(image.Width / 2, image.Height / 2);
             Rectangle sourceRectangle = new Rectangle(0, 0, image.Width, image.Height);
-
             sb.Draw(image, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
+            sb.Draw(boundsimage, bounds, null, Color.Wheat);
         }
 
 
