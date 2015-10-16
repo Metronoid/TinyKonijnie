@@ -11,7 +11,7 @@ namespace TinyGame
         public Vector2 location;
 
         /// <summary>
-        /// Geeft aan welke  
+        /// Geeft aan welke variabelen Blok met zich mee geeft. 
         /// </summary>
         /// <param name="location"></param>
         /// <param name="image"></param>
@@ -23,7 +23,7 @@ namespace TinyGame
             CollisionSystem.colliders.Add(this);
         }
         /// <summary>
-        /// 
+        /// Drawt de variabelen wanneer het wordt aangeroepen.
         /// </summary>
         /// <param name="sb"></param>
         public void Draw(SpriteBatch sb)
@@ -33,6 +33,10 @@ namespace TinyGame
         }
     }
 }
+
+///<summary>
+/// Haha negeer dit vrienden
+/// </summary>
 /*
 {
     class trap : CollisionComponent
