@@ -9,6 +9,7 @@ namespace TinyGame
     {
         public Vector2 location;
         public Texture2D image;
+        public Texture2D boundsimage;
         public Vector2 velocity;
         public GameTime gameTime;
         public float angle = 0;
@@ -19,12 +20,13 @@ namespace TinyGame
         public int laps = 0;
         public int checks = 0;
         public int powercounter = 0;
-        
-        public Konijn(int playerid, Vector2 location)
+    
+        public Konijn(int playerid, Vector2 location, Texture2D image, Texture2D boundImage)
         {
             this.location = location;
             this.image = image;
             this.playerid = playerid;
+            this.boundsimage = boundImage;
             id = "Konijn";
             CollisionSystem.colliders.Add(this);
         }
@@ -124,7 +126,7 @@ namespace TinyGame
                     if (speed < 320)
                     {
                         speed += boost;
-                    }
+                }
 
                     else if (speed > 320)
                         if (powercounter < 100)
@@ -151,11 +153,11 @@ namespace TinyGame
 
         public void Draw(SpriteBatch sb)
         { 
-            bounds = new Rectangle((int)(location.X - image.Width / 2), (int)(location.Y - image.Height / 2), image.Width, image.Height);
+            bounds = new Rectangle((int)(location.X - image.Width / 4), (int)(location.Y - image.Height / 2), image.Width/2, image.Height);
             Vector2 origin = new Vector2(image.Width / 2, image.Height / 2);
             Rectangle sourceRectangle = new Rectangle(0, 0, image.Width, image.Height);
-
             sb.Draw(image, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
+            sb.Draw(boundsimage, bounds, null, Color.Wheat);
         }
 
 
