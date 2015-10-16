@@ -10,6 +10,11 @@ namespace TinyGame
         public Texture2D image;
         public Vector2 location;
 
+        /// <summary>
+        /// Geeft aan welke  
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="image"></param>
         public Blok (Vector2 location,Texture2D image )
         {
             this.location = location;
@@ -17,7 +22,10 @@ namespace TinyGame
             id = "blok";
             CollisionSystem.colliders.Add(this);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sb"></param>
         public void Draw(SpriteBatch sb)
         {
             bounds = new Rectangle((int)(location.X - image.Width / 2), (int)(location.Y - image.Height / 2), image.Width, image.Height);
