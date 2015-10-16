@@ -20,7 +20,7 @@ namespace TinyGame
         public int checks = 0;
         public int powercounter = 0;
         
-        public Konijn(int playerid, Vector2 location, Texture2D image)
+        public Konijn(int playerid, Vector2 location)
         {
             this.location = location;
             this.image = image;
