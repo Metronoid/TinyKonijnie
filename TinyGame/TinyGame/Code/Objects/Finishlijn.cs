@@ -13,6 +13,12 @@ namespace TinyGame
         public Texture2D image;
         
         public Vector2 location;
+
+        /// <summary>
+        /// Geeft aan welke variabelen Finishlijn met zich mee geeft. 
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="image"></param>
         public Finishlijn (Vector2 location, Texture2D image)
         {
             this.location = location;
@@ -27,9 +33,11 @@ namespace TinyGame
              
             }
         }
+        /// <summary>
+        /// Drawt de variabelen wanneer het wordt aangeroepen.
+        /// </summary>
+        /// <param name="sb"></param>
 
-
-         
         public void Draw(SpriteBatch sb)
         {
             bounds = new Rectangle((int)location.X, (int)location.Y, image.Width, image.Height);

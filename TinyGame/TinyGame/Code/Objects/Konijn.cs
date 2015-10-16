@@ -20,7 +20,14 @@ namespace TinyGame
         public int laps = 0;
         public int checks = 0;
         public int powercounter = 0;
-    
+
+        /// <summary>
+        /// Geeft aan welke variabelen Konijn met zich mee geeft. 
+        /// </summary>
+        /// <param name="playerid"></param>
+        /// <param name="location"></param>
+        /// <param name="image"></param>
+        /// <param name="boundImage"></param>
         public Konijn(int playerid, Vector2 location, Texture2D image, Texture2D boundImage)
         {
             this.location = location;
@@ -31,14 +38,17 @@ namespace TinyGame
             CollisionSystem.colliders.Add(this);
         }
 
-
+        /// <summary>
+        /// Geeft aan wat de Konijn per frame doet.
+        /// </summary>
+        /// <param name="elapsed"></param>
         public void Update(float elapsed)
         {
             // Is voor consisten Frame rate
             location += velocity * elapsed;
 
             // TODO: Add your update logic here
-
+            // Neemt de collisionsystem en bekijkt of de powerup en dergelijke tegen komt, waar het konijn tegenaan knalt.
             string trigger = CollisionSystem.TriggerDetection(this);
             if (trigger!="")
             {
@@ -57,7 +67,7 @@ namespace TinyGame
                     checks = 0;
                 }
             }
-
+            // Neemt de collisionsystem en bekijkt of de twee konijnen tegen elkaar aan zit.
             string collision = CollisionSystem.CollisionDetection(this);
             if (collision != "")
             {
@@ -68,13 +78,13 @@ namespace TinyGame
             }
 
             velocity = new Vector2(0, 0);
-
+                //Als knop A en down wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.A) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Left))
                     angle -= speed/3000;
-
+                //Als knop D en right wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.D) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Right))
                     angle += speed/3000;
-
+                //Als knop S en down wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.S) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Down))
                 {
                     if (speed > -80)
@@ -82,7 +92,7 @@ namespace TinyGame
                     else if (speed == -80)
                         speed -= boost;
                 }
-
+                //Als knop W en up wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.W) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Up))
                 {
                     if (speed < 320)
@@ -103,16 +113,19 @@ namespace TinyGame
                     if (speed < 0)
                         speed += boost;
                 }
-            if (playerid == 1)
+            if (playerid == 1)      // geeft de speed door aan de GUI per konijn.
                 GUIM.speed1 = speed;
             if (playerid == 2)
                 GUIM.speed2 = speed;
 
-            velocity.Y += (float)Math.Sin(angle) * speed;
+            velocity.Y += (float)Math.Sin(angle) * speed;  //geeft aan welke positie het konijn moet aannemen.
             velocity.X += (float)Math.Cos(angle) * speed;
         }
 
-
+        /// <summary>
+        ///  Drawt de variabelen wanneer het wordt aangeroepen.
+        /// </summary>
+        /// <param name="sb"></param>
         public void Draw(SpriteBatch sb)
         { 
             bounds = new Rectangle((int)(location.X - image.Width / 4), (int)(location.Y - image.Height / 2), image.Width/2, image.Height);
