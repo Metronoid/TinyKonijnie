@@ -18,6 +18,7 @@ namespace TinyGame
         public float slow = 1;
         public int laps = 0;
         public int checks = 0;
+        public int powercounter = 0;
         
         public Konijn(int playerid, Vector2 location, Texture2D image)
         {
@@ -42,6 +43,7 @@ namespace TinyGame
                 if (trigger == "Powerup")
                 {
                     speed = 600;
+                    powercounter = 0;
                 }
                 if (trigger == "trap")
                 {
@@ -83,6 +85,13 @@ namespace TinyGame
                 {
                     if (speed < 320)
                         speed += boost;
+
+                    else if (speed > 320)
+                        if (powercounter < 100)
+                            powercounter++;
+                        else
+                            speed -= boost;
+
                 }
                 else
                 {
@@ -113,7 +122,16 @@ namespace TinyGame
                 if (Keyboard.GetState().IsKeyDown(Keys.Up))
                 {
                     if (speed < 320)
+                    {
                         speed += boost;
+                    }
+
+                    else if (speed > 320)
+                        if (powercounter < 100)
+                            powercounter++;
+                        else
+                            speed -= boost;
+                            
                 }
                 else
                 {
