@@ -18,14 +18,14 @@ namespace TinyGame
         public float slow = 1;
         public int laps = 0;
         public int checks = 0;
-        
-        public Konijn(int playerid, Vector2 location, Texture2D image)
+        public Texture2D boundsimage;
+    
+        public Konijn(int playerid, Vector2 location, Texture2D image, Texture2D boundimage)
         {
             this.location = location;
             this.image = image;
             this.playerid = playerid;
-            id = "Konijn";
-            CollisionSystem.colliders.Add(this);
+            boundsimage = boundimage;
         }
 
 
@@ -36,30 +36,21 @@ namespace TinyGame
 
             // TODO: Add your update logic here
 
-            string trigger = CollisionSystem.TriggerDetection(this);
-            if (trigger!="")
+            string name = CollisionSystem.TriggerDetection(this);
+            if (name!="")
             {
-                if (trigger == "Powerup")
+                if (name == "Powerup")
                 {
                     speed = 600;
                 }
-                if (trigger == "trap")
+                if (name == "trap")
                 {
                       angle += 3;
-                }
-                if (trigger == "Finish")
+            }
+                if (name == "Finish")
                 {
                     laps++;
                     checks = 0;
-                }
-            }
-
-            string collision = CollisionSystem.CollisionDetection(this);
-            if (collision != "")
-            {
-                if (collision == "Konijn")
-                {
-                    speed = -100;
                 }
             }
 
@@ -77,12 +68,17 @@ namespace TinyGame
                 {
                     if (speed > -80)
                         speed -= 2 * boost;
+
                 }
 
                 if (Keyboard.GetState().IsKeyDown(Keys.W))
                 {
                     if (speed < 320)
                         speed += boost;
+
+
+                    velocity.Y += (float)Math.Sin(angle) * speed;
+                    velocity.X += (float)Math.Cos(angle) * speed;
                 }
                 else
                 {
@@ -91,6 +87,9 @@ namespace TinyGame
 
                     if (speed < 0)
                         speed += boost;
+
+                    velocity.Y += (float)Math.Sin(angle) * speed;
+                    velocity.X += (float)Math.Cos(angle) * speed;
                 }
                 GUIM.speed1 = speed;
             }
@@ -114,6 +113,10 @@ namespace TinyGame
                 {
                     if (speed < 320)
                         speed += boost;
+
+
+                    velocity.Y += (float)Math.Sin(angle) * speed;
+                    velocity.X += (float)Math.Cos(angle) * speed;
                 }
                 else
                 {
@@ -122,22 +125,23 @@ namespace TinyGame
 
                     if (speed < 0)
                         speed += boost;
+
+                    velocity.Y += (float)Math.Sin(angle) * speed;
+                    velocity.X += (float)Math.Cos(angle) * speed;
                 }
                 GUIM.speed2 = speed;
             }
-
-            velocity.Y += (float)Math.Sin(angle) * speed;
-            velocity.X += (float)Math.Cos(angle) * speed;
         }
 
 
         public void Draw(SpriteBatch sb)
         { 
-            bounds = new Rectangle((int)(location.X - image.Width / 2), (int)(location.Y - image.Height / 2), image.Width, image.Height);
+            bounds = new Rectangle((int)(location.X - image.Width / 4), (int)(location.Y - image.Height / 2), (image.Width / 2), (image.Height));
             Vector2 origin = new Vector2(image.Width / 2, image.Height / 2);
             Rectangle sourceRectangle = new Rectangle(0, 0, image.Width, image.Height);
 
             sb.Draw(image, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
+            sb.Draw(boundsimage, bounds, null, Color.White);
         }
 
 
