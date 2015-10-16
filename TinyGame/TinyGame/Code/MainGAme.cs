@@ -53,8 +53,8 @@ namespace TinyGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            speler = new Konijn(1, new Vector2(60, 40), Content.Load<Texture2D>("Snuffel"));
-            speler2 = new Konijn(2, new Vector2(60, 120), Content.Load<Texture2D>("Snuffel"));
+            speler = new Konijn(1, new Vector2(60, 40), Content.Load<Texture2D>("Snuffel"), Content.Load<Texture2D>("SnuffelBounds"));
+            speler2 = new Konijn(2, new Vector2(60, 120), Content.Load<Texture2D>("Snuffel"), Content.Load<Texture2D>("SnuffelBounds"));
 
             rood = new Blok(new Vector2(0, 200), Content.Load<Texture2D>("RodeBalk"));
 
