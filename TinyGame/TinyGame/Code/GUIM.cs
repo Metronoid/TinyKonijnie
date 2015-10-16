@@ -35,8 +35,8 @@ namespace TinyGame
 
         public void Draw(SpriteBatch sb)
         {
-            sb.DrawString(MainGame.font, "Speed: " + speed1 + "Bunnimeter", new Vector2(0, 0), Color.Black);
-            sb.DrawString(MainGame.font, "Speed: " + speed2 + "Bunnimeter", new Vector2(800, 0), Color.Black);
+            sb.DrawString(MainGame.font, "Speed: " + speed1 + " Bunnimeter", new Vector2(10, 0), Color.Black);
+            sb.DrawString(MainGame.font, "Speed: " + speed2 + " Bunnimeter", new Vector2(760, 0), Color.Black);
         }
     }
 }
