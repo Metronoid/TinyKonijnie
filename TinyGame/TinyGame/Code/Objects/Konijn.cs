@@ -79,6 +79,8 @@ namespace TinyGame
                 {
                     if (speed > -80)
                         speed -= 2 * boost;
+                    else if (speed == -80)
+                        speed -= boost;
                 }
 
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.W) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Up))
