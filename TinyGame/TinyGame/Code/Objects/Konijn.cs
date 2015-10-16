@@ -69,21 +69,19 @@ namespace TinyGame
 
             velocity = new Vector2(0, 0);
 
-            if (playerid == 1)
-            {
-                if (Keyboard.GetState().IsKeyDown(Keys.A))
+                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.A) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Left))
                     angle -= speed/3000;
 
-                if (Keyboard.GetState().IsKeyDown(Keys.D))
+                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.D) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Right))
                     angle += speed/3000;
 
-                if (Keyboard.GetState().IsKeyDown(Keys.S))
+                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.S) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Down))
                 {
                     if (speed > -80)
                         speed -= 2 * boost;
                 }
 
-                if (Keyboard.GetState().IsKeyDown(Keys.W))
+                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.W) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Up))
                 {
                     if (speed < 320)
                         speed += boost;
@@ -103,48 +101,10 @@ namespace TinyGame
                     if (speed < 0)
                         speed += boost;
                 }
+            if (playerid == 1)
                 GUIM.speed1 = speed;
-            }
-
-            else if (playerid == 2)
-            {
-                if (Keyboard.GetState().IsKeyDown(Keys.Left))
-                    angle -= speed / 3000;
-
-                if (Keyboard.GetState().IsKeyDown(Keys.Right))
-                    angle += speed / 3000;
-
-                if (Keyboard.GetState().IsKeyDown(Keys.Down))
-                {
-                    if (speed > -80)
-                        speed -= 2 * boost;
-
-                }
-
-                if (Keyboard.GetState().IsKeyDown(Keys.Up))
-                {
-                    if (speed < 320)
-                    {
-                        speed += boost;
-                }
-
-                    else if (speed > 320)
-                        if (powercounter < 100)
-                            powercounter++;
-                        else
-                            speed -= boost;
-                            
-                }
-                else
-                {
-                    if (speed > 0)
-                        speed -= boost;
-
-                    if (speed < 0)
-                        speed += boost;
-                }
+            if (playerid == 2)
                 GUIM.speed2 = speed;
-            }
 
             velocity.Y += (float)Math.Sin(angle) * speed;
             velocity.X += (float)Math.Cos(angle) * speed;
