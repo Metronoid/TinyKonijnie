@@ -102,9 +102,15 @@ namespace TinyGame
                         speed += boost;
                 }
             if (playerid == 1)
+            {
                 GUIM.speed1 = speed;
+                GUIM.angle1 = angle;
+            }
             if (playerid == 2)
+            {
                 GUIM.speed2 = speed;
+                GUIM.angle2 = angle;
+            }
 
             velocity.Y += (float)Math.Sin(angle) * speed;
             velocity.X += (float)Math.Cos(angle) * speed;
