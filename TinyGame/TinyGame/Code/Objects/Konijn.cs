@@ -68,17 +68,12 @@ namespace TinyGame
                 {
                     if (speed > -80)
                         speed -= 2 * boost;
-
                 }
 
                 if (Keyboard.GetState().IsKeyDown(Keys.W))
                 {
                     if (speed < 320)
                         speed += boost;
-
-
-                    velocity.Y += (float)Math.Sin(angle) * speed;
-                    velocity.X += (float)Math.Cos(angle) * speed;
                 }
                 else
                 {
@@ -87,9 +82,6 @@ namespace TinyGame
 
                     if (speed < 0)
                         speed += boost;
-
-                    velocity.Y += (float)Math.Sin(angle) * speed;
-                    velocity.X += (float)Math.Cos(angle) * speed;
                 }
                 GUIM.speed1 = speed;
             }
@@ -113,10 +105,6 @@ namespace TinyGame
                 {
                     if (speed < 320)
                         speed += boost;
-
-
-                    velocity.Y += (float)Math.Sin(angle) * speed;
-                    velocity.X += (float)Math.Cos(angle) * speed;
                 }
                 else
                 {
@@ -125,13 +113,14 @@ namespace TinyGame
 
                     if (speed < 0)
                         speed += boost;
-
-                    velocity.Y += (float)Math.Sin(angle) * speed;
-                    velocity.X += (float)Math.Cos(angle) * speed;
                 }
                 GUIM.speed2 = speed;
             }
+            velocity.Y += (float)Math.Sin(angle) * speed;
+            velocity.X += (float)Math.Cos(angle) * speed;
         }
+
+
 
 
         public void Draw(SpriteBatch sb)
