@@ -14,6 +14,7 @@ namespace TinyGame
         [STAThread]
         static void Main()
         {
+
             using (var game = new MainGame())
                 game.Run();
         }

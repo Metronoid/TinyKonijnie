@@ -78,9 +78,9 @@ namespace TinyGame
             check2 = new Checkpoint(new Rectangle(40, 370, 270, 53), Content.Load<Texture2D>("SnuffelBounds"), 2);
             check3 = new Checkpoint(new Rectangle(406, 92, 40, 117), Content.Load<Texture2D>("SnuffelBounds"), 3);
 
-            spin1 = new trap(new Vector2(450, 200), Content.Load<Texture2D>("AngerOrb"));
-            spin2 = new trap(new Vector2(450, 275), Content.Load<Texture2D>("AngerOrb"));
-            spin3 = new trap(new Vector2(450, 350), Content.Load<Texture2D>("AngerOrb"));
+            //spin1 = new trap(new Vector2(450, 200), Content.Load<Texture2D>("AngerOrb"));
+            //spin2 = new trap(new Vector2(450, 275), Content.Load<Texture2D>("AngerOrb"));
+            //spin3 = new trap(new Vector2(450, 350), Content.Load<Texture2D>("AngerOrb"));
 
             GUI = new GUIM();
 

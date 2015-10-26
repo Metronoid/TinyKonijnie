@@ -61,6 +61,7 @@ namespace TinyGame
         /// <param name="elapsed"></param>
         public void Update(float elapsed)
         {
+
             // Update water
             waterComponent.WaterChange(); 
             // Is voor consisten Frame rate
@@ -133,12 +134,12 @@ namespace TinyGame
             }
 
             velocity = new Vector2(0, 0);
-                //Als knop A en down wordt ingedrukt
+            //Als knop A en down wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.A) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Left))
-                    angle -= speed/3000;
+                    angle -= speed / 3000;
                 //Als knop D en right wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.D) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Right))
-                    angle += speed/3000;
+                    angle += speed / 3000;
                 //Als knop S en down wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.S) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Down))
                 {
@@ -159,11 +160,11 @@ namespace TinyGame
                         else
                             speed -= boost;
 
-                if (waterComponent.water < 7)
-                    if (speed > 121)
-                        speed -= 2;
-                    else if (speed == 121)
-                        speed--;
+                    if (waterComponent.water < 7)
+                        if (speed > 121)
+                            speed -= 2;
+                        else if (speed == 121)
+                            speed--;
                 }
 
                 else
@@ -174,7 +175,8 @@ namespace TinyGame
                     if (speed < 0)
                         speed += boost;
                 }
-
+            velocity.Y += (float)Math.Sin(angle) * speed;
+            velocity.X += (float)Math.Cos(angle) * speed;
             // geeft de speed en laps door aan de GUI per konijn.
             if (playerid == 1)
             {
@@ -189,10 +191,6 @@ namespace TinyGame
                 GUIM.laps2 = laps;
                 GUIM.checks2 = checks;
             }
-
-
-            velocity.Y += (float)Math.Sin(angle) * speed;  //geeft aan welke positie het konijn moet aannemen.
-            velocity.X += (float)Math.Cos(angle) * speed;
         }
 
         /// <summary>
