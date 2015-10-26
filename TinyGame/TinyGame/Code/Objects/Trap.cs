@@ -23,7 +23,7 @@ namespace TinyGame
             this.location = location;
             this.image = image;
             id = "trap";
-            CollisionSystem.colliders.Add(this);
+            CollisionSystem.triggers.Add(this);
         }
 
 

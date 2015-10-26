@@ -22,6 +22,7 @@ namespace TinyGame
         trap spin1;
         trap spin2;
         trap spin3;
+        GraphicsDevice device;
         public static SpriteFont font;
         
 
