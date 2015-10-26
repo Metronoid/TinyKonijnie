@@ -38,6 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Code\Objects\Checkpoint.cs" />
     <Compile Include="Code\Objects\CollisionSystem.cs" />
     <Compile Include="Code\MainGame.cs" />
     <Compile Include="Code\GUIM.cs" />
