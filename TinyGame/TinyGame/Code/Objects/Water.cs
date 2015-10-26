@@ -27,7 +27,7 @@ namespace TinyGame
                 waterCounter++;
             else
             {
-                if (water > 0)
+                if (Math.Round(water) > 0)
                     water--;
                 else
                     water = 0;
