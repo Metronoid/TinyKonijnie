@@ -75,12 +75,6 @@ namespace TinyGame
                 {
                     speed = -100;
                 }
-
-                if (collision == "trap")
-                {
-                    angle += 3;
-
-                }
             }
 
             velocity = new Vector2(0, 0);
