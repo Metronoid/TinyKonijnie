@@ -46,6 +46,7 @@
     <Compile Include="Code\Objects\Finishlijn.cs" />
     <Compile Include="Code\Objects\Konijn.cs" />
     <Compile Include="Code\Objects\Pitstop.cs" />
+    <Compile Include="Code\Objects\Water.cs" />
     <Compile Include="Code\Objects\World.cs" />
     <Compile Include="Code\Program.cs" />
     <Compile Include="Code\Objects\Powerup.cs" />

@@ -14,6 +14,7 @@ namespace TinyGame
         public static float speed1;
         public static float speed2;
         Konijn Player;
+        Water water;
 
 
         public void FuelMeter()
