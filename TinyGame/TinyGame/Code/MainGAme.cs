@@ -76,9 +76,9 @@ namespace TinyGame
 
             check1 = new Checkpoint(new Rectangle(485, 542, 40, 117), Content.Load< Texture2D>("SnuffelBounds"), 1);
             check2 = new Checkpoint(new Rectangle(40, 370, 270, 53), Content.Load<Texture2D>("SnuffelBounds"), 2);
-            check3 = new Checkpoint(new Rectangle(406, 92, 40, 117), Content.Load<Texture2D>("SnuffelBounds"), 3);
+            check3 = new Checkpoint(new Rectangle(406, 85, 40, 117), Content.Load<Texture2D>("SnuffelBounds"), 3);
 
-            //spin1 = new trap(new Vector2(450, 200), Content.Load<Texture2D>("AngerOrb"));
+            spin1 = new trap(new Vector2(540, 370), new Vector2(730,540), Content.Load<Texture2D>("SnuffelBounds"));
             //spin2 = new trap(new Vector2(450, 275), Content.Load<Texture2D>("AngerOrb"));
             //spin3 = new trap(new Vector2(450, 350), Content.Load<Texture2D>("AngerOrb"));
 
@@ -136,7 +136,7 @@ namespace TinyGame
             //Pitstop.Draw(spriteBatch);
             //speedboost1.Draw(spriteBatch);
             //speedboost2.Draw(spriteBatch);
-            //spin1.Draw(spriteBatch);
+            spin1.Draw(spriteBatch);
             //spin2.Draw(spriteBatch);
             //spin3.Draw(spriteBatch);
             speler.Draw(spriteBatch);
