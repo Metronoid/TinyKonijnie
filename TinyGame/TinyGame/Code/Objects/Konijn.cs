@@ -119,7 +119,10 @@ namespace TinyGame
                             speed -= boost;
 
                     if (waterComponent.water < 10)
-                        speed = 50;
+                        if (speed > 80)
+                            speed -= 2;
+                        else if (speed < 80)
+                            speed++;
 
                 }
                 else
