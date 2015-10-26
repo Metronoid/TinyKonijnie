@@ -75,6 +75,12 @@ namespace TinyGame
                 {
                     speed = -100;
                 }
+
+                if (collision == "trap")
+                {
+                    angle += 3;
+
+                }
             }
 
             velocity = new Vector2(0, 0);
@@ -132,7 +138,7 @@ namespace TinyGame
             Vector2 origin = new Vector2(image.Width / 2, image.Height / 2);
             Rectangle sourceRectangle = new Rectangle(0, 0, image.Width, image.Height);
             sb.Draw(image, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
-            sb.Draw(boundsimage, bounds, null, Color.Wheat);
+            sb.Draw(boundsimage, bounds, null, Color.Wheat); 
         }
 
 

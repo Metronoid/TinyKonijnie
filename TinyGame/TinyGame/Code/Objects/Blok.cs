@@ -33,6 +33,10 @@ namespace TinyGame
         }
     }
 }
+
+///<summary>
+/// Haha negeer dit vrienden
+/// </summary>
 /*
 {
     class trap : CollisionComponent
