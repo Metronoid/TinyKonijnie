@@ -29,6 +29,8 @@ namespace TinyGame
             {
                 if (water > 0)
                     water--;
+                else
+                    water = 0;
                 waterCounter = 0;
             }
         }
