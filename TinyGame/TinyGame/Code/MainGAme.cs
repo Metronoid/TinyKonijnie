@@ -71,9 +71,7 @@ namespace TinyGame
             speedboost1 = new Powerup(new Vector2(10, 50), Content.Load<Texture2D>("SmileOrb"));
             speedboost2 = new Powerup(new Vector2(890, 625), Content.Load<Texture2D>("SmileOrb"));
 
-            spin1 = new trap(new Vector2(450, 200), Content.Load<Texture2D>("AngerOrb"));
-            spin2 = new trap(new Vector2(450, 275), Content.Load<Texture2D>("AngerOrb"));
-            spin3 = new trap(new Vector2(450, 350), Content.Load<Texture2D>("AngerOrb"));
+            spin1 = new trap(new Vector2(450, 200), new Vector2(450, 200));
 
             GUI = new GUIM();
 
@@ -125,8 +123,6 @@ namespace TinyGame
             speedboost1.Draw(spriteBatch);
             speedboost2.Draw(spriteBatch);
             spin1.Draw(spriteBatch);
-            spin2.Draw(spriteBatch);
-            spin3.Draw(spriteBatch);
             spriteBatch.Draw(background, backgroundbound, Color.White);
             speler.Draw(spriteBatch);
             speler2.Draw(spriteBatch);

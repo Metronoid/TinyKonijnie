@@ -27,6 +27,7 @@ namespace TinyGame
         public int powercounter = 0;
         public Water waterComponent;
 
+
         /// <summary>
         /// Geeft aan welke variabelen Konijn met zich mee geeft. 
         /// </summary>

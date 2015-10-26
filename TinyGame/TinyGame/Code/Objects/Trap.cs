@@ -12,16 +12,17 @@ namespace TinyGame
     {
         public Texture2D image;
         public Vector2 location;
+        public Vector2 size; 
 
         /// <summary>
         /// Geeft aan welke variabelen trap met zich mee geeft. 
         /// </summary>
         /// <param name="location"></param>
         /// <param name="image"></param>
-        public trap(Vector2 location, Texture2D image)
+        public trap(Vector2 location, Vector2 size)
         {
             this.location = location;
-            this.image = image;
+            this.size = size;
             id = "trap";
             CollisionSystem.triggers.Add(this);
         }
@@ -33,8 +34,9 @@ namespace TinyGame
         /// <param name="sb"></param>
         public void Draw(SpriteBatch sb)
         {
-            bounds = new Rectangle((int)(location.X), (int)(location.Y), image.Width, image.Height);
-            sb.Draw(image, location, Color.White);
+            bounds = new Rectangle((int)(location.X), (int)(location.Y), (int)size.X, (int)size.Y);
+            Vector2 origin = new Vector2(bounds.Width / 2, bounds.Height / 2);
+           // sb.Draw(image, location, bounds, Color.White, 1, origin, 1.0f, SpriteEffects.None, 1);
         }
     }
 
