@@ -23,17 +23,17 @@ namespace TinyGame
         {
             if (check == true)
             {
-            if (waterCounter < 20)
-                waterCounter++;
-            else
-            {
-                if (Math.Round(water) > 0)
-                    water--;
+                if (waterCounter < 20)
+                    waterCounter++;
                 else
-                    water = 0;
-                waterCounter = 0;
+                {
+                    if (Math.Round(water) > 0)
+                        water--;
+                    else
+                        water = 0;
+                    waterCounter = 0;
+                }
             }
-        }
             else
                 check = true;
         }
