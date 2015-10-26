@@ -34,13 +34,14 @@ namespace TinyGame
         /// <param name="location"></param>
         /// <param name="image"></param>
         /// <param name="boundImage"></param>
-        public Konijn(int playerid, Vector2 location, Texture2D image, Texture2D boundImage, int rowsget, int columnsget)
+        public Konijn(int playerid, Vector2 location, float ang, Texture2D image, Texture2D boundImage)
         {
             this.location = location;
             this.startLocation = location;
+            this.angle = ang;
             this.image = image;
-            rows = rowsget;
-            columns = columnsget;
+            rows = 4;
+            columns = 1;
             currentFrame = 0;
             totalFrames = rows * columns;
             this.playerid = playerid;
