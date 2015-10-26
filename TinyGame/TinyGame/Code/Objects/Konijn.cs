@@ -8,6 +8,7 @@ namespace TinyGame
     public class Konijn : CollisionComponent
     {
         public Vector2 location;
+        private Vector2 startLocation;
         public Texture2D image { get; set; }
         public int rows { get; set; }
         public int columns { get; set; }
@@ -33,12 +34,14 @@ namespace TinyGame
         /// <param name="location"></param>
         /// <param name="image"></param>
         /// <param name="boundImage"></param>
-        public Konijn(int playerid, Vector2 location, Texture2D image, Texture2D boundImage, int rowsget, int columnsget)
+        public Konijn(int playerid, Vector2 location, float ang, Texture2D image, Texture2D boundImage)
         {
             this.location = location;
+            this.startLocation = location;
+            this.angle = ang;
             this.image = image;
-            rows = rowsget;
-            columns = columnsget;
+            rows = 4;
+            columns = 1;
             currentFrame = 0;
             totalFrames = rows * columns;
             this.playerid = playerid;
@@ -72,9 +75,15 @@ namespace TinyGame
                     currentFrame = 0;
             }
             else
+            {
                 currentFrame = 0;
+            }
 
             // Neemt de collisionsystem en bekijkt of de powerup en dergelijke tegen komt, waar het konijn tegenaan knalt.
+            if (!MainGame.backgroundbound.Contains(bounds))
+            {
+                location = startLocation;
+            }
             string trigger = CollisionSystem.TriggerDetection(this);
             if (trigger!="")
             {
@@ -83,7 +92,7 @@ namespace TinyGame
                     speed = 600;
                     powercounter = 0;
                 }
-                if (trigger == "trap")
+                if (trigger == "trap" || !MainGame.backgroundbound.Contains(bounds))
                 {
                       angle += 3;
                 }
@@ -112,6 +121,14 @@ namespace TinyGame
                 {
                     speed = -100;
                 }
+                if (collision == "Pitstop")
+                {
+                    if (waterComponent.water < 100)
+                    {
+                        waterComponent.water += 0.1f;
+            }
+                    waterComponent.check = false;
+            }
             }
 
             velocity = new Vector2(0, 0);
@@ -141,9 +158,11 @@ namespace TinyGame
                         else
                             speed -= boost;
 
-                if (waterComponent.water < 90)
-                    if (speed > 81)
+                if (waterComponent.water < 7)
+                    if (speed > 121)
                         speed -= 2;
+                    else if (speed == 121)
+                        speed--;
                 }
 
                 else
@@ -154,7 +173,6 @@ namespace TinyGame
                     if (speed < 0)
                         speed += boost;
                 }
-
 
             if (playerid == 1) // geeft de speed door aan de GUI per konijn.
                 GUIM.speed1 = speed;
