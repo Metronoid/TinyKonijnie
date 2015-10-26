@@ -94,10 +94,6 @@ namespace TinyGame
                 }
                 if (trigger == "Pitstop")
                 {
-                    if (waterComponent.water < 100)
-                    {
-                        waterComponent.water++;
-                    }
                 }
             }
             // Neemt de collisionsystem en bekijkt of de twee konijnen tegen elkaar aan zit.
@@ -107,6 +103,14 @@ namespace TinyGame
                 if (collision == "Konijn")
                 {
                     speed = -100;
+                }
+                if (collision == "Pitstop")
+                {
+                    if (waterComponent.water < 100)
+                    {
+                        waterComponent.water += 0.1f;
+                    }
+                    waterComponent.check = false;
                 }
             }
 
@@ -125,41 +129,42 @@ namespace TinyGame
                     else if (speed == -80)
                         speed -= boost;
                 }
-                //Als knop W en up wordt ingedrukt
-                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.W) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Up))
-                {
-                    if (speed < 320)
-                        speed += boost;
+            //Als knop W en up wordt ingedrukt
+            if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.W) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Up))
+            {
+                if (speed < 320)
+                    speed += boost;
 
-                    else if (speed > 320)
-                        if (powercounter < 100)
-                            powercounter++;
-                        else
-                            speed -= boost;
-
-                if (waterComponent.water < 90)
-                    if (speed > 81)
-                        speed -= 2;
-                }
-
-                else
-                {
-                    if (speed > 0)
+                else if (speed > 320)
+                    if (powercounter < 100)
+                        powercounter++;
+                    else
                         speed -= boost;
 
-                    if (speed < 0)
-                        speed += boost;
-                }
+                if (waterComponent.water < 7)
+                    if (speed > 121)
+                        speed -= 2;
+                    else if (speed == 121)
+                        speed--;
+            }
 
+            else
+            {
+                if (speed > 0)
+                    speed -= boost;
 
-            if (playerid == 1) // geeft de speed door aan de GUI per konijn.
-                GUIM.speed1 = speed;
-            if (playerid == 2)
-                GUIM.speed2 = speed;
+                if (speed < 0)
+                    speed += boost;
+            }
 
-            velocity.Y += (float)Math.Sin(angle) * speed;  //geeft aan welke positie het konijn moet aannemen.
-            velocity.X += (float)Math.Cos(angle) * speed;
-        }
+                if (playerid == 1) // geeft de speed door aan de GUI per konijn.
+                    GUIM.speed1 = speed;
+                if (playerid == 2)
+                    GUIM.speed2 = speed;
+
+                velocity.Y += (float)Math.Sin(angle) * speed;  //geeft aan welke positie het konijn moet aannemen.
+                velocity.X += (float)Math.Cos(angle) * speed;
+            }
 
         /// <summary>
         ///  Drawt de variabelen wanneer het wordt aangeroepen.
