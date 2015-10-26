@@ -13,6 +13,11 @@ namespace TinyGame
     {
         public static float speed1;
         public static float speed2;
+        public static int laps1;
+        public static int laps2;
+        public static int checks1;
+        public static int checks2;
+
         Konijn Player;
         Water water;
 
@@ -39,8 +44,12 @@ namespace TinyGame
         /// <param name="sb"></param>
         public void Draw(SpriteBatch sb)
         {
-            sb.DrawString(MainGame.font, "Speed: " + speed1 + " Bunnimeter", new Vector2(10, 0), Color.Black);
-            sb.DrawString(MainGame.font, "Speed: " + speed2 + " Bunnimeter", new Vector2(760, 0), Color.Black);
+            sb.DrawString(MainGame.font, "Speed: " + speed1 + " Bunnimeter", new Vector2(10, 0), Color.Yellow);
+            sb.DrawString(MainGame.font, "Speed: " + speed2 + " Bunnimeter", new Vector2(760, 0), Color.Yellow);
+            sb.DrawString(MainGame.font, "Laps:  " + laps1 + "/3", new Vector2(10, 50), Color.Yellow);
+            sb.DrawString(MainGame.font, "Laps:  " + laps2 + "/3", new Vector2(760, 50), Color.Yellow);
+            sb.DrawString(MainGame.font, "Checks: " + checks1, new Vector2(10, 70), Color.Yellow);
+            sb.DrawString(MainGame.font, "Checks: " + checks2, new Vector2(760, 70), Color.Yellow);
         }
     }
 }

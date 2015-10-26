@@ -22,6 +22,7 @@ namespace TinyGame
 
         public void Draw(SpriteBatch sb)
         {
+            bounds = area;
             sb.Draw(image, area, Color.Tomato);
         }
     }

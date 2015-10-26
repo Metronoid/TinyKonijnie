@@ -174,10 +174,21 @@ namespace TinyGame
                         speed += boost;
                 }
 
-            if (playerid == 1) // geeft de speed door aan de GUI per konijn.
+            // geeft de speed en laps door aan de GUI per konijn.
+            if (playerid == 1)
+            {
                 GUIM.speed1 = speed;
+                GUIM.laps1 = laps;
+                GUIM.checks1 = checks;
+            }
+
             if (playerid == 2)
+            {
                 GUIM.speed2 = speed;
+                GUIM.laps2 = laps;
+                GUIM.checks2 = checks;
+            }
+
 
             velocity.Y += (float)Math.Sin(angle) * speed;  //geeft aan welke positie het konijn moet aannemen.
             velocity.X += (float)Math.Cos(angle) * speed;
@@ -203,7 +214,7 @@ namespace TinyGame
             sb.Draw(image, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
 
 
-            sb.Draw(boundsimage, bounds, null, Color.Wheat);
+            //sb.Draw(boundsimage, bounds, null, Color.Wheat);
             waterComponent.Draw(sb);
         }
 

@@ -24,7 +24,7 @@ namespace TinyGame
             this.location = location;
             this.image = image;
             id = "Finish";
-            CollisionSystem.colliders.Add(this);
+            CollisionSystem.triggers.Add(this);
 
             if (CollisionSystem.CollisionDetection(this) != null)
             {
