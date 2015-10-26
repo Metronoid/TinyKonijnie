@@ -7,33 +7,17 @@ namespace TinyGame
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class MainGame : Game
+    public class Introscreen : Game
     {
+        public static SpriteFont font;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         //GUIM screenInterface = new GUIM();
-        GUIM GUI;
-        Konijn speler;
-        Konijn speler2;
-        Blok rood;
-        Pitstop Pitstop;
-        Finishlijn finish;
-        Powerup speedboost1;
-        Powerup speedboost2;
-        trap spin1;
-        trap spin2;
-        trap spin3;
-        Checkpoint check1;
-        Checkpoint check2;
-        Checkpoint check3;
-        GraphicsDevice device;
-        Texture2D background;
-        public static SpriteFont font;
-        public static Rectangle backgroundbound = new Rectangle(0, 0, 1024, 768);
         
 
 
-        public MainGame()
+        public Introscreen()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -62,30 +46,6 @@ namespace TinyGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            speler = new Konijn(1, new Vector2(800, 250), 1.55F, Content.Load<Texture2D>("brownbunny"), Content.Load<Texture2D>("SnuffelBounds"));
-            speler2 = new Konijn(2, new Vector2(880, 320), 1.55F, Content.Load<Texture2D>("greybunny"), Content.Load<Texture2D>("SnuffelBounds"));
-
-            
-            Pitstop = new Pitstop(new Vector2(0, 140), Content.Load<Texture2D>("RodeBalk"));
-
-            finish = new Finishlijn(new Rectangle(777, 357, 132, 43), Content.Load<Texture2D>("Finish"));
-
-            speedboost1 = new Powerup(new Vector2(10, 50), Content.Load<Texture2D>("SmileOrb"));
-            speedboost2 = new Powerup(new Vector2(890, 625), Content.Load<Texture2D>("SmileOrb"));
-
-            check1 = new Checkpoint(new Rectangle(485, 542, 40, 117), Content.Load< Texture2D>("SnuffelBounds"), 1);
-            check2 = new Checkpoint(new Rectangle(40, 370, 270, 53), Content.Load<Texture2D>("SnuffelBounds"), 2);
-            check3 = new Checkpoint(new Rectangle(406, 92, 40, 117), Content.Load<Texture2D>("SnuffelBounds"), 3);
-
-            spin1 = new trap(new Vector2(450, 200), Content.Load<Texture2D>("AngerOrb"));
-            spin2 = new trap(new Vector2(450, 275), Content.Load<Texture2D>("AngerOrb"));
-            spin3 = new trap(new Vector2(450, 350), Content.Load<Texture2D>("AngerOrb"));
-
-            GUI = new GUIM();
-
-            background = Content.Load<Texture2D>("track");
-            // TODO: use this.Content to load your game content here
             font = Content.Load<SpriteFont>("Cartoon12");
         }
 
@@ -110,10 +70,6 @@ namespace TinyGame
 
             // TODO: Add your update logic here
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            speler.Update(elapsed);
-            speler2.Update(elapsed);
-
             base.Update(gameTime);
         }
 
@@ -123,25 +79,12 @@ namespace TinyGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Tomato);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(background, backgroundbound, Color.White);
-
-            check1.Draw(spriteBatch);
-            check2.Draw(spriteBatch);
-            check3.Draw(spriteBatch);
-            finish.Draw(spriteBatch);
-            Pitstop.Draw(spriteBatch);
-            //speedboost1.Draw(spriteBatch);
-            //speedboost2.Draw(spriteBatch);
-            //spin1.Draw(spriteBatch);
-            //spin2.Draw(spriteBatch);
-            //spin3.Draw(spriteBatch);
-            speler.Draw(spriteBatch);
-            speler2.Draw(spriteBatch);
-            GUI.Draw(spriteBatch);
+            spriteBatch.DrawString(font, "Team 13 Proudly Presents", new Vector2(380, 100), Color.White);
+            spriteBatch.DrawString(font, "Tiny Konijnie DARK EDITION", new Vector2(370, 130), Color.Red);
             spriteBatch.End();
 
             base.Update(gameTime);
