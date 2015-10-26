@@ -120,16 +120,16 @@ namespace TinyGame
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(background, backgroundbound, Color.White);
             finish.Draw(spriteBatch);
             Pitstop.Draw(spriteBatch);
             speedboost1.Draw(spriteBatch);
             speedboost2.Draw(spriteBatch);
-            speler.Draw(spriteBatch);
-            speler2.Draw(spriteBatch);
             spin1.Draw(spriteBatch);
             spin2.Draw(spriteBatch);
             spin3.Draw(spriteBatch);
+            spriteBatch.Draw(background, backgroundbound, Color.White);
+            speler.Draw(spriteBatch);
+            speler2.Draw(spriteBatch);
             GUI.Draw(spriteBatch);
             spriteBatch.End();
 
