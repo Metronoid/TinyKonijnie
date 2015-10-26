@@ -102,12 +102,8 @@ namespace TinyGame
                 }
                 if (trigger == "Pitstop")
                 {
-                    if (waterComponent.water < 100)
-                    {
-                        waterComponent.water++;
                     }
                 }
-            }
             // Neemt de collisionsystem en bekijkt of de twee konijnen tegen elkaar aan zit.
             string collision = CollisionSystem.CollisionDetection(this);
             if (collision != "")
@@ -115,6 +111,14 @@ namespace TinyGame
                 if (collision == "Konijn")
                 {
                     speed = -100;
+                }
+                if (collision == "Pitstop")
+                {
+                    if (waterComponent.water < 100)
+                    {
+                        waterComponent.water += 0.1f;
+            }
+                    waterComponent.check = false;
                 }
             }
 
@@ -145,9 +149,11 @@ namespace TinyGame
                         else
                             speed -= boost;
 
-                if (waterComponent.water < 0)
-                    if (speed > 81)
+                if (waterComponent.water < 7)
+                    if (speed > 121)
                         speed -= 2;
+                    else if (speed == 121)
+                        speed--;
                 }
 
                 else
@@ -158,7 +164,6 @@ namespace TinyGame
                     if (speed < 0)
                         speed += boost;
                 }
-
 
             if (playerid == 1) // geeft de speed door aan de GUI per konijn.
                 GUIM.speed1 = speed;

@@ -17,7 +17,7 @@ namespace TinyGame
             this.location = location;
             id = "Checkpoint";
             this.location = location;
-            CollisionSystem.colliders.Add(this);
+            CollisionSystem.triggers.Add(this);
         }
     }
 }

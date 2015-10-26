@@ -19,7 +19,7 @@ namespace TinyGame
             this.location = location;
             this.image = image;
             id = "Pitstop";
-            CollisionSystem.triggers.Add(this);
+            CollisionSystem.colliders.Add(this);
         }
 
         public void Draw(SpriteBatch sb)

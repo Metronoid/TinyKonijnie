@@ -16,6 +16,7 @@ namespace TinyGame
         Konijn speler;
         Konijn speler2;
         Blok rood;
+        Pitstop Pitstop;
         Finishlijn finish;
         Powerup speedboost1;
         Powerup speedboost2;
@@ -62,7 +63,8 @@ namespace TinyGame
             speler = new Konijn(1, new Vector2(620, 250), Content.Load<Texture2D>("brownbunny"), Content.Load<Texture2D>("SnuffelBounds"), 4, 1);
             speler2 = new Konijn(2, new Vector2(900, 250), Content.Load<Texture2D>("greybunny"), Content.Load<Texture2D>("SnuffelBounds"), 4, 1);
 
-            rood = new Blok(new Vector2(0, 200), Content.Load<Texture2D>("RodeBalk"));
+            
+            Pitstop = new Pitstop(new Vector2(0, 140), Content.Load<Texture2D>("RodeBalk"));
 
             finish = new Finishlijn(new Vector2(520, 250), Content.Load<Texture2D>("Finish"));
 
