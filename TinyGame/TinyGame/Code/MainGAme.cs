@@ -26,7 +26,7 @@ namespace TinyGame
         GraphicsDevice device;
         Texture2D background;
         public static SpriteFont font;
-        public Rectangle backgroundbound = new Rectangle(0, 0, 1024, 768);
+        public static Rectangle backgroundbound = new Rectangle(0, 0, 1024, 768);
         
 
 
@@ -60,8 +60,8 @@ namespace TinyGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            speler = new Konijn(1, new Vector2(620, 250), Content.Load<Texture2D>("brownbunny"), Content.Load<Texture2D>("SnuffelBounds"), 4, 1);
-            speler2 = new Konijn(2, new Vector2(900, 250), Content.Load<Texture2D>("greybunny"), Content.Load<Texture2D>("SnuffelBounds"), 4, 1);
+            speler = new Konijn(1, new Vector2(620, 250), 1.55F, Content.Load<Texture2D>("brownbunny"), Content.Load<Texture2D>("SnuffelBounds"));
+            speler2 = new Konijn(2, new Vector2(900, 250), 1.55F, Content.Load<Texture2D>("greybunny"), Content.Load<Texture2D>("SnuffelBounds"));
 
             
             Pitstop = new Pitstop(new Vector2(0, 140), Content.Load<Texture2D>("RodeBalk"));
