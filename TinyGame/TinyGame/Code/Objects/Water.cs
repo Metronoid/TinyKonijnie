@@ -23,15 +23,15 @@ namespace TinyGame
         {
             if (check == true)
             {
-                if (waterCounter < 20)
-                    waterCounter++;
-                else
-                {
-                    if (water > 0)
-                        water--;
-                    waterCounter = 0;
-                }
+            if (waterCounter < 20)
+                waterCounter++;
+            else
+            {
+                if (water > 0)
+                    water--;
+                waterCounter = 0;
             }
+        }
             else
                 check = true;
         }
