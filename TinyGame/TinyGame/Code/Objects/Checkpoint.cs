@@ -22,7 +22,7 @@ namespace TinyGame
 
         public void Draw(SpriteBatch sb)
         {
-            sb.Draw(image, area, Color.Wheat);
+            sb.Draw(image, area, Color.Tomato);
         }
     }
 

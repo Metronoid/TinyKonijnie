@@ -201,7 +201,9 @@ namespace TinyGame
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
 
             sb.Draw(image, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
-            //sb.Draw(boundsimage, bounds, null, Color.Wheat);
+
+
+            sb.Draw(boundsimage, bounds, null, Color.Wheat);
             waterComponent.Draw(sb);
         }
 
