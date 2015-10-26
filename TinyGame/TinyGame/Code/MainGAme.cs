@@ -66,7 +66,7 @@ namespace TinyGame
             
             Pitstop = new Pitstop(new Vector2(0, 140), Content.Load<Texture2D>("RodeBalk"));
 
-            finish = new Finishlijn(new Vector2(520, 250), Content.Load<Texture2D>("Finish"));
+            finish = new Finishlijn(new Rectangle(777, 357, 132, 43), Content.Load<Texture2D>("Finish"));
 
             speedboost1 = new Powerup(new Vector2(10, 50), Content.Load<Texture2D>("SmileOrb"));
             speedboost2 = new Powerup(new Vector2(890, 625), Content.Load<Texture2D>("SmileOrb"));

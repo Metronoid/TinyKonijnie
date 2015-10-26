@@ -12,20 +12,18 @@ namespace TinyGame
     {
         public Texture2D image;
         
-        public Vector2 location;
+        public Rectangle location;
 
         /// <summary>
         /// Geeft aan welke variabelen Finishlijn met zich mee geeft. 
         /// </summary>
         /// <param name="location"></param>
         /// <param name="image"></param>
-        public Finishlijn (Vector2 location, Texture2D image)
+        public Finishlijn (Rectangle location, Texture2D image)
         {
             this.location = location;
             this.image = image;
             id = "Finish";
-            this.location = location;
-            this.image = image;
             CollisionSystem.colliders.Add(this);
 
             if (CollisionSystem.CollisionDetection(this) != null)
@@ -40,7 +38,7 @@ namespace TinyGame
 
         public void Draw(SpriteBatch sb)
         {
-            bounds = new Rectangle((int)location.X, (int)location.Y, image.Width, image.Height);
+            bounds = location;
             sb.Draw(image, location, Color.White);
         }
     }
