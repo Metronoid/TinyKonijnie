@@ -98,7 +98,11 @@ namespace TinyGame
                     {
                         waterComponent.water++;
                     }
-            }
+                }
+                if (trigger == "Checkpoint")
+                {
+
+                }
             }
             // Neemt de collisionsystem en bekijkt of de twee konijnen tegen elkaar aan zit.
             string collision = CollisionSystem.CollisionDetection(this);
