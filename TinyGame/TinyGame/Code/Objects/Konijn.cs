@@ -20,6 +20,7 @@ namespace TinyGame
         public int laps = 0;
         public int checks = 0;
         public int powercounter = 0;
+        public Water waterComponent;
 
         /// <summary>
         /// Geeft aan welke variabelen Konijn met zich mee geeft. 
@@ -34,6 +35,10 @@ namespace TinyGame
             this.image = image;
             this.playerid = playerid;
             this.boundsimage = boundImage;
+            if (playerid == 1) 
+            this.waterComponent = new Water(new Vector2(10, 30));
+            if (playerid == 2)
+            this.waterComponent = new Water(new Vector2(760, 30));
             id = "Konijn";
             CollisionSystem.colliders.Add(this);
         }
@@ -44,6 +49,8 @@ namespace TinyGame
         /// <param name="elapsed"></param>
         public void Update(float elapsed)
         {
+            // Update water
+            waterComponent.WaterChange(); 
             // Is voor consisten Frame rate
             location += velocity * elapsed;
 
@@ -65,6 +72,13 @@ namespace TinyGame
                 {
                     laps++;
                     checks = 0;
+                }
+                if (trigger == "Pitstop")
+                {
+                    if (waterComponent.water < 100)
+                    {
+                        waterComponent.water++;
+                    }
                 }
             }
             // Neemt de collisionsystem en bekijkt of de twee konijnen tegen elkaar aan zit.
@@ -110,6 +124,9 @@ namespace TinyGame
                         else
                             speed -= boost;
 
+                    if (waterComponent.water < 10)
+                        speed = 50;
+
                 }
                 else
                 {
@@ -119,7 +136,9 @@ namespace TinyGame
                     if (speed < 0)
                         speed += boost;
                 }
-            if (playerid == 1)      // geeft de speed door aan de GUI per konijn.
+
+
+            if (playerid == 1) // geeft de speed door aan de GUI per konijn.
                 GUIM.speed1 = speed;
             if (playerid == 2)
                 GUIM.speed2 = speed;
@@ -138,7 +157,8 @@ namespace TinyGame
             Vector2 origin = new Vector2(image.Width / 2, image.Height / 2);
             Rectangle sourceRectangle = new Rectangle(0, 0, image.Width, image.Height);
             sb.Draw(image, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
-            sb.Draw(boundsimage, bounds, null, Color.Wheat); 
+            sb.Draw(boundsimage, bounds, null, Color.Wheat);
+            waterComponent.Draw(sb);
         }
 
 
