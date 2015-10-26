@@ -23,6 +23,9 @@ namespace TinyGame
         trap spin1;
         trap spin2;
         trap spin3;
+        Checkpoint check1;
+        Checkpoint check2;
+        Checkpoint check3;
         GraphicsDevice device;
         Texture2D background;
         public static SpriteFont font;
@@ -66,12 +69,18 @@ namespace TinyGame
             
             Pitstop = new Pitstop(new Vector2(0, 140), Content.Load<Texture2D>("RodeBalk"));
 
-            finish = new Finishlijn(new Vector2(520, 250), Content.Load<Texture2D>("Finish"));
+            finish = new Finishlijn(new Rectangle(777, 357, 132, 43), Content.Load<Texture2D>("Finish"));
 
             speedboost1 = new Powerup(new Vector2(10, 50), Content.Load<Texture2D>("SmileOrb"));
             speedboost2 = new Powerup(new Vector2(890, 625), Content.Load<Texture2D>("SmileOrb"));
 
-            spin1 = new trap(new Vector2(450, 200), new Vector2(450, 200));
+            check1 = new Checkpoint(new Rectangle(485, 542, 40, 117), Content.Load< Texture2D>("SnuffelBounds"), 1);
+            check2 = new Checkpoint(new Rectangle(40, 370, 270, 53), Content.Load<Texture2D>("SnuffelBounds"), 2);
+            check3 = new Checkpoint(new Rectangle(406, 92, 40, 117), Content.Load<Texture2D>("SnuffelBounds"), 3);
+
+            spin1 = new trap(new Vector2(450, 200), Content.Load<Texture2D>("AngerOrb"));
+            spin2 = new trap(new Vector2(450, 275), Content.Load<Texture2D>("AngerOrb"));
+            spin3 = new trap(new Vector2(450, 350), Content.Load<Texture2D>("AngerOrb"));
 
             GUI = new GUIM();
 
@@ -118,12 +127,18 @@ namespace TinyGame
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            finish.Draw(spriteBatch);
-            Pitstop.Draw(spriteBatch);
-            speedboost1.Draw(spriteBatch);
-            speedboost2.Draw(spriteBatch);
-            spin1.Draw(spriteBatch);
             spriteBatch.Draw(background, backgroundbound, Color.White);
+
+            check1.Draw(spriteBatch);
+            check2.Draw(spriteBatch);
+            check3.Draw(spriteBatch);
+            finish.Draw(spriteBatch);
+            //Pitstop.Draw(spriteBatch);
+            //speedboost1.Draw(spriteBatch);
+            //speedboost2.Draw(spriteBatch);
+            //spin1.Draw(spriteBatch);
+            //spin2.Draw(spriteBatch);
+            //spin3.Draw(spriteBatch);
             speler.Draw(spriteBatch);
             speler2.Draw(spriteBatch);
             GUI.Draw(spriteBatch);
