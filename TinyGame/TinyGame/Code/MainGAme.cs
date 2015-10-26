@@ -22,6 +22,9 @@ namespace TinyGame
         trap spin1;
         trap spin2;
         trap spin3;
+        Checkpoint check1;
+        Checkpoint check2;
+        Checkpoint check3;
         GraphicsDevice device;
         Texture2D background;
         public static SpriteFont font;
@@ -73,6 +76,10 @@ namespace TinyGame
             spin2 = new trap(new Vector2(450, 275), Content.Load<Texture2D>("AngerOrb"));
             spin3 = new trap(new Vector2(450, 350), Content.Load<Texture2D>("AngerOrb"));
 
+            check1 = new Checkpoint(new Rectangle(485, 542, 40, 117), Content.Load<Texture2D>("SnuffelBounds"), 1);
+            check2 = new Checkpoint(new Rectangle(40, 370, 270, 53), Content.Load<Texture2D>("SnuffelBounds"), 2);
+            check3 = new Checkpoint(new Rectangle(406, 92, 40, 117), Content.Load<Texture2D>("SnuffelBounds"), 3);
+
             GUI = new GUIM();
 
             background = Content.Load<Texture2D>("track");
@@ -119,15 +126,18 @@ namespace TinyGame
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             spriteBatch.Draw(background, backgroundbound, Color.White);
-            finish.Draw(spriteBatch);
-            rood.Draw(spriteBatch);
-            speedboost1.Draw(spriteBatch);
-            speedboost2.Draw(spriteBatch);
+            check1.Draw(spriteBatch);
+            check2.Draw(spriteBatch);
+            check3.Draw(spriteBatch);
+            //finish.Draw(spriteBatch);
+            //rood.Draw(spriteBatch);
+            //speedboost1.Draw(spriteBatch);
+            //speedboost2.Draw(spriteBatch);
             speler.Draw(spriteBatch);
             speler2.Draw(spriteBatch);
-            spin1.Draw(spriteBatch);
-            spin2.Draw(spriteBatch);
-            spin3.Draw(spriteBatch);
+            //spin1.Draw(spriteBatch);
+            //spin2.Draw(spriteBatch);
+            //spin3.Draw(spriteBatch);
             GUI.Draw(spriteBatch);
             spriteBatch.End();
 

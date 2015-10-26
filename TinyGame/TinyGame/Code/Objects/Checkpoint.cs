@@ -10,14 +10,20 @@ namespace TinyGame
 {
     class Checkpoint : CollisionComponent
     {
-        public Vector2 location;
-
-        public Checkpoint(Vector2 location, Texture2D image)
+        public Rectangle area;
+        public Texture2D image;
+        public Checkpoint(Rectangle area, Texture2D image, int number)
         {
-            this.location = location;
-            id = "Checkpoint";
-            this.location = location;
+            this.area = area;
+            this.image = image;
+            id = "Checkpoint" + number;
             CollisionSystem.triggers.Add(this);
         }
+
+        public void Draw(SpriteBatch sb)
+        {
+            sb.Draw(image, area, Color.White);
+        }
     }
+
 }

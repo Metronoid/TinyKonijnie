@@ -87,7 +87,7 @@ namespace TinyGame
                 {
                       angle += 3;
                 }
-                if (trigger == "Finish")
+                if (trigger == "Finish" && checks == 3)
                 {
                     laps++;
                     checks = 0;
@@ -99,9 +99,9 @@ namespace TinyGame
                         waterComponent.water++;
                     }
             }
-                if (trigger == "Checkpoint")
+                if (trigger == ("Checkpoint" + (checks + 1)))
                 {
-
+                    checks ++;
                 }
             }
             // Neemt de collisionsystem en bekijkt of de twee konijnen tegen elkaar aan zit.
