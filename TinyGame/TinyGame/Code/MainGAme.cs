@@ -23,7 +23,9 @@ namespace TinyGame
         trap spin2;
         trap spin3;
         GraphicsDevice device;
+        Texture2D background;
         public static SpriteFont font;
+        public Rectangle backgroundbound = new Rectangle(0, 0, 1024, 768);
         
 
 
@@ -57,19 +59,23 @@ namespace TinyGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            speler = new Konijn(1, new Vector2(620, 250), Content.Load<Texture2D>("brownbunny"), Content.Load<Texture2D>("SnuffelBounds"));
-            speler2 = new Konijn(2, new Vector2(900, 250), Content.Load<Texture2D>("greybunny"), Content.Load<Texture2D>("SnuffelBounds"));
+            speler = new Konijn(1, new Vector2(620, 250), Content.Load<Texture2D>("brownbunny"), Content.Load<Texture2D>("SnuffelBounds"), 4, 1);
+            speler2 = new Konijn(2, new Vector2(900, 250), Content.Load<Texture2D>("greybunny"), Content.Load<Texture2D>("SnuffelBounds"), 4, 1);
 
             rood = new Blok(new Vector2(0, 200), Content.Load<Texture2D>("RodeBalk"));
 
             finish = new Finishlijn(new Vector2(520, 250), Content.Load<Texture2D>("Finish"));
+
             speedboost1 = new Powerup(new Vector2(10, 50), Content.Load<Texture2D>("SmileOrb"));
             speedboost2 = new Powerup(new Vector2(890, 625), Content.Load<Texture2D>("SmileOrb"));
+
             spin1 = new trap(new Vector2(450, 200), Content.Load<Texture2D>("AngerOrb"));
             spin2 = new trap(new Vector2(450, 275), Content.Load<Texture2D>("AngerOrb"));
             spin3 = new trap(new Vector2(450, 350), Content.Load<Texture2D>("AngerOrb"));
+
             GUI = new GUIM();
-           
+
+            background = Content.Load<Texture2D>("track");
             // TODO: use this.Content to load your game content here
             font = Content.Load<SpriteFont>("Cartoon12");
         }
@@ -112,6 +118,7 @@ namespace TinyGame
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
+            spriteBatch.Draw(background, backgroundbound, Color.White);
             finish.Draw(spriteBatch);
             rood.Draw(spriteBatch);
             speedboost1.Draw(spriteBatch);

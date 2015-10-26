@@ -8,7 +8,11 @@ namespace TinyGame
     public class Konijn : CollisionComponent
     {
         public Vector2 location;
-        public Texture2D image;
+        public Texture2D image { get; set; }
+        public int rows { get; set; }
+        public int columns { get; set; }
+        private int currentFrame;
+        private int totalFrames;
         public Texture2D boundsimage;
         public Vector2 velocity;
         public GameTime gameTime;
@@ -29,10 +33,14 @@ namespace TinyGame
         /// <param name="location"></param>
         /// <param name="image"></param>
         /// <param name="boundImage"></param>
-        public Konijn(int playerid, Vector2 location, Texture2D image, Texture2D boundImage)
+        public Konijn(int playerid, Vector2 location, Texture2D image, Texture2D boundImage, int rowsget, int columnsget)
         {
             this.location = location;
             this.image = image;
+            rows = rowsget;
+            columns = columnsget;
+            currentFrame = 0;
+            totalFrames = rows * columns;
             this.playerid = playerid;
             this.boundsimage = boundImage;
             if (playerid == 1) 
@@ -55,6 +63,17 @@ namespace TinyGame
             location += velocity * elapsed;
 
             // TODO: Add your update logic here
+
+            // Update de animatie indien het konijn beweegt
+            if (speed > 0 || speed < 0)
+            {
+                currentFrame++;
+                if (currentFrame == totalFrames)
+                    currentFrame = 0;
+            }
+            else
+                currentFrame = 0;
+
             // Neemt de collisionsystem en bekijkt of de powerup en dergelijke tegen komt, waar het konijn tegenaan knalt.
             string trigger = CollisionSystem.TriggerDetection(this);
             if (trigger!="")
@@ -150,9 +169,17 @@ namespace TinyGame
         /// <param name="sb"></param>
         public void Draw(SpriteBatch sb)
         { 
-            bounds = new Rectangle((int)(location.X - image.Width / 4), (int)(location.Y - image.Height / 2), image.Width/2, image.Height);
-            Vector2 origin = new Vector2(image.Width / 2, image.Height / 2);
-            Rectangle sourceRectangle = new Rectangle(0, 0, image.Width, image.Height);
+            int width = image.Width / columns;
+            int height = image.Height / rows;
+            int row = (int)((float)currentFrame / (float)columns);
+            int column = currentFrame % columns;
+
+            bounds = new Rectangle((int)(location.X - width / 4), (int)(location.Y - height / 4), width / 2, height / 2);
+
+            Vector2 origin = new Vector2(width / 2, height / 2);
+
+            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+
             sb.Draw(image, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
             sb.Draw(boundsimage, bounds, null, Color.Wheat);
             waterComponent.Draw(sb);
