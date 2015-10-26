@@ -25,6 +25,8 @@ namespace TinyGame
         public int laps = 0;
         public int checks = 0;
         public int powercounter = 0;
+        public int pitstops = 0;
+        public bool pitstopsBool = false;
         public Water waterComponent;
 
 
@@ -128,9 +130,16 @@ namespace TinyGame
                     if (waterComponent.water < 100)
                     {
                         waterComponent.water += 0.1f;
-            }
+                    }
                     waterComponent.check = false;
-            }
+                    pitstopsBool = true;
+                }
+
+                if (pitstopsBool == true)
+                {
+                    pitstops++;
+                    pitstopsBool = false;
+                }
             }
 
             velocity = new Vector2(0, 0);

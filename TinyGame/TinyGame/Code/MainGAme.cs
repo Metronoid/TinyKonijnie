@@ -133,7 +133,7 @@ namespace TinyGame
             check2.Draw(spriteBatch);
             check3.Draw(spriteBatch);
             finish.Draw(spriteBatch);
-            //Pitstop.Draw(spriteBatch);
+            Pitstop.Draw(spriteBatch);
             //speedboost1.Draw(spriteBatch);
             //speedboost2.Draw(spriteBatch);
             //spin1.Draw(spriteBatch);
