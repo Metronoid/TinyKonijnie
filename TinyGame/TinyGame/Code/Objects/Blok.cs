@@ -10,6 +10,11 @@ namespace TinyGame
         public Texture2D image;
         public Vector2 location;
 
+        /// <summary>
+        /// Geeft aan welke variabelen Blok met zich mee geeft. 
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="image"></param>
         public Blok (Vector2 location,Texture2D image )
         {
             this.location = location;
@@ -17,7 +22,10 @@ namespace TinyGame
             id = "blok";
             CollisionSystem.colliders.Add(this);
         }
-
+        /// <summary>
+        /// Drawt de variabelen wanneer het wordt aangeroepen.
+        /// </summary>
+        /// <param name="sb"></param>
         public void Draw(SpriteBatch sb)
         {
             bounds = new Rectangle((int)(location.X - image.Width / 2), (int)(location.Y - image.Height / 2), image.Width, image.Height);
@@ -25,6 +33,10 @@ namespace TinyGame
         }
     }
 }
+
+///<summary>
+/// Haha negeer dit vrienden
+/// </summary>
 /*
 {
     class trap : CollisionComponent

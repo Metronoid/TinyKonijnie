@@ -32,7 +32,10 @@ namespace TinyGame
         {
 
         }
-
+        /// <summary>
+        ///  Drawt de variabelen wanneer het wordt aangeroepen.
+        /// </summary>
+        /// <param name="sb"></param>
         public void Draw(SpriteBatch sb)
         {
             sb.DrawString(MainGame.font, "Speed: " + speed1 + " Bunnimeter", new Vector2(10, 0), Color.Black);
