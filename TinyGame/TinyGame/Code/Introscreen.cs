@@ -135,34 +135,6 @@ namespace TinyGame
                     
                     break;
             }
-
-            /* if (counter == 150)
-                nhlfadeout = true;
-
-            if (counter == 250)
-            {
-                nhloff = true;
-                vroem = true;
-            }
-
-            if (muziekaan == false)
-            {
-                MediaPlayer.Play(jingle);
-                muziekaan = true;
-            }
-
-            if (nhlfadeout == false)
-            {
-                nhlfadeeffect += 0.01f;
-                counter++;
-            }
-
-            if (nhlfadeout == true && nhloff == false)
-            {
-                nhlfadeeffect -= 0.01f;
-                counter++;
-            }*/
-
         }
 
         /// <summary>
