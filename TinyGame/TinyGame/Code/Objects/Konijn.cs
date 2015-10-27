@@ -130,11 +130,14 @@ namespace TinyGame
                     if (waterComponent.water < 100)
                     {
                         waterComponent.water += 0.1f;
-            }
+                    }
                     waterComponent.check = false;
                     pitstopsBool = true;
                 }
+            }
 
+            if (collision == "")
+            { 
                 if (pitstopsBool == true)
                 {
                     pitstops++;
@@ -143,7 +146,7 @@ namespace TinyGame
             }
 
             velocity = new Vector2(0, 0);
-                //Als knop A en down wordt ingedrukt
+            //Als knop A en down wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.A) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Left))
                     angle -= speed / 3000;
                 //Als knop D en right wordt ingedrukt
@@ -192,6 +195,7 @@ namespace TinyGame
                 GUIM.speed1 = speed;
                 GUIM.laps1 = laps;
                 GUIM.checks1 = checks;
+                GUIM.pitstops1 = pitstops;
             }
 
             if (playerid == 2)
@@ -199,6 +203,7 @@ namespace TinyGame
                 GUIM.speed2 = speed;
                 GUIM.laps2 = laps;
                 GUIM.checks2 = checks;
+                GUIM.pitstops2 = pitstops;
             }
         }
 
