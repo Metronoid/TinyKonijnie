@@ -23,7 +23,7 @@ namespace TinyGame
             if (check == true)
             {
                 if (Math.Round(water) > 0)
-                    water -= 0.035f;
+                    water -= 0.05f;
                 else
                     water = 0;
             }
