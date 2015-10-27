@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace TinyGame
 {
@@ -10,6 +12,15 @@ namespace TinyGame
     public class Introscreen : Game
     {
         public static SpriteFont font;
+        Texture2D logo;
+        Song jingle;
+
+        private float nhlfadeeffect = 0;
+        private int counter = 0;
+        private bool nhlfadeout = false;
+        private bool nhloff = false;
+        private bool muziekaan = false;
+        private bool vroem = false;
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -47,6 +58,9 @@ namespace TinyGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("Cartoon12");
+            logo = Content.Load<Texture2D>("NHL logo");
+            jingle = Content.Load<Song>("logo");
+
         }
 
         /// <summary>
@@ -71,6 +85,34 @@ namespace TinyGame
             // TODO: Add your update logic here
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             base.Update(gameTime);
+
+            if (counter == 150)
+                nhlfadeout = true;
+
+            if (counter == 250)
+            {
+                nhloff = true;
+                vroem = true;
+            }
+
+            if (muziekaan == false)
+            {
+                MediaPlayer.Play(jingle);
+                muziekaan = true;
+            }
+
+            if (nhlfadeout == false)
+            {
+                nhlfadeeffect += 0.01f;
+                counter++;
+            }
+
+            if (nhlfadeout == true && nhloff == false)
+            {
+                nhlfadeeffect -= 0.01f;
+                counter++;
+            }
+
         }
 
         /// <summary>
@@ -83,8 +125,7 @@ namespace TinyGame
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.DrawString(font, "Team 13 Proudly Presents", new Vector2(380, 100), Color.Black);
-            spriteBatch.DrawString(font, "Tiny Konijnie DARK EDITION", new Vector2(370, 130), Color.Red);
+            spriteBatch.Draw(logo, new Rectangle((graphics.PreferredBackBufferWidth/2 - (logo.Width/2)), graphics.PreferredBackBufferHeight/2 - (logo.Height/2), logo.Width, logo.Height), Color.White * nhlfadeeffect);
             spriteBatch.End(); 
 
             base.Update(gameTime);
