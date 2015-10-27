@@ -112,7 +112,7 @@ namespace TinyGame
                     {
                         waterComponent.water++;
                     }
-            }
+                }
                 if (trigger == ("Checkpoint" + (checks + 1)))
                 {
                     checks ++;
