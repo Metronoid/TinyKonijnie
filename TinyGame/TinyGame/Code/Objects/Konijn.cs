@@ -104,6 +104,7 @@ namespace TinyGame
                 {
                     laps++;
                     checks = 0;
+                    startLocation = location;
                 }
                 if (trigger == "Pitstop")
                 {
@@ -115,6 +116,7 @@ namespace TinyGame
                 if (trigger == ("Checkpoint" + (checks + 1)))
                 {
                     checks ++;
+                    startLocation = location;
                 }
             }
             // Neemt de collisionsystem en bekijkt of de twee konijnen tegen elkaar aan zit.
@@ -220,7 +222,6 @@ namespace TinyGame
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
 
             sb.Draw(image, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
-
 
             //sb.Draw(boundsimage, bounds, null, Color.Wheat);
             waterComponent.Draw(sb);
