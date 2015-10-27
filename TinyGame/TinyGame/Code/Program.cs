@@ -16,8 +16,8 @@ namespace TinyGame
         {
             using (var intro = new Introscreen())
                 intro.Run();
-            //using (var game = new MainGame())
-            //    game.Run();
+            using (var game = new MainGame())
+                game.Run();
 
         }
     }
