@@ -129,11 +129,11 @@ namespace TinyGame
             spriteBatch.Begin();
             spriteBatch.Draw(background, backgroundbound, Color.White);
 
-            check1.Draw(spriteBatch);
-            check2.Draw(spriteBatch);
-            check3.Draw(spriteBatch);
+            //check1.Draw(spriteBatch);
+            //check2.Draw(spriteBatch);
+            //check3.Draw(spriteBatch);
             finish.Draw(spriteBatch);
-            Pitstop.Draw(spriteBatch);
+            //Pitstop.Draw(spriteBatch);
             //speedboost1.Draw(spriteBatch);
             //speedboost2.Draw(spriteBatch);
             spin1.Draw(spriteBatch);

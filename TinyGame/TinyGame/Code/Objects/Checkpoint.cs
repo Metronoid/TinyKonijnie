@@ -16,13 +16,13 @@ namespace TinyGame
         {
             this.area = area;
             this.image = image;
+            bounds = area;
             id = "Checkpoint" + number;
             CollisionSystem.triggers.Add(this);
         }
 
         public void Draw(SpriteBatch sb)
         {
-            bounds = area;
             sb.Draw(image, area, Color.Tomato);
         }
     }

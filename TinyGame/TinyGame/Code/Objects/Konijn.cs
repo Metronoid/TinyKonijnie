@@ -112,7 +112,7 @@ namespace TinyGame
                     {
                         waterComponent.water++;
                     }
-                }
+            }
                 if (trigger == ("Checkpoint" + (checks + 1)))
                 {
                     checks ++;
@@ -138,7 +138,7 @@ namespace TinyGame
                 }
             }
 
-            if (collision == "")
+            else
             { 
                 if (pitstopsBool == true)
                 {
@@ -165,20 +165,14 @@ namespace TinyGame
                 //Als knop W en up wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.W) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Up))
                 {
-                    if (speed < 320)
+                    if (speed < (waterComponent.water * 3f) + 120)
                         speed += boost;
 
-                    else if (speed > 320)
+                    if (speed > (waterComponent.water * 3f) + 120)
                         if (powercounter < 100)
                             powercounter++;
                         else
                             speed -= boost;
-
-                    if (waterComponent.water < 7)
-                        if (speed > 121)
-                            speed -= 2;
-                        else if (speed == 121)
-                            speed--;
                 }
 
                 else
