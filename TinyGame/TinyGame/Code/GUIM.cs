@@ -50,10 +50,8 @@ namespace TinyGame
             sb.DrawString(MainGame.font, "Speed: " + speed2 + " Bunnimeter", new Vector2(760, 0), Color.Yellow);
             sb.DrawString(MainGame.font, "Laps:  " + laps1 + "/3", new Vector2(10, 50), Color.Yellow);
             sb.DrawString(MainGame.font, "Laps:  " + laps2 + "/3", new Vector2(760, 50), Color.Yellow);
-            sb.DrawString(MainGame.font, "Checks: " + checks1, new Vector2(10, 70), Color.Yellow);
-            sb.DrawString(MainGame.font, "Checks: " + checks2, new Vector2(760, 70), Color.Yellow);
-            sb.DrawString(MainGame.font, "Pitstops: " + pitstops1, new Vector2(10, 90), Color.Yellow);
-            sb.DrawString(MainGame.font, "Pitstops: " + pitstops2, new Vector2(760, 90), Color.Yellow);
+            sb.DrawString(MainGame.font, "Pitstops: " + pitstops1, new Vector2(10, 70), Color.Yellow);
+            sb.DrawString(MainGame.font, "Pitstops: " + pitstops2, new Vector2(760, 70), Color.Yellow);
         }
     }
 }
