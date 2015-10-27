@@ -10,7 +10,7 @@ namespace TinyGame
     public class SceneManager : Game
     {
         public static SpriteFont font;
-        public Game currentScene;
+        public Introscreen currentScene;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         //GUIM screenInterface = new GUIM();
@@ -82,6 +82,7 @@ namespace TinyGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            
             base.Update(gameTime);
         }
     }

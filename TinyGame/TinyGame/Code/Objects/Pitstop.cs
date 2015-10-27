@@ -20,11 +20,11 @@ namespace TinyGame
             this.image = image;
             id = "Pitstop";
             CollisionSystem.colliders.Add(this);
+            bounds = new Rectangle((int)location.X, (int)location.Y, image.Width, image.Height);
         }
 
         public void Draw(SpriteBatch sb)
         {
-            bounds = new Rectangle((int)location.X, (int)location.Y, image.Width, image.Height);
             sb.Draw(image, location, Color.White);
         }
     }
