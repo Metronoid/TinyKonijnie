@@ -151,3 +151,9 @@
 /processorParam:TextureFormat=Color
 /build:NHL logo.jpeg
 
+#begin logo.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:logo.mp3
+
