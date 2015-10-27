@@ -14,9 +14,9 @@ namespace TinyGame
         [STAThread]
         static void Main()
         {
-            using (var intro = new Introscreen())
-            intro.Run();
-            using (var game = new MainGame())
+            //using (var intro = new Introscreen())
+            //intro.Run();
+            using (var game = new SceneManager())
                 game.Run();
         }
     }
