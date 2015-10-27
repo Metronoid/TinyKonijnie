@@ -136,7 +136,10 @@ namespace TinyGame
                     waterComponent.check = false;
                     pitstopsBool = true;
                 }
+            }
 
+            if (collision == "")
+            { 
                 if (pitstopsBool == true)
                 {
                     pitstops++;
@@ -194,6 +197,7 @@ namespace TinyGame
                 GUIM.speed1 = speed;
                 GUIM.laps1 = laps;
                 GUIM.checks1 = checks;
+                GUIM.pitstops1 = pitstops;
             }
 
             if (playerid == 2)
@@ -201,6 +205,7 @@ namespace TinyGame
                 GUIM.speed2 = speed;
                 GUIM.laps2 = laps;
                 GUIM.checks2 = checks;
+                GUIM.pitstops2 = pitstops;
             }
         }
 

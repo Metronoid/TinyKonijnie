@@ -79,13 +79,13 @@ namespace TinyGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.White);
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.DrawString(font, "Team 13 Proudly Presents", new Vector2(380, 100), Color.White);
+            spriteBatch.DrawString(font, "Team 13 Proudly Presents", new Vector2(380, 100), Color.Black);
             spriteBatch.DrawString(font, "Tiny Konijnie DARK EDITION", new Vector2(370, 130), Color.Red);
-            spriteBatch.End();
+            spriteBatch.End(); 
 
             base.Update(gameTime);
         }
