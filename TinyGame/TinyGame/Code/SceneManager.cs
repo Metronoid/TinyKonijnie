@@ -7,20 +7,21 @@ namespace TinyGame
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Introscreen : Game
+    public class SceneManager : Game
     {
         public static SpriteFont font;
-
+        public Game currentScene;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         //GUIM screenInterface = new GUIM();
-        
 
 
-        public Introscreen()
+
+        public SceneManager()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            currentScene = new Introscreen();
         }
 
         /// <summary>
@@ -68,6 +69,8 @@ namespace TinyGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            
+
             // TODO: Add your update logic here
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             base.Update(gameTime);
@@ -79,14 +82,6 @@ namespace TinyGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.White);
-
-            // TODO: Add your drawing code here
-            spriteBatch.Begin();
-            spriteBatch.DrawString(font, "Team 13 Proudly Presents", new Vector2(380, 100), Color.Black);
-            spriteBatch.DrawString(font, "Tiny Konijnie DARK EDITION", new Vector2(370, 130), Color.Red);
-            spriteBatch.End(); 
-
             base.Update(gameTime);
         }
     }

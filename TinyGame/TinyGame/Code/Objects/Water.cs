@@ -33,7 +33,7 @@ namespace TinyGame
 
         public void Draw(SpriteBatch sb)
         {
-            sb.DrawString(MainGame.font, "H20: " + Math.Round(water) + "%", position, Color.Black);
+            sb.DrawString(MainGame.font, "H20: " + Math.Round(water) + "%", position, Color.Yellow);
         }
     }
 }
