@@ -18,7 +18,9 @@ namespace TinyGame
         private float nhlfadeeffect = 0;
         private int counter = 0;
         private bool nhlfadeout = false;
+        private bool nhloff = false;
         private bool muziekaan = false;
+        private bool vroem = false;
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -87,6 +89,12 @@ namespace TinyGame
             if (counter == 150)
                 nhlfadeout = true;
 
+            if (counter == 250)
+            {
+                nhloff = true;
+                vroem = true;
+            }
+
             if (muziekaan == false)
             {
                 MediaPlayer.Play(jingle);
@@ -99,7 +107,7 @@ namespace TinyGame
                 counter++;
             }
 
-            if (nhlfadeout == true)
+            if (nhlfadeout == true && nhloff == false)
             {
                 nhlfadeeffect -= 0.01f;
                 counter++;
