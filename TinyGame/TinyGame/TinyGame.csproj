@@ -52,6 +52,7 @@
     <Compile Include="Code\Program.cs" />
     <Compile Include="Code\Objects\Powerup.cs" />
     <Compile Include="Code\CollisionComponent.cs" />
+    <Compile Include="Code\SceneManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Code\Objects\Trap.cs" />
   </ItemGroup>
