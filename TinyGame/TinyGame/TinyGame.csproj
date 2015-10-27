@@ -38,13 +38,16 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Code\CollisionSystem.cs" />
+    <Compile Include="Code\Introscreen.cs" />
+    <Compile Include="Code\Objects\Checkpoint.cs" />
+    <Compile Include="Code\Objects\CollisionSystem.cs" />
     <Compile Include="Code\MainGame.cs" />
     <Compile Include="Code\GUIM.cs" />
     <Compile Include="Code\Objects\Blok.cs" />
     <Compile Include="Code\Objects\Finishlijn.cs" />
     <Compile Include="Code\Objects\Konijn.cs" />
     <Compile Include="Code\Objects\Pitstop.cs" />
+    <Compile Include="Code\Objects\Water.cs" />
     <Compile Include="Code\Objects\World.cs" />
     <Compile Include="Code\Program.cs" />
     <Compile Include="Code\Objects\Powerup.cs" />
@@ -68,6 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\Big_Bottom_Typeface_Normal.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Code\Intro\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

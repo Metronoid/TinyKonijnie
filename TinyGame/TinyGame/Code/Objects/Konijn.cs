@@ -8,7 +8,12 @@ namespace TinyGame
     public class Konijn : CollisionComponent
     {
         public Vector2 location;
-        public Texture2D image;
+        private Vector2 startLocation;
+        public Texture2D image { get; set; }
+        public int rows { get; set; }
+        public int columns { get; set; }
+        private int currentFrame;
+        private int totalFrames;
         public Texture2D boundsimage;
         public Vector2 velocity;
         public GameTime gameTime;
@@ -20,6 +25,10 @@ namespace TinyGame
         public int laps = 0;
         public int checks = 0;
         public int powercounter = 0;
+        public int pitstops = 0;
+        public bool pitstopsBool = false;
+        public Water waterComponent;
+
 
         /// <summary>
         /// Geeft aan welke variabelen Konijn met zich mee geeft. 
@@ -28,12 +37,22 @@ namespace TinyGame
         /// <param name="location"></param>
         /// <param name="image"></param>
         /// <param name="boundImage"></param>
-        public Konijn(int playerid, Vector2 location, Texture2D image, Texture2D boundImage)
+        public Konijn(int playerid, Vector2 location, float ang, Texture2D image, Texture2D boundImage)
         {
             this.location = location;
+            this.startLocation = location;
+            this.angle = ang;
             this.image = image;
+            rows = 4;
+            columns = 1;
+            currentFrame = 0;
+            totalFrames = rows * columns;
             this.playerid = playerid;
             this.boundsimage = boundImage;
+            if (playerid == 1) 
+            this.waterComponent = new Water(new Vector2(10, 30));
+            if (playerid == 2)
+            this.waterComponent = new Water(new Vector2(760, 30));
             id = "Konijn";
             CollisionSystem.colliders.Add(this);
         }
@@ -44,11 +63,31 @@ namespace TinyGame
         /// <param name="elapsed"></param>
         public void Update(float elapsed)
         {
+
+            // Update water
+            waterComponent.WaterChange(); 
             // Is voor consisten Frame rate
             location += velocity * elapsed;
 
             // TODO: Add your update logic here
+
+            // Update de animatie indien het konijn beweegt
+            if (speed > 0 || speed < 0)
+            {
+                currentFrame++;
+                if (currentFrame == totalFrames)
+                    currentFrame = 0;
+            }
+            else
+            {
+                currentFrame = 0;
+            }
+
             // Neemt de collisionsystem en bekijkt of de powerup en dergelijke tegen komt, waar het konijn tegenaan knalt.
+            if (!MainGame.backgroundbound.Contains(bounds))
+            {
+                location = startLocation;
+            }
             string trigger = CollisionSystem.TriggerDetection(this);
             if (trigger!="")
             {
@@ -57,14 +96,25 @@ namespace TinyGame
                     speed = 600;
                     powercounter = 0;
                 }
-                if (trigger == "trap")
+                if (trigger == "trap" || !MainGame.backgroundbound.Contains(bounds))
                 {
                       angle += 3;
                 }
-                if (trigger == "Finish")
+                if (trigger == "Finish" && checks == 3)
                 {
                     laps++;
                     checks = 0;
+                }
+                if (trigger == "Pitstop")
+                {
+                    if (waterComponent.water < 100)
+                    {
+                        waterComponent.water++;
+                    }
+            }
+                if (trigger == ("Checkpoint" + (checks + 1)))
+                {
+                    checks ++;
                 }
             }
             // Neemt de collisionsystem en bekijkt of de twee konijnen tegen elkaar aan zit.
@@ -75,15 +125,30 @@ namespace TinyGame
                 {
                     speed = -100;
                 }
+                if (collision == "Pitstop")
+                {
+                    if (waterComponent.water < 100)
+                    {
+                        waterComponent.water += 0.1f;
+            }
+                    waterComponent.check = false;
+                    pitstopsBool = true;
+                }
+
+                if (pitstopsBool == true)
+                {
+                    pitstops++;
+                    pitstopsBool = false;
+                }
             }
 
             velocity = new Vector2(0, 0);
                 //Als knop A en down wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.A) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Left))
-                    angle -= speed/3000;
+                    angle -= speed / 3000;
                 //Als knop D en right wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.D) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Right))
-                    angle += speed/3000;
+                    angle += speed / 3000;
                 //Als knop S en down wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.S) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Down))
                 {
@@ -104,7 +169,13 @@ namespace TinyGame
                         else
                             speed -= boost;
 
+                    if (waterComponent.water < 7)
+                        if (speed > 121)
+                            speed -= 2;
+                        else if (speed == 121)
+                            speed--;
                 }
+
                 else
                 {
                     if (speed > 0)
@@ -113,13 +184,22 @@ namespace TinyGame
                     if (speed < 0)
                         speed += boost;
                 }
-            if (playerid == 1)      // geeft de speed door aan de GUI per konijn.
-                GUIM.speed1 = speed;
-            if (playerid == 2)
-                GUIM.speed2 = speed;
-
-            velocity.Y += (float)Math.Sin(angle) * speed;  //geeft aan welke positie het konijn moet aannemen.
+            velocity.Y += (float)Math.Sin(angle) * speed;
             velocity.X += (float)Math.Cos(angle) * speed;
+            // geeft de speed en laps door aan de GUI per konijn.
+            if (playerid == 1)
+            {
+                GUIM.speed1 = speed;
+                GUIM.laps1 = laps;
+                GUIM.checks1 = checks;
+            }
+
+            if (playerid == 2)
+            {
+                GUIM.speed2 = speed;
+                GUIM.laps2 = laps;
+                GUIM.checks2 = checks;
+            }
         }
 
         /// <summary>
@@ -128,11 +208,22 @@ namespace TinyGame
         /// <param name="sb"></param>
         public void Draw(SpriteBatch sb)
         { 
-            bounds = new Rectangle((int)(location.X - image.Width / 4), (int)(location.Y - image.Height / 2), image.Width/2, image.Height);
-            Vector2 origin = new Vector2(image.Width / 2, image.Height / 2);
-            Rectangle sourceRectangle = new Rectangle(0, 0, image.Width, image.Height);
+            int width = image.Width / columns;
+            int height = image.Height / rows;
+            int row = (int)((float)currentFrame / (float)columns);
+            int column = currentFrame % columns;
+
+            bounds = new Rectangle((int)(location.X - width / 4), (int)(location.Y - height / 4), width / 2, height / 2);
+
+            Vector2 origin = new Vector2(width / 2, height / 2);
+
+            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+
             sb.Draw(image, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
-            sb.Draw(boundsimage, bounds, null, Color.Wheat);
+
+
+            //sb.Draw(boundsimage, bounds, null, Color.Wheat);
+            waterComponent.Draw(sb);
         }
 
 
