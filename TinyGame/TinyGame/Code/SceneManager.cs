@@ -12,12 +12,13 @@ namespace TinyGame
         public static SpriteFont font;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Game currentScene;
+
+        MainGame game;
         public enum Scenes
         {
             none,intro,menu,game,end
         };
-        public static Scenes state = Scenes.intro;
+        public static Scenes state = Scenes.game;
         public Scenes lastState = Scenes.none;
         //GUIM screenInterface = new GUIM();
 
@@ -35,9 +36,11 @@ namespace TinyGame
         /// </summary>
         protected override void Initialize()
         {
+            game = new MainGame();
             // TODO: Add your initialization logic here
             graphics.PreferredBackBufferWidth = 1024;  // set this value to the desired width of your window
             graphics.PreferredBackBufferHeight = 768;   // set this value to the desired height of your window
+            graphics.IsFullScreen = true;
             graphics.ApplyChanges();
             base.Initialize();
         }
@@ -74,8 +77,24 @@ namespace TinyGame
 
             if (state != lastState)
             {
-                //initialise scene
+                switch (state)
+                {
+                    case Scenes.intro:
+                        //Handle
+                        break;
+                    case Scenes.menu:
+                        //Handle
+                        break;
+                    case Scenes.game:
+                        game.Initialize();
+                        game.LoadContent(this,spriteBatch);
+                        break;
+                    case Scenes.end:
+                        //Handle
+                        break;
+                }
                 lastState = state;
+
             }
 
             switch (state)
@@ -87,7 +106,7 @@ namespace TinyGame
                     //Handle
                     break;
                 case Scenes.game:
-                    //Handle
+                    game.Update(gameTime);
                     break;
                 case Scenes.end:
                     //Handle
@@ -105,6 +124,7 @@ namespace TinyGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            GraphicsDevice.Clear(Color.Tomato);
             switch (state)
             {
                 case Scenes.intro:
@@ -114,7 +134,7 @@ namespace TinyGame
                     //Handle
                     break;
                 case Scenes.game:
-                    //Handle
+                    game.Draw(gameTime);
                     break;
                 case Scenes.end:
                     //Handle

@@ -111,6 +111,7 @@ namespace TinyGame
                     if (waterComponent.water < 100)
                     {
                         waterComponent.water++;
+
                     }
             }
                 if (trigger == ("Checkpoint" + (checks + 1)))
