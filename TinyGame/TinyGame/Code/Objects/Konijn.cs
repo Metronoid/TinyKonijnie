@@ -165,10 +165,10 @@ namespace TinyGame
                 //Als knop W en up wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.W) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Up))
                 {
-                    if (speed < (waterComponent.water * 3.2f) + 80)
+                    if (speed < (waterComponent.water * 3f) + 120)
                         speed += boost;
 
-                    else
+                    if (speed > (waterComponent.water * 3f) + 120)
                         if (powercounter < 100)
                             powercounter++;
                         else
