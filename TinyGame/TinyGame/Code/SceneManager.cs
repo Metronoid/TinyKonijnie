@@ -10,18 +10,21 @@ namespace TinyGame
     public class SceneManager : Game
     {
         public static SpriteFont font;
-        public Introscreen currentScene;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Game currentScene;
+        public enum Scenes
+        {
+            none,intro,menu,game,end
+        };
+        public static Scenes state = Scenes.intro;
+        public Scenes lastState = Scenes.none;
         //GUIM screenInterface = new GUIM();
-
-
 
         public SceneManager()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            currentScene = new Introscreen();
         }
 
         /// <summary>
@@ -69,7 +72,27 @@ namespace TinyGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            
+            if (state != lastState)
+            {
+                //initialise scene
+                lastState = state;
+            }
+
+            switch (state)
+            {
+                case Scenes.intro:
+                    //Handle
+                    break;
+                case Scenes.menu:
+                    //Handle
+                    break;
+                case Scenes.game:
+                    //Handle
+                    break;
+                case Scenes.end:
+                    //Handle
+                    break;
+            }
 
             // TODO: Add your update logic here
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -82,7 +105,21 @@ namespace TinyGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            
+            switch (state)
+            {
+                case Scenes.intro:
+                    //Handle
+                    break;
+                case Scenes.menu:
+                    //Handle
+                    break;
+                case Scenes.game:
+                    //Handle
+                    break;
+                case Scenes.end:
+                    //Handle
+                    break;
+            }
             base.Update(gameTime);
         }
     }
