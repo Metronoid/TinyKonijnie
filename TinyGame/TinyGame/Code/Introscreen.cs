@@ -12,13 +12,29 @@ namespace TinyGame
     public class Introscreen : Game
     {
         public static SpriteFont font;
-        Texture2D logo;
+        Texture2D NHLlogo;
+        Texture2D teamlogo;
         Song jingle;
 
         private float nhlfadeeffect = 0;
+        private float teamfadeeffect = 0;
         private int counter = 0;
         private bool nhlfadeout = false;
+        private bool nhloff = false;
         private bool muziekaan = false;
+        private bool vroem = false;
+
+        private enum Steps
+        {
+            Music,
+            NHLin,
+            NHLout,
+            Vroem,
+            Team13in,
+            Team13out,
+            Exit
+        }
+        Steps intro = Steps.Music;
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -56,7 +72,8 @@ namespace TinyGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("Cartoon12");
-            logo = Content.Load<Texture2D>("NHL logo");
+            NHLlogo = Content.Load<Texture2D>("NHL logo");
+            teamlogo = Content.Load<Texture2D>("Team13logo");
             jingle = Content.Load<Song>("logo");
 
         }
@@ -84,8 +101,49 @@ namespace TinyGame
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             base.Update(gameTime);
 
-            if (counter == 150)
+            switch (intro)
+            {
+                case Steps.Music:
+                    MediaPlayer.Play(jingle);
+                    intro = Steps.NHLin;
+                    break;
+
+                case Steps.NHLin:
+                    nhlfadeeffect += 0.01f;
+                    counter++;
+                    if (counter == 150)
+                        intro = Steps.NHLout;
+                    break;
+
+                case Steps.NHLout:
+                    nhlfadeeffect -= 0.01f;
+                    counter++;
+                    if (counter == 150)
+                        intro = Steps.Exit;
+                    break;
+
+                case Steps.Vroem:
+                    break;
+
+                case Steps.Team13in:
+                    break;
+
+                case Steps.Team13out:
+                    break;
+
+                case Steps.Exit:
+                    
+                    break;
+            }
+
+            /* if (counter == 150)
                 nhlfadeout = true;
+
+            if (counter == 250)
+            {
+                nhloff = true;
+                vroem = true;
+            }
 
             if (muziekaan == false)
             {
@@ -99,11 +157,11 @@ namespace TinyGame
                 counter++;
             }
 
-            if (nhlfadeout == true)
+            if (nhlfadeout == true && nhloff == false)
             {
                 nhlfadeeffect -= 0.01f;
                 counter++;
-            }
+            }*/
 
         }
 
@@ -117,7 +175,8 @@ namespace TinyGame
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(logo, new Rectangle((graphics.PreferredBackBufferWidth/2 - (logo.Width/2)), graphics.PreferredBackBufferHeight/2 - (logo.Height/2), logo.Width, logo.Height), Color.White * nhlfadeeffect);
+            spriteBatch.Draw(NHLlogo, new Rectangle((graphics.PreferredBackBufferWidth / 2 - (NHLlogo.Width / 2)), graphics.PreferredBackBufferHeight / 2 - (NHLlogo.Height / 2), NHLlogo.Width, NHLlogo.Height), Color.White * nhlfadeeffect);
+            spriteBatch.Draw(teamlogo, new Rectangle((graphics.PreferredBackBufferWidth / 2 - (teamlogo.Width / 2)), graphics.PreferredBackBufferHeight / 2 - (teamlogo.Height / 2), teamlogo.Width, teamlogo.Height), Color.White * teamfadeeffect);
             spriteBatch.End(); 
 
             base.Update(gameTime);
