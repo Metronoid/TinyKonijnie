@@ -14,11 +14,10 @@ namespace TinyGame
         [STAThread]
         static void Main()
         {
-            using (var intro = new Introscreen())
-                intro.Run();
+            //using (var intro = new Introscreen())
+            //intro.Run();
             using (var game = new MainGame())
                 game.Run();
-
         }
     }
 #endif
