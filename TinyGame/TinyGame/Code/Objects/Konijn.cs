@@ -136,7 +136,7 @@ namespace TinyGame
                 }
             }
 
-            if (collision == "")
+            else
             { 
                 if (pitstopsBool == true)
                 {
