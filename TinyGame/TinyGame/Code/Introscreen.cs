@@ -85,7 +85,7 @@ namespace TinyGame
             spriteBatch.Begin();
             spriteBatch.DrawString(font, "Team 13 Proudly Presents", new Vector2(380, 100), Color.Black);
             spriteBatch.DrawString(font, "Tiny Konijnie DARK EDITION", new Vector2(370, 130), Color.Red);
-            spriteBatch.End();
+            spriteBatch.End(); 
 
             base.Update(gameTime);
         }
