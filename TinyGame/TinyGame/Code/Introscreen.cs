@@ -14,15 +14,12 @@ namespace TinyGame
         public static SpriteFont font;
         Texture2D NHLlogo;
         Texture2D teamlogo;
+        Texture2D konijn;
         Song jingle;
 
         private float nhlfadeeffect = 0;
         private float teamfadeeffect = 0;
         private int counter = 0;
-        private bool nhlfadeout = false;
-        private bool nhloff = false;
-        private bool muziekaan = false;
-        private bool vroem = false;
 
         private enum Steps
         {
