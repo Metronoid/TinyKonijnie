@@ -35,7 +35,7 @@ namespace TinyGame
         Steps intro = Steps.Music;
         SceneManager controller;
         //GUIM screenInterface = new GUIM();
-
+        
 
 
         public Introscreen()
@@ -87,8 +87,8 @@ namespace TinyGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Enter) || Keyboard.GetState().IsKeyDown(Keys.Space))
                 SceneManager.state = SceneManager.Scenes.game;
 
-            // TODO: Add your update logic here
-            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                // TODO: Add your update logic here
+                float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             switch (intro)
             {
                 case Steps.Music:
@@ -121,7 +121,7 @@ namespace TinyGame
                         counter = 0;
                         intro = Steps.Team13in;
                     }
-
+                        
                     break;
 
                 case Steps.Team13in:
@@ -157,7 +157,7 @@ namespace TinyGame
         {
 
             // TODO: Add your drawing code here
-
+            
             controller.spriteBatch.Draw(NHLlogo, new Rectangle((controller.graphics.PreferredBackBufferWidth / 2 - (NHLlogo.Width / 2)), controller.graphics.PreferredBackBufferHeight / 2 - (NHLlogo.Height / 2), NHLlogo.Width, NHLlogo.Height), Color.White * nhlfadeeffect);
             controller.spriteBatch.Draw(teamlogo, new Rectangle((controller.graphics.PreferredBackBufferWidth / 2 - (teamlogo.Width / 2)), controller.graphics.PreferredBackBufferHeight / 2 - (teamlogo.Height / 2), teamlogo.Width, teamlogo.Height), Color.White * teamfadeeffect);
             controller.spriteBatch.Draw(konijn, new Rectangle(bunnyx, (controller.graphics.PreferredBackBufferHeight / 2 - (konijn.Height / 2)), konijn.Width, konijn.Height), Color.White);
