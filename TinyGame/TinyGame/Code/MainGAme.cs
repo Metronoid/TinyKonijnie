@@ -15,6 +15,7 @@ namespace TinyGame
         GUIM GUI;
         Konijn speler;
         Konijn speler2;
+        Val valtrap;
         Blok rood;
         Pitstop Pitstop;
         Finishlijn finish;
@@ -66,7 +67,7 @@ namespace TinyGame
             speler = new Konijn(1, new Vector2(800, 250), 1.55F, Content.Load<Texture2D>("brownbunny"), Content.Load<Texture2D>("SnuffelBounds"));
             speler2 = new Konijn(2, new Vector2(880, 320), 1.55F, Content.Load<Texture2D>("greybunny"), Content.Load<Texture2D>("SnuffelBounds"));
 
-            
+            valtrap = new Val(new Vector2(0,0), Content.Load<Texture2D>("AngerOrb"));
             Pitstop = new Pitstop(new Vector2(0, 140), Content.Load<Texture2D>("RodeBalk"));
 
             finish = new Finishlijn(new Rectangle(777, 357, 132, 43), Content.Load<Texture2D>("Finish"));
@@ -142,6 +143,7 @@ namespace TinyGame
             speler.Draw(spriteBatch);
             speler2.Draw(spriteBatch);
             GUI.Draw(spriteBatch);
+            valtrap.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Update(gameTime);

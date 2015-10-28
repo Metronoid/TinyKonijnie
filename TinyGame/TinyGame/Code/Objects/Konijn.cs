@@ -28,6 +28,7 @@ namespace TinyGame
         public int pitstops = 0;
         public bool pitstopsBool = false;
         public Water waterComponent;
+        public Val valtrap; 
 
 
         /// <summary>
@@ -91,6 +92,11 @@ namespace TinyGame
             string trigger = CollisionSystem.TriggerDetection(this);
             if (trigger!="")
             {
+                if (trigger == "Val")
+                {
+                    valtrap.bSpawnVal = false;
+                    speed = 10;
+                }
                 if (trigger == "Powerup")
                 {
                     speed = 600;
@@ -148,7 +154,17 @@ namespace TinyGame
             }
 
             velocity = new Vector2(0, 0);
-            //Als knop A en down wordt ingedrukt
+                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.X))
+                {
+                    valtrap = new Val(location,boundsimage);
+                    if (valtrap.bSpawnVal == false)
+                    {
+                        valtrap.bSpawnVal = true;
+                        valtrap.location = location;
+                    }
+                }
+                    
+                //Als knop A en down wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.A) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Left))
                     angle -= speed / 3000;
                 //Als knop D en right wordt ingedrukt
@@ -221,6 +237,10 @@ namespace TinyGame
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
 
             sb.Draw(image, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
+            if (valtrap != null)
+            {
+                valtrap.Draw(sb);
+            }
 
             //sb.Draw(boundsimage, bounds, null, Color.Wheat);
             waterComponent.Draw(sb);
