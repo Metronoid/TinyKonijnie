@@ -56,5 +56,24 @@ namespace TinyGame
             caller.triggerEntered = false;
             return "";
         }
+
+        public static CollisionComponent TriggerDetection(CollisionComponent caller, string id)
+        {
+            foreach (CollisionComponent a in triggers)
+            {
+                if (a.id == id)
+                {
+                    if (a.bounds.Intersects(caller.bounds) && caller.bounds != a.bounds)
+                    {
+                        if (caller.triggerEntered)
+                            return null;
+                        caller.triggerEntered = true;
+                        return a;
+                    }
+                }
+            }
+            caller.triggerEntered = false;
+            return null;
+        }
     }
 }

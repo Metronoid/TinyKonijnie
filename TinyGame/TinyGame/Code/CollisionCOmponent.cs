@@ -11,5 +11,18 @@ namespace TinyGame
         public Rectangle bounds;
         public bool triggerEntered = false;
         public string id;
+        public Konijn controller;
+
+        public void Initialise(Konijn controller)
+        {
+            this.controller = controller;
+        }
+        public void OnDestroy()
+        {
+            CollisionSystem.triggers.Remove(this);
+            if(controller!=null)
+            controller.valtrap = null;
+        }
+
     }
 }
