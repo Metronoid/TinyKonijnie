@@ -16,6 +16,7 @@ namespace TinyGame
         Texture2D teamlogo;
         Texture2D konijn;
         Song jingle;
+        public int bunnyx = -200;
 
         private float nhlfadeeffect = 0;
         private float teamfadeeffect = 0;
@@ -63,6 +64,7 @@ namespace TinyGame
             NHLlogo = controller.Content.Load<Texture2D>("NHL logo");
             teamlogo = controller.Content.Load<Texture2D>("Team13logo");
             jingle = controller.Content.Load<Song>("logo");
+            konijn = controller.Content.Load<Texture2D>("Snuffel");
 
         }
 
@@ -103,16 +105,39 @@ namespace TinyGame
                     nhlfadeeffect -= 0.01f;
                     counter--;
                     if (counter == -10)
-                        intro = Steps.Exit;
+                    {
+                        counter = 0;
+                        intro = Steps.Vroem;
+                    }
                     break;
 
                 case Steps.Vroem:
+                    bunnyx += 20;
+                    counter++;
+                    if (counter == 80)
+                    {
+                        counter = 0;
+                        intro = Steps.Team13in;
+                    }
+                        
                     break;
 
                 case Steps.Team13in:
+                    teamfadeeffect += 0.01f;
+                    counter++;
+                    if (counter == 150)
+                        intro = Steps.Team13out;
+
                     break;
 
                 case Steps.Team13out:
+                    teamfadeeffect -= 0.01f;
+                    counter--;
+                    if (counter == -10)
+                    {
+                        counter = 0;
+                        intro = Steps.Exit;
+                    }
                     break;
 
                 case Steps.Exit:
@@ -133,6 +158,7 @@ namespace TinyGame
             
             controller.spriteBatch.Draw(NHLlogo, new Rectangle((controller.graphics.PreferredBackBufferWidth / 2 - (NHLlogo.Width / 2)), controller.graphics.PreferredBackBufferHeight / 2 - (NHLlogo.Height / 2), NHLlogo.Width, NHLlogo.Height), Color.White * nhlfadeeffect);
             controller.spriteBatch.Draw(teamlogo, new Rectangle((controller.graphics.PreferredBackBufferWidth / 2 - (teamlogo.Width / 2)), controller.graphics.PreferredBackBufferHeight / 2 - (teamlogo.Height / 2), teamlogo.Width, teamlogo.Height), Color.White * teamfadeeffect);
+            controller.spriteBatch.Draw(konijn, new Rectangle(bunnyx, (controller.graphics.PreferredBackBufferHeight / 2 - (konijn.Height / 2)), konijn.Width, konijn.Height), Color.White);
         }
     }
 }
