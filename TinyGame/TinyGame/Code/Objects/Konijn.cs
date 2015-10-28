@@ -117,6 +117,7 @@ namespace TinyGame
                     if (waterComponent.water < 100)
                     {
                         waterComponent.water++;
+
                     }
             }
                 if (trigger == ("Checkpoint" + (checks + 1)))
@@ -124,6 +125,15 @@ namespace TinyGame
                     checks ++;
                     startLocation = location;
                 }
+
+                if (trigger == "heet")
+                {
+                    if (waterComponent.water < 100)
+                    {
+                        waterComponent.water++;
+                    }
+            }
+
             }
             // Neemt de collisionsystem en bekijkt of de twee konijnen tegen elkaar aan zit.
             string collision = CollisionSystem.CollisionDetection(this);
@@ -144,7 +154,16 @@ namespace TinyGame
                 }
             }
 
-            else
+            if (collision == "heet")
+            {
+                if (waterComponent.water < 100)
+                {
+                    waterComponent.water -= 0.2f;
+                }
+
+            }
+
+            if (collision != "Pitstop")
             { 
                 if (pitstopsBool == true)
                 {
@@ -164,7 +183,7 @@ namespace TinyGame
                     }
                 }
                     
-                //Als knop A en down wordt ingedrukt
+            //Als knop A en down wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.A) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Left))
                     angle -= speed / 3000;
                 //Als knop D en right wordt ingedrukt

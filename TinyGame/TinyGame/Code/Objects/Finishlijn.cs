@@ -23,6 +23,7 @@ namespace TinyGame
         {
             this.location = location;
             this.image = image;
+            this.bounds = location;
             id = "Finish";
             CollisionSystem.triggers.Add(this);
 
@@ -38,7 +39,6 @@ namespace TinyGame
 
         public void Draw(SpriteBatch sb)
         {
-            bounds = location;
             sb.Draw(image, location, Color.White);
         }
     }
