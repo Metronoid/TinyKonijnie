@@ -71,7 +71,10 @@ namespace TinyGame
             check1 = new Checkpoint(new Rectangle(485, 542, 40, 117), controller.Content.Load< Texture2D>("SnuffelBounds"), 1);
             check2 = new Checkpoint(new Rectangle(40, 370, 270, 53), controller.Content.Load<Texture2D>("SnuffelBounds"), 2);
             check3 = new Checkpoint(new Rectangle(406, 85, 40, 117), controller.Content.Load<Texture2D>("SnuffelBounds"), 3);
-            kook = new heet(new Vector2(300, 450), controller.Content.Load<Texture2D>("SmileOrb"));
+            kook = new heet(new Vector2(300, 450), controller.Content.Load<Texture2D>("pit_l"));
+            kook = new heet(new Vector2(300, 250), controller.Content.Load<Texture2D>("pit_m"));
+            kook = new heet(new Vector2(500, 250 ), controller.Content.Load<Texture2D>("pit_m"));
+            kook = new heet(new Vector2(500, 450), controller.Content.Load<Texture2D>("pit_s"));
             spin1 = new trap(new Vector2(540, 370), new Vector2(730,540), controller.Content.Load<Texture2D>("SnuffelBounds"));
             //spin2 = new trap(new Vector2(450, 275), Content.Load<Texture2D>("AngerOrb"));
             //spin3 = new trap(new Vector2(450, 350), Content.Load<Texture2D>("AngerOrb"));
@@ -126,7 +129,8 @@ namespace TinyGame
 
                 //finish.Draw(spriteBatch);
 
-            //Pitstop.Draw(spriteBatch);
+            //Pitstop.Draw(controller.spriteBatch);
+                
             //speedboost1.Draw(spriteBatch);
             //speedboost2.Draw(spriteBatch);
                 //spin1.Draw(spriteBatch);
@@ -135,6 +139,10 @@ namespace TinyGame
                 speler.Draw(controller.spriteBatch);
                 speler2.Draw(controller.spriteBatch);
                 GUI.Draw(controller.spriteBatch);
+                kook.Draw(controller.spriteBatch);
+                kook.Draw(controller.spriteBatch);
+                kook.Draw(controller.spriteBatch);
+                kook.Draw(controller.spriteBatch);
             }
 
         }
