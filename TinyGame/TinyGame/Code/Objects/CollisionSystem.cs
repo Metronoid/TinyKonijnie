@@ -34,6 +34,7 @@ namespace TinyGame
             }
             return "";
         }
+
         /// <summary>
         /// Get back the string id when you enter a trigger;
         /// </summary>

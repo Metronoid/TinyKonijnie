@@ -18,6 +18,7 @@ namespace TinyGame
         public Vector2 velocity;
         public GameTime gameTime;
         public float angle = 0;
+        public float startAngle = 0;
         public float speed = 0F;
         public int playerid;
         public float boost = 1;
@@ -42,6 +43,7 @@ namespace TinyGame
         {
             this.location = location;
             this.startLocation = location;
+            this.startAngle = ang;
             this.angle = ang;
             this.image = image;
             rows = 4;
@@ -64,7 +66,6 @@ namespace TinyGame
         /// <param name="elapsed"></param>
         public void Update(float elapsed)
         {
-
             // Update water
             waterComponent.WaterChange(); 
             // Is voor consisten Frame rate
@@ -88,13 +89,16 @@ namespace TinyGame
             if (!MainGame.backgroundbound.Contains(bounds))
             {
                 location = startLocation;
+                angle = startAngle;
             }
+
             CollisionComponent obj = CollisionSystem.TriggerDetection(this, "Val");
             if (obj != null)
             {
                 obj.OnDestroy();
                 speed = 10;
             }
+
             string trigger = CollisionSystem.TriggerDetection(this);
             if (trigger!="")
             {
@@ -103,30 +107,34 @@ namespace TinyGame
                     speed = 600;
                     powercounter = 0;
                 }
+
                 if (trigger == "trap" || !MainGame.backgroundbound.Contains(bounds))
                 {
                       angle += 3;
                 }
+
                 if (trigger == "Finish" && checks == 3)
                 {
                     laps++;
                     checks = 0;
                     startLocation = location;
+                    startAngle = angle;
                 }
+
                 if (trigger == "Pitstop")
                 {
                     if (waterComponent.water < 100)
                     {
                         waterComponent.water++;
-
                     }
             }
+
                 if (trigger == ("Checkpoint" + (checks + 1)))
                 {
                     checks ++;
                     startLocation = location;
+                    startAngle = angle;
                 }
-
                 if (trigger == "heet")
                 {
                     if (waterComponent.water < 100)
@@ -134,7 +142,6 @@ namespace TinyGame
                         waterComponent.water++;
                     }
                 }
-
             }
             // Neemt de collisionsystem en bekijkt of de twee konijnen tegen elkaar aan zit.
             string collision = CollisionSystem.CollisionDetection(this);
@@ -144,6 +151,7 @@ namespace TinyGame
                 {
                     speed = -60;
                 }
+
                 if (collision == "Pitstop")
                 {
                     if (waterComponent.water < 100)
@@ -161,7 +169,6 @@ namespace TinyGame
                 {
                     waterComponent.water -= 0.2f;
                 }
-
             }
 
             if (collision != "Pitstop")
@@ -174,15 +181,15 @@ namespace TinyGame
             }
 
             velocity = new Vector2(0, 0);
-                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.X))
+            if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.X))
+            {
+                valtrap = new Val(location,boundsimage,this);
+                if (valtrap.bSpawnVal == false)
                 {
-                    valtrap = new Val(location,boundsimage,this);
-                    if (valtrap.bSpawnVal == false)
-                    {
-                        valtrap.bSpawnVal = true;
-                        valtrap.location = location;
-                    }
+                    valtrap.bSpawnVal = true;
+                    valtrap.location = location;
                 }
+            }
                     
             //Als knop A en down wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.A) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Left))
@@ -219,6 +226,7 @@ namespace TinyGame
                     if (speed < 0)
                         speed += boost;
                 }
+
             velocity.Y += (float)Math.Sin(angle) * speed;
             velocity.X += (float)Math.Cos(angle) * speed;
             // geeft de speed en laps door aan de GUI per konijn.
@@ -260,13 +268,9 @@ namespace TinyGame
             if (valtrap != null)
             {
                 valtrap.Draw(sb);
-            }
-            
-
+            }        
             //sb.Draw(boundsimage, bounds, null, Color.Wheat);
             waterComponent.Draw(sb);
         }
-
-
     }
 }
