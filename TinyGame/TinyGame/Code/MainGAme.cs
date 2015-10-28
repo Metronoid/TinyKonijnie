@@ -9,7 +9,6 @@ namespace TinyGame
     /// </summary>
     public class MainGame
     {
-        SpriteBatch spriteBatch;
         //GUIM screenInterface = new GUIM();
         GUIM GUI;
         Konijn speler;
@@ -29,6 +28,7 @@ namespace TinyGame
         Texture2D background;
         public static SpriteFont font;
         public static Rectangle backgroundbound = new Rectangle(0, 0, 1024, 768);
+        SceneManager controller;
         
 
 
@@ -51,10 +51,10 @@ namespace TinyGame
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
         /// </summary>
-        public void LoadContent(SceneManager controller, SpriteBatch spriteBatch)
+        public void LoadContent(SceneManager controller)
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            this.spriteBatch = spriteBatch;
+            this.controller = controller;
 
             speler = new Konijn(1, new Vector2(800, 250), 1.55F, controller.Content.Load<Texture2D>("brownbunny"), controller.Content.Load<Texture2D>("SnuffelBounds"));
             speler2 = new Konijn(2, new Vector2(880, 320), 1.55F, controller.Content.Load<Texture2D>("greybunny"), controller.Content.Load<Texture2D>("SnuffelBounds"));
@@ -110,27 +110,30 @@ namespace TinyGame
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        public void Draw(GameTime gameTime)
+        public void Draw()
         {
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin();
-            spriteBatch.Draw(background, backgroundbound, Color.White);
+            if (controller != null)
+            {
+                controller.spriteBatch.Draw(background, backgroundbound, Color.White);
 
-            //check1.Draw(spriteBatch);
-            //check2.Draw(spriteBatch);
-            //check3.Draw(spriteBatch);
-            finish.Draw(spriteBatch);
-            //Pitstop.Draw(spriteBatch);
-            //speedboost1.Draw(spriteBatch);
-            //speedboost2.Draw(spriteBatch);
-            spin1.Draw(spriteBatch);
-            //spin2.Draw(spriteBatch);
-            //spin3.Draw(spriteBatch);
-            speler.Draw(spriteBatch);
-            speler2.Draw(spriteBatch);
-            GUI.Draw(spriteBatch);
-            spriteBatch.End();
+                //check1.Draw(controller.spriteBatch);
+                //check2.Draw(controller.spriteBatch);
+                //check3.Draw(controller.spriteBatch);
+
+                //finish.Draw(spriteBatch);
+
+                //Pitstop.Draw(spriteBatch);
+                //speedboost1.Draw(spriteBatch);
+                //speedboost2.Draw(spriteBatch);
+                //spin1.Draw(spriteBatch);
+                //spin2.Draw(spriteBatch);
+                //spin3.Draw(spriteBatch);
+                speler.Draw(controller.spriteBatch);
+                speler2.Draw(controller.spriteBatch);
+                GUI.Draw(controller.spriteBatch);
+            }
 
         }
     }

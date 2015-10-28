@@ -9,7 +9,7 @@ namespace TinyGame
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Introscreen : Game
+    public class Introscreen
     {
         public static SpriteFont font;
         Texture2D NHLlogo;
@@ -19,10 +19,6 @@ namespace TinyGame
         private float nhlfadeeffect = 0;
         private float teamfadeeffect = 0;
         private int counter = 0;
-        private bool nhlfadeout = false;
-        private bool nhloff = false;
-        private bool muziekaan = false;
-        private bool vroem = false;
 
         private enum Steps
         {
@@ -35,17 +31,13 @@ namespace TinyGame
             Exit
         }
         Steps intro = Steps.Music;
-
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        SceneManager controller;
         //GUIM screenInterface = new GUIM();
         
 
 
         public Introscreen()
         {
-            graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
         }
 
         /// <summary>
@@ -54,27 +46,22 @@ namespace TinyGame
         /// related content.  Calling base.Initialize will enumerate through any components
         /// and initialize them as well.
         /// </summary>
-        protected override void Initialize()
+        public void Initialize()
         {
-            // TODO: Add your initialization logic here
-            graphics.PreferredBackBufferWidth = 1024;  // set this value to the desired width of your window
-            graphics.PreferredBackBufferHeight = 768;   // set this value to the desired height of your window
-            graphics.ApplyChanges();
-            base.Initialize();
         }
 
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
         /// </summary>
-        protected override void LoadContent()
+        public void LoadContent(SceneManager controller)
         {
+            this.controller = controller;
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            font = Content.Load<SpriteFont>("Cartoon12");
-            NHLlogo = Content.Load<Texture2D>("NHL logo");
-            teamlogo = Content.Load<Texture2D>("Team13logo");
-            jingle = Content.Load<Song>("logo");
+            font = controller.Content.Load<SpriteFont>("Cartoon12");
+            NHLlogo = controller.Content.Load<Texture2D>("NHL logo");
+            teamlogo = controller.Content.Load<Texture2D>("Team13logo");
+            jingle = controller.Content.Load<Song>("logo");
 
         }
 
@@ -82,7 +69,7 @@ namespace TinyGame
         /// UnloadContent will be called once per game and is the place to unload
         /// game-specific content.
         /// </summary>
-        protected override void UnloadContent()
+        public void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
         }
@@ -92,15 +79,11 @@ namespace TinyGame
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
 
             // TODO: Add your update logic here
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            base.Update(gameTime);
-
             switch (intro)
             {
                 case Steps.Music:
@@ -117,8 +100,8 @@ namespace TinyGame
 
                 case Steps.NHLout:
                     nhlfadeeffect -= 0.01f;
-                    counter++;
-                    if (counter == 150)
+                    counter--;
+                    if (counter == -10)
                         intro = Steps.Exit;
                     break;
 
@@ -132,7 +115,8 @@ namespace TinyGame
                     break;
 
                 case Steps.Exit:
-                    
+                    if (controller != null)
+                        SceneManager.state = SceneManager.Scenes.game;
                     break;
             }
 
@@ -169,17 +153,13 @@ namespace TinyGame
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Draw(GameTime gameTime)
+        public void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.White);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin();
-            spriteBatch.Draw(NHLlogo, new Rectangle((graphics.PreferredBackBufferWidth / 2 - (NHLlogo.Width / 2)), graphics.PreferredBackBufferHeight / 2 - (NHLlogo.Height / 2), NHLlogo.Width, NHLlogo.Height), Color.White * nhlfadeeffect);
-            spriteBatch.Draw(teamlogo, new Rectangle((graphics.PreferredBackBufferWidth / 2 - (teamlogo.Width / 2)), graphics.PreferredBackBufferHeight / 2 - (teamlogo.Height / 2), teamlogo.Width, teamlogo.Height), Color.White * teamfadeeffect);
-            spriteBatch.End(); 
-
-            base.Update(gameTime);
+            
+            controller.spriteBatch.Draw(NHLlogo, new Rectangle((controller.graphics.PreferredBackBufferWidth / 2 - (NHLlogo.Width / 2)), controller.graphics.PreferredBackBufferHeight / 2 - (NHLlogo.Height / 2), NHLlogo.Width, NHLlogo.Height), Color.White * nhlfadeeffect);
+            controller.spriteBatch.Draw(teamlogo, new Rectangle((controller.graphics.PreferredBackBufferWidth / 2 - (teamlogo.Width / 2)), controller.graphics.PreferredBackBufferHeight / 2 - (teamlogo.Height / 2), teamlogo.Width, teamlogo.Height), Color.White * teamfadeeffect);
         }
     }
 }
