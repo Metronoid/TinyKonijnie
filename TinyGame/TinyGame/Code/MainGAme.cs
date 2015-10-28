@@ -61,8 +61,7 @@ namespace TinyGame
             speler = new Konijn(1, new Vector2(800, 250), 1.55F, controller.Content.Load<Texture2D>("brownbunny"), controller.Content.Load<Texture2D>("SnuffelBounds"));
             speler2 = new Konijn(2, new Vector2(880, 320), 1.55F, controller.Content.Load<Texture2D>("greybunny"), controller.Content.Load<Texture2D>("SnuffelBounds"));
 
-            valtrap = new Val(new Vector2(0,0), Content.Load<Texture2D>("AngerOrb"));
-            Pitstop = new Pitstop(new Vector2(0, 140), Content.Load<Texture2D>("RodeBalk"));
+            Pitstop = new Pitstop(new Vector2(0, 140), controller.Content.Load<Texture2D>("RodeBalk"));
 
             finish = new Finishlijn(new Rectangle(777, 357, 132, 43), controller.Content.Load<Texture2D>("Finish"));
 
@@ -136,7 +135,6 @@ namespace TinyGame
                 speler.Draw(controller.spriteBatch);
                 speler2.Draw(controller.spriteBatch);
                 GUI.Draw(controller.spriteBatch);
-                valtrap.Draw(controller.spriteBatch);
             }
 
         }

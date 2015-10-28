@@ -18,11 +18,12 @@ namespace TinyGame
         /// </summary>
         /// <param name="location"></param>
         /// <param name="image"></param>
-        public Val(Vector2 location, Texture2D image)
+        public Val(Vector2 location, Texture2D image,Konijn controller)
         {
             this.location = location;
             this.image = image;
             id = "Val";
+            Initialise(controller);
             CollisionSystem.triggers.Add(this);
         }
         /// <summary>

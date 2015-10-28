@@ -89,14 +89,15 @@ namespace TinyGame
             {
                 location = startLocation;
             }
+            CollisionComponent obj = CollisionSystem.TriggerDetection(this, "Val");
+            if (obj != null)
+            {
+                obj.OnDestroy();
+                speed = 10;
+            }
             string trigger = CollisionSystem.TriggerDetection(this);
             if (trigger!="")
             {
-                if (trigger == "Val")
-                {
-                    valtrap.bSpawnVal = false;
-                    speed = 10;
-                }
                 if (trigger == "Powerup")
                 {
                     speed = 600;
@@ -175,7 +176,7 @@ namespace TinyGame
             velocity = new Vector2(0, 0);
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.X))
                 {
-                    valtrap = new Val(location,boundsimage);
+                    valtrap = new Val(location,boundsimage,this);
                     if (valtrap.bSpawnVal == false)
                     {
                         valtrap.bSpawnVal = true;
@@ -260,6 +261,7 @@ namespace TinyGame
             {
                 valtrap.Draw(sb);
             }
+            
 
             //sb.Draw(boundsimage, bounds, null, Color.Wheat);
             waterComponent.Draw(sb);
