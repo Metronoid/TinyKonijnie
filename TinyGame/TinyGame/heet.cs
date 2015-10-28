@@ -9,6 +9,7 @@ namespace TinyGame
     {
 
         public Texture2D image;
+        public Texture2D boundimage;
         public Vector2 location;
         public Texture2D boundsimage;
         public float kookfade = 0;
@@ -16,11 +17,11 @@ namespace TinyGame
         public bool heetst = false;
         public bool aanraak = false;
 
-        public heet(Vector2 location, Texture2D image, Texture2D boundsimage)
+        public heet(Vector2 location, Texture2D image, Texture2D boundimage)
         {
             this.location = location;
             this.image = image;
-            this.boundsimage = boundsimage;
+            this.boundimage = boundimage;
             id = "heet";
             CollisionSystem.colliders.Add(this);
             bounds = new Rectangle((int)location.X, (int)location.Y, image.Width, image.Height);
@@ -60,7 +61,7 @@ namespace TinyGame
         public void Draw(SpriteBatch sb)
         {
             sb.Draw(image, location, Color.White * kookfade);
-            sb.Draw(boundsimage, bounds, Color.Wheat);
+            sb.Draw(boundimage, bounds, Color.Wheat);
         }
     }
 }
