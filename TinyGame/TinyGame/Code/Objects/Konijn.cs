@@ -22,7 +22,7 @@ namespace TinyGame
         public int playerid;
         public float boost = 1;
         public float slow = 1;
-        public int laps = 0;
+        public int laps = 1;
         public int checks = 0;
         public int powercounter = 0;
         public int pitstops = 0;
