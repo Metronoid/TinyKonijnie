@@ -16,6 +16,8 @@ namespace TinyGame
         Texture2D teamlogo;
         Texture2D konijn;
         Song jingle;
+        Vector2 location;
+        public int bunnyx = -50;
 
         private float nhlfadeeffect = 0;
         private float teamfadeeffect = 0;
@@ -103,16 +105,31 @@ namespace TinyGame
                     nhlfadeeffect -= 0.01f;
                     counter--;
                     if (counter == -10)
-                        intro = Steps.Exit;
+                    {
+                        counter = 0;
+                        intro = Steps.Team13in;
+                    }
                     break;
 
                 case Steps.Vroem:
+
                     break;
 
                 case Steps.Team13in:
+                    teamfadeeffect += 0.01f;
+                    counter++;
+                    if (counter == 150)
+                        intro = Steps.Team13out;
                     break;
 
                 case Steps.Team13out:
+                    teamfadeeffect -= 0.01f;
+                    counter--;
+                    if (counter == -10)
+                    {
+                        counter = 0;
+                        intro = Steps.Exit;
+                    }
                     break;
 
                 case Steps.Exit:
