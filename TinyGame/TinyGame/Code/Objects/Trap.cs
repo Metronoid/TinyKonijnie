@@ -24,6 +24,7 @@ namespace TinyGame
             this.location = location;
             this.size = size;
             this.image = image;
+            bounds = new Rectangle((int)(location.X - size.X / 4), (int)(location.Y - size.Y / 4), (int)size.X / 2, (int)size.Y / 2);
             id = "trap";
             CollisionSystem.triggers.Add(this);
         }
@@ -35,7 +36,6 @@ namespace TinyGame
         /// <param name="sb"></param>
         public void Draw(SpriteBatch sb)
         {
-            bounds = new Rectangle((int)(location.X - size.X / 4), (int)(location.Y - size.Y / 4), (int)size.X / 2, (int)size.Y / 2);
             /*
             Vector2 origin = new Vector2(bounds.Width / 2, bounds.Height / 2);
             sb.Draw(image, location, bounds, Color.White, 0, origin, 1.0f, SpriteEffects.None, 1);

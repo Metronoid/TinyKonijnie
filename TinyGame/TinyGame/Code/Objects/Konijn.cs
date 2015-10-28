@@ -18,6 +18,7 @@ namespace TinyGame
         public Vector2 velocity;
         public GameTime gameTime;
         public float angle = 0;
+        public float startAngle = 0;
         public float speed = 0F;
         public int playerid;
         public float boost = 1;
@@ -41,6 +42,7 @@ namespace TinyGame
         {
             this.location = location;
             this.startLocation = location;
+            this.startAngle = ang;
             this.angle = ang;
             this.image = image;
             rows = 4;
@@ -87,6 +89,7 @@ namespace TinyGame
             if (!MainGame.backgroundbound.Contains(bounds))
             {
                 location = startLocation;
+                angle = startAngle;
             }
             string trigger = CollisionSystem.TriggerDetection(this);
             if (trigger!="")
@@ -105,21 +108,21 @@ namespace TinyGame
                     laps++;
                     checks = 0;
                     startLocation = location;
+                    startAngle = angle;
                 }
                 if (trigger == "Pitstop")
                 {
                     if (waterComponent.water < 100)
                     {
                         waterComponent.water++;
-
                     }
-            }
+                }
                 if (trigger == ("Checkpoint" + (checks + 1)))
                 {
                     checks ++;
                     startLocation = location;
+                    startAngle = angle;
                 }
-
                 if (trigger == "heet")
                 {
                     if (waterComponent.water < 100)
