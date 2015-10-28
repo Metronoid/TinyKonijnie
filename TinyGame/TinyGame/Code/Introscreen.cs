@@ -14,6 +14,7 @@ namespace TinyGame
         public static SpriteFont font;
         Texture2D NHLlogo;
         Texture2D teamlogo;
+        Texture2D konijn;
         Song jingle;
 
         private float nhlfadeeffect = 0;
@@ -119,34 +120,6 @@ namespace TinyGame
                         SceneManager.state = SceneManager.Scenes.game;
                     break;
             }
-
-            /* if (counter == 150)
-                nhlfadeout = true;
-
-            if (counter == 250)
-            {
-                nhloff = true;
-                vroem = true;
-            }
-
-            if (muziekaan == false)
-            {
-                MediaPlayer.Play(jingle);
-                muziekaan = true;
-            }
-
-            if (nhlfadeout == false)
-            {
-                nhlfadeeffect += 0.01f;
-                counter++;
-            }
-
-            if (nhlfadeout == true && nhloff == false)
-            {
-                nhlfadeeffect -= 0.01f;
-                counter++;
-            }*/
-
         }
 
         /// <summary>

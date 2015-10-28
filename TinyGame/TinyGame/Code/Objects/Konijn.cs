@@ -119,6 +119,15 @@ namespace TinyGame
                     checks ++;
                     startLocation = location;
                 }
+
+                if (trigger == "heet")
+                {
+                    if (waterComponent.water < 100)
+                    {
+                        waterComponent.water++;
+                    }
+                }
+
             }
             // Neemt de collisionsystem en bekijkt of de twee konijnen tegen elkaar aan zit.
             string collision = CollisionSystem.CollisionDetection(this);
@@ -139,7 +148,16 @@ namespace TinyGame
                 }
             }
 
-            else
+            if (collision == "heet")
+            {
+                if (waterComponent.water < 100)
+                {
+                    waterComponent.water -= 0.2f;
+                }
+
+            }
+
+            if (collision != "Pitstop")
             { 
                 if (pitstopsBool == true)
                 {
