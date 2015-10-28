@@ -84,9 +84,11 @@ namespace TinyGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public void Update(GameTime gameTime)
         {
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Enter) || Keyboard.GetState().IsKeyDown(Keys.Space))
+                SceneManager.state = SceneManager.Scenes.game;
 
-            // TODO: Add your update logic here
-            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                // TODO: Add your update logic here
+                float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             switch (intro)
             {
                 case Steps.Music:
