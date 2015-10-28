@@ -187,8 +187,8 @@ namespace TinyGame
             //Als knop A en down wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.A) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Left))
                     angle -= speed / 3000;
-                //Als knop D en right wordt ingedrukt
-                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.D) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Right))
+            //Als knop D en right wordt ingedrukt
+            if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.D) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Right))
                     angle += speed / 3000;
                 //Als knop S en down wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.S) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Down))
