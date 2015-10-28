@@ -18,6 +18,7 @@ namespace TinyGame
         public Vector2 velocity;
         public GameTime gameTime;
         public float angle = 0;
+        public float startAngle = 0;
         public float speed = 0F;
         public int playerid;
         public float boost = 1;
@@ -42,6 +43,7 @@ namespace TinyGame
         {
             this.location = location;
             this.startLocation = location;
+            this.startAngle = ang;
             this.angle = ang;
             this.image = image;
             rows = 4;
@@ -87,6 +89,7 @@ namespace TinyGame
             if (!MainGame.backgroundbound.Contains(bounds))
             {
                 location = startLocation;
+                angle = startAngle;
             }
 
             CollisionComponent obj = CollisionSystem.TriggerDetection(this, "Val");
@@ -115,6 +118,7 @@ namespace TinyGame
                     laps++;
                     checks = 0;
                     startLocation = location;
+                    startAngle = angle;
                 }
 
                 if (trigger == "Pitstop")
@@ -123,14 +127,14 @@ namespace TinyGame
                     {
                         waterComponent.water++;
                     }
-                }
+            }
 
                 if (trigger == ("Checkpoint" + (checks + 1)))
                 {
                     checks ++;
                     startLocation = location;
+                    startAngle = angle;
                 }
-
                 if (trigger == "heet")
                 {
                     if (waterComponent.water < 100)
@@ -188,40 +192,40 @@ namespace TinyGame
             }
                     
             //Als knop A en down wordt ingedrukt
-            if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.A) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Left))
-                angle -= speed / 3000;
-            //Als knop D en right wordt ingedrukt
-            if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.D) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Right))
-                angle += speed / 3000;
+                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.A) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Left))
+                    angle -= speed / 3000;
+                //Als knop D en right wordt ingedrukt
+                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.D) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Right))
+                    angle += speed / 3000;
                 //Als knop S en down wordt ingedrukt
-            if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.S) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Down))
-            {
-                if (speed > -80)
-                    speed -= 2 * boost;
-                else if (speed == -80)
-                    speed -= boost;
-            }
-                //Als knop W en up wordt ingedrukt
-            if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.W) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Up))
-            {
-                if (speed < (waterComponent.water * 2.75f) + 120)
-                    speed += boost;
-
-                if (speed > (waterComponent.water * 2.75f) + 120)
-                    if (powercounter < 100)
-                        powercounter++;
-                    else
+                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.S) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Down))
+                {
+                    if (speed > -80)
+                        speed -= 2 * boost;
+                    else if (speed == -80)
                         speed -= boost;
-            }
+                }
+                //Als knop W en up wordt ingedrukt
+                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.W) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Up))
+                {
+                    if (speed < (waterComponent.water * 2.75f) + 120)
+                        speed += boost;
 
-            else
-            {
-                if (speed > 0)
-                    speed -= boost;
+                    if (speed > (waterComponent.water * 2.75f) + 120)
+                        if (powercounter < 100)
+                            powercounter++;
+                        else
+                            speed -= boost;
+                }
 
-                if (speed < 0)
-                    speed += boost;
-            }
+                else
+                {
+                    if (speed > 0)
+                        speed -= boost;
+
+                    if (speed < 0)
+                        speed += boost;
+                }
 
             velocity.Y += (float)Math.Sin(angle) * speed;
             velocity.X += (float)Math.Cos(angle) * speed;
