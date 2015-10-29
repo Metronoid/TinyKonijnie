@@ -54,9 +54,9 @@ namespace TinyGame
             this.playerid = playerid;
             this.boundsimage = boundImage;
             if (playerid == 1) 
-            this.waterComponent = new Water(new Vector2(10, 30));
+            this.waterComponent = new Water(new Vector2(100, 0));
             if (playerid == 2)
-            this.waterComponent = new Water(new Vector2(760, 30));
+            this.waterComponent = new Water(new Vector2(600, 0));
             id = "Konijn";
             CollisionSystem.colliders.Add(this);
         }
