@@ -74,10 +74,10 @@ namespace TinyGame
             check1 = new Checkpoint(new Rectangle(485, 542, 40, 117), controller.Content.Load< Texture2D>("SnuffelBounds"), 1);
             check2 = new Checkpoint(new Rectangle(40, 370, 270, 53), controller.Content.Load<Texture2D>("SnuffelBounds"), 2);
             check3 = new Checkpoint(new Rectangle(406, 85, 40, 117), controller.Content.Load<Texture2D>("SnuffelBounds"), 3);
-            kook = new heet(new Vector2(300, 450), controller.Content.Load<Texture2D>("pit_l"), controller.Content.Load<Texture2D>("SnuffelBounds"));
+            kook = new heet(new Vector2(267, 399), controller.Content.Load<Texture2D>("pit_l"), controller.Content.Load<Texture2D>("SnuffelBounds"));
             kook1= new heet(new Vector2(292, 180), controller.Content.Load<Texture2D>("pit_m"), controller.Content.Load<Texture2D>("SnuffelBounds"));
-            kook2= new heet(new Vector2(500, 250 ), controller.Content.Load<Texture2D>("pit_m"), controller.Content.Load<Texture2D>("SnuffelBounds"));
-            kook3= new heet(new Vector2(500, 450), controller.Content.Load<Texture2D>("pit_s"), controller.Content.Load<Texture2D>("SnuffelBounds"));
+            kook2= new heet(new Vector2(580, 180 ), controller.Content.Load<Texture2D>("pit_m"), controller.Content.Load<Texture2D>("SnuffelBounds"));
+            kook3= new heet(new Vector2(604, 445), controller.Content.Load<Texture2D>("pit_s"), controller.Content.Load<Texture2D>("SnuffelBounds"));
             //spin1 = new trap(new Vector2(540, 370), new Vector2(730,540), controller.Content.Load<Texture2D>("SnuffelBounds"));
             //spin2 = new trap(new Vector2(450, 275), Content.Load<Texture2D>("AngerOrb"));
             //spin3 = new trap(new Vector2(450, 350), Content.Load<Texture2D>("AngerOrb"));
@@ -148,7 +148,7 @@ namespace TinyGame
                 kook.Draw(controller.spriteBatch);
                 kook1.Draw(controller.spriteBatch);
                 kook2.Draw(controller.spriteBatch);
-                kook3.Draw(controller.spriteBatch);
+                kook3.Draw(controller.spriteBatch); 
             }
 
         }
