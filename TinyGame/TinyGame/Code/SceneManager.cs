@@ -12,6 +12,7 @@ namespace TinyGame
         public static SpriteFont font;
         public GraphicsDeviceManager graphics;
         public SpriteBatch spriteBatch;
+        public bool fullscreenSwitch = false;
 
         MainGame game;
         Introscreen intro;
@@ -79,9 +80,16 @@ namespace TinyGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            if(Keyboard.GetState().IsKeyDown(Keys.F))
-                graphics.ToggleFullScreen();
+            if (Keyboard.GetState().IsKeyDown(Keys.F)&&!fullscreenSwitch)
+            {
+                fullscreenSwitch = true;
+            }
 
+            if (Keyboard.GetState().IsKeyUp(Keys.F)&&fullscreenSwitch)
+            {
+                fullscreenSwitch = false;
+                graphics.ToggleFullScreen();
+            }
             if (state != lastState)
             {
                 switch (state)
