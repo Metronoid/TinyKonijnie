@@ -13,7 +13,6 @@ namespace TinyGame
         GUIM GUI;
         Konijn speler;
         Konijn speler2;
-        Blok rood;
         Pitstop Pitstop;
         Finishlijn finish;
         Powerup speedboost1;
@@ -31,8 +30,12 @@ namespace TinyGame
         Checkpoint check3;
         GraphicsDevice device;
         Texture2D background;
+        Texture2D konijn1;
+        Texture2D konijn2;
         public static SpriteFont font;
         public static Rectangle backgroundbound = new Rectangle(0, 0, 1024, 768);
+        public static Rectangle konijn1bound = new Rectangle(0, -3, 80, 83); 
+        public static Rectangle konijn2bound = new Rectangle(515, -3, 80, 83);
         SceneManager controller;
         heet kook;
         heet kook1;
@@ -54,7 +57,6 @@ namespace TinyGame
         /// </summary>
         public void Initialize()
         {
-            
         }
 
         /// <summary>
@@ -66,19 +68,20 @@ namespace TinyGame
             // Create a new SpriteBatch, which can be used to draw textures.
             this.controller = controller;
 
-            speler = new Konijn(1, new Vector2(800, 250), 1.55F, controller.Content.Load<Texture2D>("brownbunny"), controller.Content.Load<Texture2D>("SnuffelBounds"));
-            speler2 = new Konijn(2, new Vector2(880, 320), 1.55F, controller.Content.Load<Texture2D>("greybunny"), controller.Content.Load<Texture2D>("SnuffelBounds"));
 
-            Pitstop = new Pitstop(new Vector2(0, 140), controller.Content.Load<Texture2D>("RodeBalk"));
+            speler = new Konijn(1,new Controls(Keys.S,Keys.Q,Keys.A,Keys.Z), new Vector2(800, 250), 1.55F, controller.Content.Load<Texture2D>("brownbunny"), controller.Content.Load<Texture2D>("SnuffelBounds"));
+            speler2 = new Konijn(2, new Controls(Keys.Up, Keys.Left, Keys.Down, Keys.Right ), new Vector2(880, 320), 1.55F, controller.Content.Load<Texture2D>("greybunny"), controller.Content.Load<Texture2D>("SnuffelBounds"));
+
+            Pitstop = new Pitstop(new Rectangle(11, 219, 155, 310), controller.Content.Load<Texture2D>("RodeBalk"));
 
             finish = new Finishlijn(new Rectangle(777, 357, 132, 43), controller.Content.Load<Texture2D>("Finish"));
 
             speedboost1 = new Powerup(new Vector2(10, 50), controller.Content.Load<Texture2D>("SmileOrb"));
             speedboost2 = new Powerup(new Vector2(890, 625), controller.Content.Load<Texture2D>("SmileOrb"));
 
-            check1 = new Checkpoint(new Rectangle(485, 542, 40, 117), controller.Content.Load< Texture2D>("SnuffelBounds"), 1);
+            check1 = new Checkpoint(new Rectangle(485, 475, 40, 187), controller.Content.Load< Texture2D>("SnuffelBounds"), 1);
             check2 = new Checkpoint(new Rectangle(40, 370, 270, 53), controller.Content.Load<Texture2D>("SnuffelBounds"), 2);
-            check3 = new Checkpoint(new Rectangle(406, 85, 40, 117), controller.Content.Load<Texture2D>("SnuffelBounds"), 3);
+            check3 = new Checkpoint(new Rectangle(406, 85, 40, 197), controller.Content.Load<Texture2D>("SnuffelBounds"), 3);
             kook = new heet(new Vector2(267, 399), controller.Content.Load<Texture2D>("pit_l"), controller.Content.Load<Texture2D>("SnuffelBounds"));
             kook1 = new heet(new Vector2(292, 180), controller.Content.Load<Texture2D>("pit_m"), controller.Content.Load<Texture2D>("SnuffelBounds"));
             kook2 = new heet(new Vector2(580, 180), controller.Content.Load<Texture2D>("pit_m"), controller.Content.Load<Texture2D>("SnuffelBounds"));
@@ -99,6 +102,8 @@ namespace TinyGame
             GUI = new GUIM();
 
             background = controller.Content.Load<Texture2D>("newtrack");
+            konijn1 = controller.Content.Load<Texture2D>("konijn_bruin");
+            konijn2 = controller.Content.Load<Texture2D>("konijn_grijs");
             // TODO: use this.Content to load your game content here
             font = controller.Content.Load<SpriteFont>("Cartoon12");
         }
@@ -129,7 +134,7 @@ namespace TinyGame
             kook1.Update(elapsed);
             kook2.Update(elapsed);
             kook3.Update(elapsed);
-       
+
         }
 
         /// <summary>
@@ -143,17 +148,19 @@ namespace TinyGame
             if (controller != null)
             {
                 controller.spriteBatch.Draw(background, backgroundbound, Color.White);
+                controller.spriteBatch.Draw(konijn1, konijn1bound, Color.White);
+                controller.spriteBatch.Draw(konijn2, konijn2bound, Color.White);
 
                 //check1.Draw(controller.spriteBatch);
                 //check2.Draw(controller.spriteBatch);
                 //check3.Draw(controller.spriteBatch);
 
-                //finish.Draw(spriteBatch);
+                finish.Draw(controller.spriteBatch);
 
-            //Pitstop.Draw(controller.spriteBatch);
+                //Pitstop.Draw(controller.spriteBatch);
                 
-            //speedboost1.Draw(spriteBatch);
-            //speedboost2.Draw(spriteBatch);
+                //speedboost1.Draw(spriteBatch);
+                //speedboost2.Draw(spriteBatch);
                 spin1.Draw(controller.spriteBatch);
                 spin2.Draw(controller.spriteBatch);
                 spin3.Draw(controller.spriteBatch);
@@ -163,13 +170,13 @@ namespace TinyGame
                 spin7.Draw(controller.spriteBatch);
                 spin8.Draw(controller.spriteBatch);
 
-                speler.Draw(controller.spriteBatch);
-                speler2.Draw(controller.spriteBatch);
                 GUI.Draw(controller.spriteBatch);
                 kook.Draw(controller.spriteBatch);
                 kook1.Draw(controller.spriteBatch);
                 kook2.Draw(controller.spriteBatch);
                 kook3.Draw(controller.spriteBatch);
+                speler.Draw(controller.spriteBatch);
+                speler2.Draw(controller.spriteBatch);
             }
 
         }

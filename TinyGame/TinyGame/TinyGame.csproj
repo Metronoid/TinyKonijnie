@@ -54,12 +54,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Code\Circle.cs" />
+    <Compile Include="Code\Controls.cs" />
     <Compile Include="Code\Introscreen.cs" />
     <Compile Include="Code\Objects\Checkpoint.cs" />
     <Compile Include="Code\Objects\CollisionSystem.cs" />
     <Compile Include="Code\MainGame.cs" />
     <Compile Include="Code\GUIM.cs" />
-    <Compile Include="Code\Objects\Blok.cs" />
     <Compile Include="Code\Objects\Finishlijn.cs" />
     <Compile Include="Code\Objects\Konijn.cs" />
     <Compile Include="Code\Objects\Pitstop.cs" />
