@@ -13,7 +13,6 @@ namespace TinyGame
         GUIM GUI;
         Konijn speler;
         Konijn speler2;
-        Blok rood;
         Pitstop Pitstop;
         Finishlijn finish;
         Powerup speedboost1;
