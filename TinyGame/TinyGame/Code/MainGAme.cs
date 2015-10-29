@@ -161,14 +161,14 @@ namespace TinyGame
                 
                 //speedboost1.Draw(spriteBatch);
                 //speedboost2.Draw(spriteBatch);
-                spin1.Draw(controller.spriteBatch);
+                /*spin1.Draw(controller.spriteBatch);
                 spin2.Draw(controller.spriteBatch);
                 spin3.Draw(controller.spriteBatch);
                 spin4.Draw(controller.spriteBatch);
                 spin5.Draw(controller.spriteBatch);
                 spin6.Draw(controller.spriteBatch);
                 spin7.Draw(controller.spriteBatch);
-                spin8.Draw(controller.spriteBatch);
+                spin8.Draw(controller.spriteBatch); */
 
                 GUI.Draw(controller.spriteBatch);
                 kook.Draw(controller.spriteBatch);
