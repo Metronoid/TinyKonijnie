@@ -12,15 +12,15 @@ namespace TinyGame
     class Pitstop : CollisionComponent
     {
         public Texture2D image;
-        public Vector2 location;
+        public Rectangle location;
 
-        public Pitstop(Vector2 location, Texture2D image)
+        public Pitstop(Rectangle location, Texture2D image)
         {
             this.location = location;
             this.image = image;
             id = "Pitstop";
             CollisionSystem.colliders.Add(this);
-            bounds = new Rectangle((int)location.X, (int)location.Y, image.Width, image.Height);
+            bounds = location;
         }
 
         public void Draw(SpriteBatch sb)
