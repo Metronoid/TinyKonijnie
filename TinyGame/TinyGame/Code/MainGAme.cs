@@ -76,8 +76,8 @@ namespace TinyGame
 
             finish = new Finishlijn(new Rectangle(777, 357, 132, 43), controller.Content.Load<Texture2D>("Finish"));
 
-            speedboost1 = new Powerup(new Vector2(10, 50), controller.Content.Load<Texture2D>("SmileOrb"));
-            speedboost2 = new Powerup(new Vector2(890, 625), controller.Content.Load<Texture2D>("SmileOrb"));
+            //speedboost1 = new Powerup(new Vector2(190, 345), controller.Content.Load<Texture2D>("speed"));
+            //speedboost2 = new Powerup(new Vector2(890, 625), controller.Content.Load<Texture2D>("SmileOrb"));
 
             check1 = new Checkpoint(new Rectangle(485, 475, 40, 187), controller.Content.Load< Texture2D>("SnuffelBounds"), 1);
             check2 = new Checkpoint(new Rectangle(40, 370, 270, 53), controller.Content.Load<Texture2D>("SnuffelBounds"), 2);
@@ -159,7 +159,7 @@ namespace TinyGame
 
                 //Pitstop.Draw(controller.spriteBatch);
                 
-                //speedboost1.Draw(spriteBatch);
+                //speedboost1.Draw(controller.spriteBatch);
                 //speedboost2.Draw(spriteBatch);
                 /*spin1.Draw(controller.spriteBatch);
                 spin2.Draw(controller.spriteBatch);

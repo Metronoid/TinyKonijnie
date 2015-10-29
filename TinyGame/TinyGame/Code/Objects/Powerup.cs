@@ -24,6 +24,7 @@ namespace TinyGame
             this.image = image;
             id = "Powerup";
             CollisionSystem.triggers.Add(this);
+            bounds = new Rectangle((int)location.X, (int)location.Y, image.Width, image.Height);
         }
         /// <summary>
         ///  Drawt de variabelen wanneer het wordt aangeroepen.
@@ -31,7 +32,6 @@ namespace TinyGame
         /// <param name="sb"></param>
         public void Draw(SpriteBatch sb)
         {
-            bounds = new Rectangle((int)location.X, (int)location.Y, image.Width, image.Height);
             sb.Draw(image, location, Color.White);
         }
     }
