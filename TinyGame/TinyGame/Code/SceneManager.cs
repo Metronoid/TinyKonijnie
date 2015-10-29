@@ -20,7 +20,7 @@ namespace TinyGame
         {
             none,intro,menu,game,end
         };
-        public static Scenes state = Scenes.end;
+        public static Scenes state = Scenes.intro;
         public Scenes lastState = Scenes.none;
         //GUIM screenInterface = new GUIM();
 

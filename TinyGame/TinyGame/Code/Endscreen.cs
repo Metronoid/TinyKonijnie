@@ -26,7 +26,7 @@ namespace TinyGame
         public int bruinply;
         public int grijsply;
         //GUIM screenInterface = new GUIM();
-
+        
 
 
         public Endscreen()
@@ -79,6 +79,8 @@ namespace TinyGame
         public void Update(GameTime gameTime)
         {
             // TODO: Add your update logic here
+            bruinply = bruinkoy + 255;
+            grijsply = grijskoy + 255;
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
