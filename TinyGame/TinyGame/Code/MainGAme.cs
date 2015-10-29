@@ -138,9 +138,9 @@ namespace TinyGame
                 controller.spriteBatch.Draw(konijn1, konijn1bound, Color.White);
                 controller.spriteBatch.Draw(konijn2, konijn2bound, Color.White);
 
-                check1.Draw(controller.spriteBatch);
-                check2.Draw(controller.spriteBatch);
-                check3.Draw(controller.spriteBatch);
+                //check1.Draw(controller.spriteBatch);
+                //check2.Draw(controller.spriteBatch);
+                //check3.Draw(controller.spriteBatch);
 
                 finish.Draw(controller.spriteBatch);
 
