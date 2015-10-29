@@ -75,7 +75,7 @@ namespace TinyGame
             check2 = new Checkpoint(new Rectangle(40, 370, 270, 53), controller.Content.Load<Texture2D>("SnuffelBounds"), 2);
             check3 = new Checkpoint(new Rectangle(406, 85, 40, 117), controller.Content.Load<Texture2D>("SnuffelBounds"), 3);
             kook = new heet(new Vector2(300, 450), controller.Content.Load<Texture2D>("pit_l"), controller.Content.Load<Texture2D>("SnuffelBounds"));
-            kook1= new heet(new Vector2(300, 250), controller.Content.Load<Texture2D>("pit_m"), controller.Content.Load<Texture2D>("SnuffelBounds"));
+            kook1= new heet(new Vector2(292, 180), controller.Content.Load<Texture2D>("pit_m"), controller.Content.Load<Texture2D>("SnuffelBounds"));
             kook2= new heet(new Vector2(500, 250 ), controller.Content.Load<Texture2D>("pit_m"), controller.Content.Load<Texture2D>("SnuffelBounds"));
             kook3= new heet(new Vector2(500, 450), controller.Content.Load<Texture2D>("pit_s"), controller.Content.Load<Texture2D>("SnuffelBounds"));
             //spin1 = new trap(new Vector2(540, 370), new Vector2(730,540), controller.Content.Load<Texture2D>("SnuffelBounds"));
