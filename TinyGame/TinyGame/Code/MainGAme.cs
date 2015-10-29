@@ -34,8 +34,8 @@ namespace TinyGame
         Texture2D konijn2;
         public static SpriteFont font;
         public static Rectangle backgroundbound = new Rectangle(0, 0, 1024, 768);
-        public static Rectangle konijn1bound = new Rectangle(0, -3, 80, 83); 
-        public static Rectangle konijn2bound = new Rectangle(515, -3, 80, 83);
+        public static Rectangle konijn1bound = new Rectangle(0, 6, 82, 74); 
+        public static Rectangle konijn2bound = new Rectangle(515, 6, 82, 74);
         SceneManager controller;
         heet kook;
         heet kook1;
@@ -102,8 +102,8 @@ namespace TinyGame
             GUI = new GUIM();
 
             background = controller.Content.Load<Texture2D>("newtrack");
-            konijn1 = controller.Content.Load<Texture2D>("konijn_bruin");
-            konijn2 = controller.Content.Load<Texture2D>("konijn_grijs");
+            konijn1 = controller.Content.Load<Texture2D>("konijnhoofd_bruin");
+            konijn2 = controller.Content.Load<Texture2D>("konijnhoofd_grijs");
             // TODO: use this.Content to load your game content here
             font = controller.Content.Load<SpriteFont>("Cartoon12");
         }
