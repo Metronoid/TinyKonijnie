@@ -135,13 +135,13 @@ namespace TinyGame
 
                 //finish.Draw(spriteBatch);
 
-            //Pitstop.Draw(controller.spriteBatch);
+                //Pitstop.Draw(controller.spriteBatch);
                 
-            //speedboost1.Draw(spriteBatch);
-            //speedboost2.Draw(spriteBatch);
-                //spin1.Draw(spriteBatch);
-            //spin2.Draw(spriteBatch);
-            //spin3.Draw(spriteBatch);
+                //speedboost1.Draw(spriteBatch);
+                //speedboost2.Draw(spriteBatch);
+                //spin1.Draw(controller.spriteBatch);
+                //spin2.Draw(spriteBatch);
+                //spin3.Draw(spriteBatch);
                 speler.Draw(controller.spriteBatch);
                 speler2.Draw(controller.spriteBatch);
                 GUI.Draw(controller.spriteBatch);
