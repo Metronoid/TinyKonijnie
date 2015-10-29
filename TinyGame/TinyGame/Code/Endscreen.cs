@@ -43,7 +43,6 @@ namespace TinyGame
             BrownFall,
             GrayFall,
             Text,
-            Exit
         }
         Steps ending = Steps.Setup;
         //GUIM screenInterface = new GUIM();
@@ -198,6 +197,18 @@ namespace TinyGame
                         if (winner == 2)
                             ending = Steps.BrownFall;
                     }
+                    break;
+
+                case Steps.GrayFall:
+                    counter++;
+                    grijskoy += 5;
+                    grijsply = grijskoy + 255;
+                    break;
+
+                case Steps.BrownFall:
+                    break;
+
+                case Steps.Text:
                     break;
             }
             }
