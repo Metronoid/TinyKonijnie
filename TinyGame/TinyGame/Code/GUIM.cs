@@ -19,6 +19,7 @@ namespace TinyGame
         public static int checks2;
         public static int pitstops1;
         public static int pitstops2;
+ //       public Color fontcolor = new Color(0,42,90);
 
         Konijn Player;
         Water water;
@@ -46,12 +47,12 @@ namespace TinyGame
         /// <param name="sb"></param>
         public void Draw(SpriteBatch sb)
         {
-            sb.DrawString(MainGame.font, "Speed: " + speed1 + " Bunnimeter", new Vector2(240, 0), Color.Yellow);
-            sb.DrawString(MainGame.font, "Speed: " + speed2 + " Bunnimeter", new Vector2(740, 0), Color.Yellow);
-            sb.DrawString(MainGame.font, "Laps:  " + laps1 + "/5", new Vector2(100, 30), Color.Yellow);
-            sb.DrawString(MainGame.font, "Laps:  " + laps2 + "/5", new Vector2(600, 30), Color.Yellow);
-            sb.DrawString(MainGame.font, "Pitstops: " + pitstops1, new Vector2(240, 30), Color.Yellow);
-            sb.DrawString(MainGame.font, "Pitstops: " + pitstops2, new Vector2(740, 30), Color.Yellow);
+            sb.DrawString(MainGame.font, "Speed: " + speed1 + " Bunnimeter", new Vector2(240, -3), Color.DarkBlue);
+            sb.DrawString(MainGame.font, "Speed: " + speed2 + " Bunnimeter", new Vector2(740, -3), Color.DarkBlue);
+            sb.DrawString(MainGame.font, "Laps:  " + laps1 + "/5", new Vector2(100, 27), Color.DarkBlue);
+            sb.DrawString(MainGame.font, "Laps:  " + laps2 + "/5", new Vector2(600, 27), Color.DarkBlue);
+            sb.DrawString(MainGame.font, "Pitstops: " + pitstops1, new Vector2(240, 27), Color.DarkBlue);
+            sb.DrawString(MainGame.font, "Pitstops: " + pitstops2, new Vector2(740, 27), Color.DarkBlue);
         }
     }
 }
