@@ -82,7 +82,7 @@ namespace TinyGame
         {
 
             // TODO: Add your drawing code here
-            controller.spriteBatch.Draw(bruinkonijn, new Rectangle((controller.graphics.PreferredBackBufferWidth / 2 - (bruinkonijn.Width / 2)), (controller.graphics.PreferredBackBufferHeight / 2 - (bruinkonijn.Height / 2)), bruinkonijn.Width, bruinkonijn.Height), Color.White);
+            controller.spriteBatch.Draw(bruinkonijn, new Rectangle((controller.graphics.PreferredBackBufferWidth / 2 - (bruinkonijn.Width / 2)), (controller.graphics.PreferredBackBufferHeight / 2 - (bruinkonijn.Height / 2)), (int)(bruinkonijn.Width * 0.8), (int)(bruinkonijn.Height * 0.8)), Color.White);
         }
     }
 }
