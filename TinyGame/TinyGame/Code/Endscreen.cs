@@ -47,7 +47,7 @@ namespace TinyGame
         }
         Steps ending = Steps.Setup;
         //GUIM screenInterface = new GUIM();
-
+        
 
 
         public Endscreen()
@@ -120,8 +120,8 @@ namespace TinyGame
                     counter++;
                     bruinkoy--;
                     grijskoy--;
-                    bruinply = bruinkoy + 255;
-                    grijsply = grijskoy + 255;
+            bruinply = bruinkoy + 255;
+            grijsply = grijskoy + 255;
 
                     if (counter == 200 && winner == 1)
                     {
@@ -200,7 +200,7 @@ namespace TinyGame
                     }
                     break;
             }
-        }
+            }
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -210,6 +210,8 @@ namespace TinyGame
         {
 
             // TODO: Add your drawing code here
+            if (controller != null)
+            {
             controller.spriteBatch.Draw(background, new Rectangle(0, 0, background.Width, background.Height), Color.White);
             controller.spriteBatch.Draw(bruinzuil, new Rectangle(245, bruinply, (int)(bruinzuil.Width * 0.8), (int)(bruinzuil.Height * 0.8)), Color.White);
             controller.spriteBatch.Draw(grijszuil, new Rectangle(655, grijsply, (int)(grijszuil.Width * 0.8), (int)(grijszuil.Height * 0.8)), Color.White);
@@ -218,4 +220,5 @@ namespace TinyGame
             controller.spriteBatch.Draw(goudwortel, new Rectangle(winnerx, wortely, goudwortel.Width, goudwortel.Height), Color.White * wortelfade);
         }
     }
+}
 }

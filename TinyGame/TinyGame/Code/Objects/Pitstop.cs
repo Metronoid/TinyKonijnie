@@ -14,6 +14,11 @@ namespace TinyGame
         public Texture2D image;
         public Rectangle location;
 
+        /// <summary>
+        /// Geeft aan welke variabelen Pitstop met zich meeneemt.
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="image"></param>
         public Pitstop(Rectangle location, Texture2D image)
         {
             this.location = location;

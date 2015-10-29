@@ -17,7 +17,9 @@ namespace TinyGame
         {
             this.position = pos;
         }
-
+        /// <summary>
+        /// Bekijkt eerst of de speler op een pitstop staat, zo niet dan gaat er H20 af totdat het 0 is.
+        /// </summary>
         public void WaterChange()
         {
             if (check == true)
@@ -33,7 +35,7 @@ namespace TinyGame
 
         public void Draw(SpriteBatch sb)
         {
-            sb.DrawString(MainGame.font, "H20: " + Math.Round(water) + "%", position, Color.Yellow);
+            sb.DrawString(MainGame.font, "H20: " + Math.Round(water) + "%", position, Color.DarkBlue);
         }
     }
 }
