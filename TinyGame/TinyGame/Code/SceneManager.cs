@@ -79,6 +79,9 @@ namespace TinyGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            if(Keyboard.GetState().IsKeyDown(Keys.F))
+                graphics.ToggleFullScreen();
+
             if (state != lastState)
             {
                 switch (state)

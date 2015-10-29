@@ -53,7 +53,6 @@ namespace TinyGame
         /// </summary>
         public void Initialize()
         {
-            
         }
 
         /// <summary>
@@ -64,6 +63,7 @@ namespace TinyGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             this.controller = controller;
+
 
             speler = new Konijn(1,new Controls(Keys.S,Keys.Q,Keys.A,Keys.Z), new Vector2(800, 250), 1.55F, controller.Content.Load<Texture2D>("brownbunny"), controller.Content.Load<Texture2D>("SnuffelBounds"));
             speler2 = new Konijn(2, new Controls(Keys.Up, Keys.Left, Keys.Down, Keys.Right ), new Vector2(880, 320), 1.55F, controller.Content.Load<Texture2D>("greybunny"), controller.Content.Load<Texture2D>("SnuffelBounds"));
@@ -121,6 +121,7 @@ namespace TinyGame
             kook1.Update(elapsed);
             kook2.Update(elapsed);
             kook3.Update(elapsed);
+
         }
 
         /// <summary>
