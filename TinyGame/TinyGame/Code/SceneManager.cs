@@ -40,6 +40,7 @@ namespace TinyGame
         {
             game = new MainGame();
             intro = new Introscreen();
+            end = new Endscreen();
             // TODO: Add your initialization logic here
             graphics.PreferredBackBufferWidth = 1024;  // set this value to the desired width of your window
             graphics.PreferredBackBufferHeight = 768;   // set this value to the desired height of your window
@@ -94,6 +95,7 @@ namespace TinyGame
                         game.LoadContent(this);
                         break;
                     case Scenes.end:
+                        end.Initialize();
                         end.LoadContent(this);
                         break;
                 }
