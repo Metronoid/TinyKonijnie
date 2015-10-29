@@ -13,7 +13,6 @@ namespace TinyGame
         GUIM GUI;
         Konijn speler;
         Konijn speler2;
-        Val valtrap;
         Blok rood;
         Pitstop Pitstop;
         Finishlijn finish;
