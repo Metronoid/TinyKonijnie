@@ -11,10 +11,10 @@ namespace TinyGame
         public Keys left;
         public Keys right;
         public Keys up;
-        public Keys back;
+        public Keys down;
 
-        public Controls(Keys l, Keys r, Keys u, Keys b) {
-            left = l;right = r;up = u;back = b;
+        public Controls(Keys up, Keys left, Keys down, Keys right) {
+            this.left = left;this.right = right;this.up = up;this.down = down;
         }
     }
 }
