@@ -92,11 +92,14 @@ namespace TinyGame
         {
 
             // TODO: Add your drawing code here
-            controller.spriteBatch.Draw(background, new Rectangle(0, 0, background.Width, background.Height), Color.White);
-            controller.spriteBatch.Draw(bruinzuil, new Rectangle(245, (controller.graphics.PreferredBackBufferHeight / 2 - (bruinkonijn.Height / 2) + 255), (int)(bruinzuil.Width * 0.8), (int)(bruinzuil.Height * 0.8)), Color.White);
-            controller.spriteBatch.Draw(grijszuil, new Rectangle(655, (controller.graphics.PreferredBackBufferHeight / 2 - (grijskonijn.Height / 2) + 255), (int)(grijszuil.Width * 0.8), (int)(grijszuil.Height * 0.8)), Color.White);
-            controller.spriteBatch.Draw(bruinkonijn, new Rectangle(210, (controller.graphics.PreferredBackBufferHeight / 2 - (bruinkonijn.Height / 2)), (int)(bruinkonijn.Width * 0.8), (int)(bruinkonijn.Height * 0.8)), Color.White);
-            controller.spriteBatch.Draw(grijskonijn, new Rectangle(620, (controller.graphics.PreferredBackBufferHeight / 2 - (grijskonijn.Height / 2)), (int)(grijskonijn.Width * 0.8), (int)(grijskonijn.Height * 0.8)), Color.White);
+            if (controller != null)
+            {
+                controller.spriteBatch.Draw(background, new Rectangle(0, 0, background.Width, background.Height), Color.White);
+                controller.spriteBatch.Draw(bruinzuil, new Rectangle(245, (controller.graphics.PreferredBackBufferHeight / 2 - (bruinkonijn.Height / 2) + 255), (int)(bruinzuil.Width * 0.8), (int)(bruinzuil.Height * 0.8)), Color.White);
+                controller.spriteBatch.Draw(grijszuil, new Rectangle(655, (controller.graphics.PreferredBackBufferHeight / 2 - (grijskonijn.Height / 2) + 255), (int)(grijszuil.Width * 0.8), (int)(grijszuil.Height * 0.8)), Color.White);
+                controller.spriteBatch.Draw(bruinkonijn, new Rectangle(210, (controller.graphics.PreferredBackBufferHeight / 2 - (bruinkonijn.Height / 2)), (int)(bruinkonijn.Width * 0.8), (int)(bruinkonijn.Height * 0.8)), Color.White);
+                controller.spriteBatch.Draw(grijskonijn, new Rectangle(620, (controller.graphics.PreferredBackBufferHeight / 2 - (grijskonijn.Height / 2)), (int)(grijskonijn.Width * 0.8), (int)(grijskonijn.Height * 0.8)), Color.White);
+            }
         }
     }
 }
