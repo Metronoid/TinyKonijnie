@@ -61,7 +61,7 @@ namespace TinyGame
         public void Draw(SpriteBatch sb)
         {
             sb.Draw(image, location, Color.White * kookfade);
-            sb.Draw(boundimage, bounds, Color.Wheat);
+            //sb.Draw(boundimage, bounds, Color.Wheat);
         }
     }
 }
