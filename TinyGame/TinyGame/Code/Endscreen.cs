@@ -15,6 +15,12 @@ namespace TinyGame
         public static SpriteFont font;
         public static int winner = 0;
         SceneManager controller;
+        Texture2D background;
+        Texture2D grijskonijn;
+        Texture2D bruinkonijn;
+        Texture2D grijszuil;
+        Texture2D bruinzuil;
+        Texture2D goudwortel;
         //GUIM screenInterface = new GUIM();
 
 
@@ -42,6 +48,9 @@ namespace TinyGame
             this.controller = controller;
             // Create a new SpriteBatch, which can be used to draw textures.
             font = controller.Content.Load<SpriteFont>("Cartoon12");
+            grijskonijn = controller.Content.Load<Texture2D>("konijn_grijs");
+            bruinkonijn = controller.Content.Load<Texture2D>("konijn_bruin");
+
 
         }
 
@@ -73,15 +82,7 @@ namespace TinyGame
         {
 
             // TODO: Add your drawing code here
-            if (winner == 1)
-            {
-
-            }
-
-            if (winner == 2)
-            {
-
-            }
+            controller.spriteBatch.Draw(bruinkonijn, new Rectangle((controller.graphics.PreferredBackBufferWidth / 2 - (bruinkonijn.Width / 2)), (controller.graphics.PreferredBackBufferHeight / 2 - (bruinkonijn.Height / 2)), bruinkonijn.Width, bruinkonijn.Height), Color.White);
         }
     }
 }

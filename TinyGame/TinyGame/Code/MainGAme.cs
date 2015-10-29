@@ -84,7 +84,7 @@ namespace TinyGame
 
             GUI = new GUIM();
 
-            background = controller.Content.Load<Texture2D>("track");
+            background = controller.Content.Load<Texture2D>("newtrack");
             // TODO: use this.Content to load your game content here
             font = controller.Content.Load<SpriteFont>("Cartoon12");
         }

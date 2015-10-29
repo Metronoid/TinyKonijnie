@@ -94,7 +94,6 @@ namespace TinyGame
                         game.LoadContent(this);
                         break;
                     case Scenes.end:
-                        end.Initialize();
                         end.LoadContent(this);
                         break;
                 }
@@ -114,7 +113,7 @@ namespace TinyGame
                     game.Update(gameTime);
                     break;
                 case Scenes.end:
-                    //Handle
+                    end.Update(gameTime);
                     break;
             }
 
@@ -143,7 +142,7 @@ namespace TinyGame
                     game.Draw();
                     break;
                 case Scenes.end:
-                    //Handle
+                    end.Draw(gameTime);
                     break;
             }
             spriteBatch.End();
