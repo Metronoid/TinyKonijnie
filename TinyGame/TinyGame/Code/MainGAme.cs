@@ -83,14 +83,15 @@ namespace TinyGame
             kook1 = new heet(new Vector2(292, 180), controller.Content.Load<Texture2D>("pit_m"), controller.Content.Load<Texture2D>("SnuffelBounds"));
             kook2 = new heet(new Vector2(580, 180), controller.Content.Load<Texture2D>("pit_m"), controller.Content.Load<Texture2D>("SnuffelBounds"));
             kook3 = new heet(new Vector2(604, 445), controller.Content.Load<Texture2D>("pit_s"), controller.Content.Load<Texture2D>("SnuffelBounds"));
-            spin1 = new trap(new Vector2(540, 370), new Vector2(730,540), controller.Content.Load<Texture2D>("RodeBalk"));
-            spin2 = new trap(new Vector2(450, 275), new Vector2(400,200), controller.Content.Load<Texture2D>("RodeBalk"));
-            spin3 = new trap(new Vector2(450, 350), new Vector2(500, 500), controller.Content.Load<Texture2D>("RodeBalk"));
-            spin4 = new trap(new Vector2(100, 100), new Vector2(200,200), controller.Content.Load<Texture2D>("RodeBalk"));
-            spin5 = new trap(new Vector2(100, 700), new Vector2(200, 200), controller.Content.Load<Texture2D>("RodeBalk"));
-            spin6 = new trap(new Vector2(700, 100), new Vector2(200, 200), controller.Content.Load<Texture2D>("RodeBalk"));
-            spin7 = new trap(new Vector2(700, 700), new Vector2(200, 200), controller.Content.Load<Texture2D>("RodeBalk"));
-            spin8 = new trap(new Vector2(200, 200), new Vector2(440, 440), controller.Content.Load<Texture2D>("RodeBalk"));
+
+            spin1 = new trap(new Vector2(0, 0), new Vector2(1021,93), controller.Content.Load<Texture2D>("RodeBalk"));
+            spin2 = new trap(new Vector2(905, 0), new Vector2(124,667), controller.Content.Load<Texture2D>("RodeBalk"));
+            spin3 = new trap(new Vector2(40, 659), new Vector2(877, 56), controller.Content.Load<Texture2D>("RodeBalk"));
+            spin4 = new trap(new Vector2(0, 82), new Vector2(41, 605), controller.Content.Load<Texture2D>("RodeBalk"));
+            spin5 = new trap(new Vector2(130, 215), new Vector2(47, 315), controller.Content.Load<Texture2D>("RodeBalk"));
+            spin6 = new trap(new Vector2(350, 280), new Vector2(384, 194), controller.Content.Load<Texture2D>("RodeBalk"));
+            spin7 = new trap(new Vector2(743, 308), new Vector2(34, 140), controller.Content.Load<Texture2D>("RodeBalk"));
+            spin8 = new trap(new Vector2(311, 311), new Vector2(83, 146), controller.Content.Load<Texture2D>("RodeBalk"));
 
 
 
@@ -153,9 +154,15 @@ namespace TinyGame
                 
             //speedboost1.Draw(spriteBatch);
             //speedboost2.Draw(spriteBatch);
-                //spin1.Draw(controller.spriteBatch);
-            //spin2.Draw(spriteBatch);
-            //spin3.Draw(spriteBatch);
+                spin1.Draw(controller.spriteBatch);
+                spin2.Draw(controller.spriteBatch);
+                spin3.Draw(controller.spriteBatch);
+                spin4.Draw(controller.spriteBatch);
+                spin5.Draw(controller.spriteBatch);
+                spin6.Draw(controller.spriteBatch);
+                spin7.Draw(controller.spriteBatch);
+                spin8.Draw(controller.spriteBatch);
+
                 speler.Draw(controller.spriteBatch);
                 speler2.Draw(controller.spriteBatch);
                 GUI.Draw(controller.spriteBatch);
