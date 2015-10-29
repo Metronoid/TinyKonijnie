@@ -26,8 +26,12 @@ namespace TinyGame
         Checkpoint check3;
         GraphicsDevice device;
         Texture2D background;
+        Texture2D konijn1;
+        Texture2D konijn2;
         public static SpriteFont font;
         public static Rectangle backgroundbound = new Rectangle(0, 0, 1024, 768);
+        public static Rectangle konijn1bound = new Rectangle(10, -3, 90, 93);
+        public static Rectangle konijn2bound = new Rectangle(510, -3, 90, 93);
         SceneManager controller;
         heet kook;
         heet kook1;
@@ -85,6 +89,8 @@ namespace TinyGame
             GUI = new GUIM();
 
             background = controller.Content.Load<Texture2D>("newtrack");
+            konijn1 = controller.Content.Load<Texture2D>("konijn_bruin");
+            konijn2 = controller.Content.Load<Texture2D>("konijn_grijs");
             // TODO: use this.Content to load your game content here
             font = controller.Content.Load<SpriteFont>("Cartoon12");
         }
@@ -129,6 +135,8 @@ namespace TinyGame
             if (controller != null)
             {
                 controller.spriteBatch.Draw(background, backgroundbound, Color.White);
+                controller.spriteBatch.Draw(konijn1, konijn1bound, Color.White);
+                controller.spriteBatch.Draw(konijn2, konijn2bound, Color.White);
 
                 //check1.Draw(controller.spriteBatch);
                 //check2.Draw(controller.spriteBatch);
