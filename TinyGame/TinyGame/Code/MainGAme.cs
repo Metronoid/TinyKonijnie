@@ -64,7 +64,7 @@ namespace TinyGame
             speler = new Konijn(1, new Vector2(800, 250), 1.55F, controller.Content.Load<Texture2D>("brownbunny"), controller.Content.Load<Texture2D>("SnuffelBounds"));
             speler2 = new Konijn(2, new Vector2(880, 320), 1.55F, controller.Content.Load<Texture2D>("greybunny"), controller.Content.Load<Texture2D>("SnuffelBounds"));
 
-            Pitstop = new Pitstop(new Vector2(0, 140), controller.Content.Load<Texture2D>("RodeBalk"));
+            Pitstop = new Pitstop(new Rectangle(11, 219, 155, 310), controller.Content.Load<Texture2D>("RodeBalk"));
 
             finish = new Finishlijn(new Rectangle(777, 357, 132, 43), controller.Content.Load<Texture2D>("Finish"));
 
