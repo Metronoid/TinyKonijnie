@@ -10,6 +10,7 @@ namespace TinyGame
     {
         public Rectangle bounds;
         public bool triggerEntered = false;
+        public string lastEntered;
         public string id;
         public Konijn controller;
 

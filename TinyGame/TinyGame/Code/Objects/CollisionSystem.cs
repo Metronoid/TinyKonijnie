@@ -48,9 +48,10 @@ namespace TinyGame
             {
                 if (a.bounds.Intersects(caller.bounds) && caller.bounds != a.bounds)
                 {
-                    if (caller.triggerEntered)
+                    if (caller.triggerEntered && a.id != caller.lastEntered)
                         return "";
                     caller.triggerEntered = true;
+                    caller.lastEntered = a.id;
                     return a.id;
                 }
             }
