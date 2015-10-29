@@ -47,11 +47,11 @@ namespace TinyGame
         /// <param name="sb"></param>
         public void Draw(SpriteBatch sb)
         {
-            sb.DrawString(MainGame.font, "Speed: " + speed1 + " Bunnimeter", new Vector2(240, -3), Color.DarkBlue);
+            sb.DrawString(MainGame.font, "Speed: " + speed1 + " Bunnimeter", new Vector2(225, -3), Color.DarkBlue);
             sb.DrawString(MainGame.font, "Speed: " + speed2 + " Bunnimeter", new Vector2(740, -3), Color.DarkBlue);
-            sb.DrawString(MainGame.font, "Laps:  " + laps1 + "/5", new Vector2(100, 27), Color.DarkBlue);
-            sb.DrawString(MainGame.font, "Laps:  " + laps2 + "/5", new Vector2(600, 27), Color.DarkBlue);
-            sb.DrawString(MainGame.font, "Pitstops: " + pitstops1, new Vector2(240, 27), Color.DarkBlue);
+            sb.DrawString(MainGame.font, "Laps: " + laps1 + "/5", new Vector2(85, 27), Color.DarkBlue);
+            sb.DrawString(MainGame.font, "Laps: " + laps2 + "/5", new Vector2(600, 27), Color.DarkBlue);
+            sb.DrawString(MainGame.font, "Pitstops: " + pitstops1, new Vector2(225, 27), Color.DarkBlue);
             sb.DrawString(MainGame.font, "Pitstops: " + pitstops2, new Vector2(740, 27), Color.DarkBlue);
         }
     }
