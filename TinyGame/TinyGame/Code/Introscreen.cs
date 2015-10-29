@@ -85,7 +85,11 @@ namespace TinyGame
         public void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Enter) || Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
                 SceneManager.state = SceneManager.Scenes.game;
+                MediaPlayer.Stop();
+            }
+
 
             // TODO: Add your update logic here
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;

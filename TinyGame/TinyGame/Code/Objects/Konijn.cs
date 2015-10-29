@@ -29,7 +29,6 @@ namespace TinyGame
         public int pitstops = 0;
         public bool pitstopsBool = false;
         public Water waterComponent;
-        public Val valtrap; 
 
 
         /// <summary>
@@ -92,13 +91,6 @@ namespace TinyGame
                 angle = startAngle;
             }
 
-            CollisionComponent obj = CollisionSystem.TriggerDetection(this, "Val");
-            if (obj != null)
-            {
-                obj.OnDestroy();
-                speed = 10;
-            }
-
             string trigger = CollisionSystem.TriggerDetection(this);
             if (trigger!="")
             {
@@ -119,6 +111,12 @@ namespace TinyGame
                     checks = 0;
                     startLocation = location;
                     startAngle = angle;
+
+                     /*if (laps == 2)
+                    {
+                        Endscreen.winner = playerid;
+                        SceneManager.state = SceneManager.Scenes.end;
+                    } */
                 }
 
                 if (trigger == "Pitstop")
@@ -181,15 +179,6 @@ namespace TinyGame
             }
 
             velocity = new Vector2(0, 0);
-            if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.X))
-            {
-                valtrap = new Val(location,boundsimage,this);
-                if (valtrap.bSpawnVal == false)
-                {
-                    valtrap.bSpawnVal = true;
-                    valtrap.location = location;
-                }
-            }
                     
             //Als knop A en down wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.A) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Left))
@@ -208,10 +197,10 @@ namespace TinyGame
                 //Als knop W en up wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.W) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Up))
                 {
-                    if (speed < (waterComponent.water * 2.75f) + 120)
+                    if (speed < (waterComponent.water * 2.5f) + 150)
                         speed += boost;
 
-                    if (speed > (waterComponent.water * 2.75f) + 120)
+                    if (speed > (waterComponent.water * 2.5f) + 150)
                         if (powercounter < 100)
                             powercounter++;
                         else
@@ -265,10 +254,7 @@ namespace TinyGame
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
 
             sb.Draw(image, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
-            if (valtrap != null)
-            {
-                valtrap.Draw(sb);
-            }        
+  
             //sb.Draw(boundsimage, bounds, null, Color.Wheat);
             waterComponent.Draw(sb);
         }

@@ -1,44 +1,31 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Input;
 
 namespace TinyGame
 {
-    /// <summary>
-    /// This is the main type for your game
-    /// </summary>
-    public class Introscreen
+    class Endscreen
     {
         public static SpriteFont font;
-        Texture2D NHLlogo;
-        Texture2D teamlogo;
-        Texture2D konijn;
-        Song jingle;
-        public int bunnyx = -200;
-
-        private float nhlfadeeffect = 0;
-        private float teamfadeeffect = 0;
-        private int counter = 0;
-
-        private enum Steps
-        {
-            Music,
-            NHLin,
-            NHLout,
-            Vroem,
-            Team13in,
-            Team13out,
-            Exit
-        }
-        Steps intro = Steps.Music;
+        public static int winner = 0;
         SceneManager controller;
+        Texture2D background;
+        Texture2D grijskonijn;
+        Texture2D bruinkonijn;
+        Texture2D grijszuil;
+        Texture2D bruinzuil;
+        Texture2D goudwortel;
         //GUIM screenInterface = new GUIM();
-        
 
 
-        public Introscreen()
+
+        public Endscreen()
         {
         }
 
@@ -61,10 +48,9 @@ namespace TinyGame
             this.controller = controller;
             // Create a new SpriteBatch, which can be used to draw textures.
             font = controller.Content.Load<SpriteFont>("Cartoon12");
-            NHLlogo = controller.Content.Load<Texture2D>("NHL logo");
-            teamlogo = controller.Content.Load<Texture2D>("Team13logo");
-            jingle = controller.Content.Load<Song>("logo");
-            konijn = controller.Content.Load<Texture2D>("Snuffel");
+            grijskonijn = controller.Content.Load<Texture2D>("konijn_grijs");
+            bruinkonijn = controller.Content.Load<Texture2D>("konijn_bruin");
+
 
         }
 
@@ -84,70 +70,9 @@ namespace TinyGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Enter) || Keyboard.GetState().IsKeyDown(Keys.Space))
-                SceneManager.state = SceneManager.Scenes.game;
-
-                // TODO: Add your update logic here
-                float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            switch (intro)
-            {
-                case Steps.Music:
-                    MediaPlayer.Play(jingle);
-                    intro = Steps.NHLin;
-                    break;
-
-                case Steps.NHLin:
-                    nhlfadeeffect += 0.01f;
-                    counter++;
-                    if (counter == 150)
-                        intro = Steps.NHLout;
-                    break;
-
-                case Steps.NHLout:
-                    nhlfadeeffect -= 0.01f;
-                    counter--;
-                    if (counter == -10)
-                    {
-                        counter = 0;
-                        intro = Steps.Vroem;
-                    }
-                    break;
-
-                case Steps.Vroem:
-                    bunnyx += 20;
-                    counter++;
-                    if (counter == 80)
-                    {
-                        counter = 0;
-                        intro = Steps.Team13in;
-                    }
-                        
-                    break;
-
-                case Steps.Team13in:
-                    teamfadeeffect += 0.01f;
-                    counter++;
-                    if (counter == 150)
-                        intro = Steps.Team13out;
-
-                    break;
-
-                case Steps.Team13out:
-                    teamfadeeffect -= 0.01f;
-                    counter--;
-                    if (counter == -10)
-                    {
-                        counter = 0;
-                        intro = Steps.Exit;
-                    }
-                    break;
-
-                case Steps.Exit:
-                    if (controller != null)
-                        SceneManager.state = SceneManager.Scenes.game;
-                    break;
+            // TODO: Add your update logic here
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
-        }
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -157,10 +82,7 @@ namespace TinyGame
         {
 
             // TODO: Add your drawing code here
-            
-            controller.spriteBatch.Draw(NHLlogo, new Rectangle((controller.graphics.PreferredBackBufferWidth / 2 - (NHLlogo.Width / 2)), controller.graphics.PreferredBackBufferHeight / 2 - (NHLlogo.Height / 2), NHLlogo.Width, NHLlogo.Height), Color.White * nhlfadeeffect);
-            controller.spriteBatch.Draw(teamlogo, new Rectangle((controller.graphics.PreferredBackBufferWidth / 2 - (teamlogo.Width / 2)), controller.graphics.PreferredBackBufferHeight / 2 - (teamlogo.Height / 2), teamlogo.Width, teamlogo.Height), Color.White * teamfadeeffect);
-            controller.spriteBatch.Draw(konijn, new Rectangle(bunnyx, (controller.graphics.PreferredBackBufferHeight / 2 - (konijn.Height / 2)), konijn.Width, konijn.Height), Color.White);
+            controller.spriteBatch.Draw(bruinkonijn, new Rectangle((controller.graphics.PreferredBackBufferWidth / 2 - (bruinkonijn.Width / 2)), (controller.graphics.PreferredBackBufferHeight / 2 - (bruinkonijn.Height / 2)), (int)(bruinkonijn.Width * 0.8), (int)(bruinkonijn.Height * 0.8)), Color.White);
         }
     }
 }

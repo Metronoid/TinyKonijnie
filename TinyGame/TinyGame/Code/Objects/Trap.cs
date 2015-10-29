@@ -36,10 +36,10 @@ namespace TinyGame
         /// <param name="sb"></param>
         public void Draw(SpriteBatch sb)
         {
-            /*
+            
             Vector2 origin = new Vector2(bounds.Width / 2, bounds.Height / 2);
             sb.Draw(image, location, bounds, Color.White, 0, origin, 1.0f, SpriteEffects.None, 1);
-            */
+            
         }
     }
 

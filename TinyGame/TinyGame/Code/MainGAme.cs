@@ -13,7 +13,6 @@ namespace TinyGame
         GUIM GUI;
         Konijn speler;
         Konijn speler2;
-        Val valtrap;
         Blok rood;
         Pitstop Pitstop;
         Finishlijn finish;
@@ -80,10 +79,10 @@ namespace TinyGame
             check1 = new Checkpoint(new Rectangle(485, 542, 40, 117), controller.Content.Load< Texture2D>("SnuffelBounds"), 1);
             check2 = new Checkpoint(new Rectangle(40, 370, 270, 53), controller.Content.Load<Texture2D>("SnuffelBounds"), 2);
             check3 = new Checkpoint(new Rectangle(406, 85, 40, 117), controller.Content.Load<Texture2D>("SnuffelBounds"), 3);
-            kook = new heet(new Vector2(300, 450), controller.Content.Load<Texture2D>("pit_l"), controller.Content.Load<Texture2D>("SnuffelBounds"));
-            kook1= new heet(new Vector2(300, 250), controller.Content.Load<Texture2D>("pit_m"), controller.Content.Load<Texture2D>("SnuffelBounds"));
-            kook2= new heet(new Vector2(500, 250 ), controller.Content.Load<Texture2D>("pit_m"), controller.Content.Load<Texture2D>("SnuffelBounds"));
-            kook3= new heet(new Vector2(500, 450), controller.Content.Load<Texture2D>("pit_s"), controller.Content.Load<Texture2D>("SnuffelBounds"));
+            kook = new heet(new Vector2(267, 399), controller.Content.Load<Texture2D>("pit_l"), controller.Content.Load<Texture2D>("SnuffelBounds"));
+            kook1 = new heet(new Vector2(292, 180), controller.Content.Load<Texture2D>("pit_m"), controller.Content.Load<Texture2D>("SnuffelBounds"));
+            kook2 = new heet(new Vector2(580, 180), controller.Content.Load<Texture2D>("pit_m"), controller.Content.Load<Texture2D>("SnuffelBounds"));
+            kook3 = new heet(new Vector2(604, 445), controller.Content.Load<Texture2D>("pit_s"), controller.Content.Load<Texture2D>("SnuffelBounds"));
             spin1 = new trap(new Vector2(540, 370), new Vector2(730,540), controller.Content.Load<Texture2D>("RodeBalk"));
             spin2 = new trap(new Vector2(450, 275), new Vector2(400,200), controller.Content.Load<Texture2D>("RodeBalk"));
             spin3 = new trap(new Vector2(450, 350), new Vector2(500, 500), controller.Content.Load<Texture2D>("RodeBalk"));
@@ -98,7 +97,7 @@ namespace TinyGame
 
             GUI = new GUIM();
 
-            background = controller.Content.Load<Texture2D>("track");
+            background = controller.Content.Load<Texture2D>("newtrack");
             // TODO: use this.Content to load your game content here
             font = controller.Content.Load<SpriteFont>("Cartoon12");
         }
@@ -154,7 +153,7 @@ namespace TinyGame
                 
             //speedboost1.Draw(spriteBatch);
             //speedboost2.Draw(spriteBatch);
-                //spin1.Draw(spriteBatch);
+                //spin1.Draw(controller.spriteBatch);
             //spin2.Draw(spriteBatch);
             //spin3.Draw(spriteBatch);
                 speler.Draw(controller.spriteBatch);
