@@ -142,13 +142,13 @@ namespace TinyGame
                 //spin1.Draw(controller.spriteBatch);
                 //spin2.Draw(spriteBatch);
                 //spin3.Draw(spriteBatch);
-                speler.Draw(controller.spriteBatch);
-                speler2.Draw(controller.spriteBatch);
                 GUI.Draw(controller.spriteBatch);
                 kook.Draw(controller.spriteBatch);
                 kook1.Draw(controller.spriteBatch);
                 kook2.Draw(controller.spriteBatch);
                 kook3.Draw(controller.spriteBatch);
+                speler.Draw(controller.spriteBatch);
+                speler2.Draw(controller.spriteBatch);
             }
 
         }
