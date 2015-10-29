@@ -22,6 +22,11 @@ namespace TinyGame
         trap spin1;
         trap spin2;
         trap spin3;
+        trap spin4;
+        trap spin5;
+        trap spin6;
+        trap spin7;
+        trap spin8;
         Checkpoint check1;
         Checkpoint check2;
         Checkpoint check3;
@@ -79,9 +84,17 @@ namespace TinyGame
             kook1= new heet(new Vector2(300, 250), controller.Content.Load<Texture2D>("pit_m"), controller.Content.Load<Texture2D>("SnuffelBounds"));
             kook2= new heet(new Vector2(500, 250 ), controller.Content.Load<Texture2D>("pit_m"), controller.Content.Load<Texture2D>("SnuffelBounds"));
             kook3= new heet(new Vector2(500, 450), controller.Content.Load<Texture2D>("pit_s"), controller.Content.Load<Texture2D>("SnuffelBounds"));
-            //spin1 = new trap(new Vector2(540, 370), new Vector2(730,540), controller.Content.Load<Texture2D>("SnuffelBounds"));
-            //spin2 = new trap(new Vector2(450, 275), Content.Load<Texture2D>("AngerOrb"));
-            //spin3 = new trap(new Vector2(450, 350), Content.Load<Texture2D>("AngerOrb"));
+            spin1 = new trap(new Vector2(540, 370), new Vector2(730,540), controller.Content.Load<Texture2D>("RodeBalk"));
+            spin2 = new trap(new Vector2(450, 275), new Vector2(400,200), controller.Content.Load<Texture2D>("RodeBalk"));
+            spin3 = new trap(new Vector2(450, 350), new Vector2(500, 500), controller.Content.Load<Texture2D>("RodeBalk"));
+            spin4 = new trap(new Vector2(100, 100), new Vector2(200,200), controller.Content.Load<Texture2D>("RodeBalk"));
+            spin5 = new trap(new Vector2(100, 700), new Vector2(200, 200), controller.Content.Load<Texture2D>("RodeBalk"));
+            spin6 = new trap(new Vector2(700, 100), new Vector2(200, 200), controller.Content.Load<Texture2D>("RodeBalk"));
+            spin7 = new trap(new Vector2(700, 700), new Vector2(200, 200), controller.Content.Load<Texture2D>("RodeBalk"));
+            spin8 = new trap(new Vector2(200, 200), new Vector2(440, 440), controller.Content.Load<Texture2D>("RodeBalk"));
+
+
+
 
             GUI = new GUIM();
 
@@ -116,6 +129,7 @@ namespace TinyGame
             kook1.Update(elapsed);
             kook2.Update(elapsed);
             kook3.Update(elapsed);
+       
         }
 
         /// <summary>
