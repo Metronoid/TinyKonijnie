@@ -17,12 +17,5 @@ namespace TinyGame
         {
             this.controller = controller;
         }
-        public void OnDestroy()
-        {
-            CollisionSystem.triggers.Remove(this);
-            if(controller!=null)
-            controller.valtrap = null;
-        }
-
     }
 }
