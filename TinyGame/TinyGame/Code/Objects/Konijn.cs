@@ -190,6 +190,7 @@ namespace TinyGame
                     valtrap.location = location;
                 }
             }
+
                     
             //Als knop A en down wordt ingedrukt
                 if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.A) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Left))
