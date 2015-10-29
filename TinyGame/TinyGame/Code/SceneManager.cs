@@ -15,6 +15,7 @@ namespace TinyGame
 
         MainGame game;
         Introscreen intro;
+        Endscreen end;
         public enum Scenes
         {
             none,intro,menu,game,end
@@ -93,7 +94,8 @@ namespace TinyGame
                         game.LoadContent(this);
                         break;
                     case Scenes.end:
-                        //Handle
+                        end.Initialize();
+                        end.LoadContent(this);
                         break;
                 }
                 lastState = state;
