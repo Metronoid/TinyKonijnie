@@ -23,8 +23,7 @@ namespace TinyGame
         trap spin4;
         trap spin5;
         trap spin6;
-        trap spin7;
-        trap spin8;
+  
         Checkpoint check1;
         Checkpoint check2;
         Checkpoint check3;
@@ -166,8 +165,7 @@ namespace TinyGame
                 spin4.Draw(controller.spriteBatch);
                 spin5.Draw(controller.spriteBatch);
                 spin6.Draw(controller.spriteBatch);
-                spin7.Draw(controller.spriteBatch);
-                spin8.Draw(controller.spriteBatch); */
+                 */
 
                 GUI.Draw(controller.spriteBatch);
                 kook.Draw(controller.spriteBatch);
