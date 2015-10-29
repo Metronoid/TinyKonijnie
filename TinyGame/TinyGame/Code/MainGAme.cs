@@ -34,8 +34,8 @@ namespace TinyGame
         Texture2D konijn2;
         public static SpriteFont font;
         public static Rectangle backgroundbound = new Rectangle(0, 0, 1024, 768);
-        public static Rectangle konijn1bound = new Rectangle(0, 6, 82, 74); 
-        public static Rectangle konijn2bound = new Rectangle(515, 6, 82, 74);
+        public static Rectangle konijn1bound = new Rectangle(0, 6, 83, 75); 
+        public static Rectangle konijn2bound = new Rectangle(515, 6, 83, 75);
         SceneManager controller;
         heet kook;
         heet kook1;
