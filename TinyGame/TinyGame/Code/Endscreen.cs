@@ -26,10 +26,12 @@ namespace TinyGame
         public int bruinply;
         public int grijsply;
         public int winnerx;
+        public int loserx;
         public int wortely;
         public int counter;
         public int wortelcounter;
         public float wortelfade;
+        public float textfade;
         public bool startheight = true;
         public bool shiny = false;
 
@@ -43,6 +45,7 @@ namespace TinyGame
             BrownFall,
             GrayFall,
             Text,
+            End
         }
         Steps ending = Steps.Setup;
         //GUIM screenInterface = new GUIM();
@@ -103,9 +106,17 @@ namespace TinyGame
             {
                 case Steps.Setup:
                     if (winner == 1)
+                    {
                         winnerx = 290;
+                        loserx = 700;
+                    }
+
                     if (winner == 2)
+                    {
                         winnerx = 700;
+                        loserx = 290;
+                    }
+
                     counter = 0;
                     wortely = 20;
                     bruinkoy = ((controller.graphics.PreferredBackBufferHeight) - (bruinkonijn.Height / 2));
@@ -203,12 +214,39 @@ namespace TinyGame
                     counter++;
                     grijskoy += 5;
                     grijsply = grijskoy + 255;
+
+                    if (counter == 75)
+                    {
+                        counter = 0;
+                        ending = Steps.Text;
+                    }
+
                     break;
 
                 case Steps.BrownFall:
+                    counter++;
+                    bruinkoy += 5;
+                    bruinply = bruinkoy + 255;
+
+                    if (counter == 75)
+                    {
+                        counter = 0;
+                        ending = Steps.Text;
+                    }
+
                     break;
 
                 case Steps.Text:
+                    counter++;
+                    textfade += 0.05F;
+
+                    if (counter == 40)
+                        ending = Steps.End;
+                    break;
+
+                case Steps.End:
+                    if (Keyboard.GetState().GetPressedKeys().Length > 0)
+                        controller.Exit();
                     break;
             }
             }
@@ -223,13 +261,21 @@ namespace TinyGame
             // TODO: Add your drawing code here
             if (controller != null)
             {
-            controller.spriteBatch.Draw(background, new Rectangle(0, 0, background.Width, background.Height), Color.White);
-            controller.spriteBatch.Draw(bruinzuil, new Rectangle(245, bruinply, (int)(bruinzuil.Width * 0.8), (int)(bruinzuil.Height * 0.8)), Color.White);
-            controller.spriteBatch.Draw(grijszuil, new Rectangle(655, grijsply, (int)(grijszuil.Width * 0.8), (int)(grijszuil.Height * 0.8)), Color.White);
-            controller.spriteBatch.Draw(bruinkonijn, new Rectangle(210, bruinkoy, (int)(bruinkonijn.Width * 0.8), (int)(bruinkonijn.Height * 0.8)), Color.White);
-            controller.spriteBatch.Draw(grijskonijn, new Rectangle(620, grijskoy, (int)(grijskonijn.Width * 0.8), (int)(grijskonijn.Height * 0.8)), Color.White);
-            controller.spriteBatch.Draw(goudwortel, new Rectangle(winnerx, wortely, goudwortel.Width, goudwortel.Height), Color.White * wortelfade);
-        }
+                controller.spriteBatch.Draw(background, new Rectangle(0, 0, background.Width, background.Height), Color.White);
+                controller.spriteBatch.Draw(bruinzuil, new Rectangle(245, bruinply, (int)(bruinzuil.Width * 0.8), (int)(bruinzuil.Height * 0.8)), Color.White);
+                controller.spriteBatch.Draw(grijszuil, new Rectangle(655, grijsply, (int)(grijszuil.Width * 0.8), (int)(grijszuil.Height * 0.8)), Color.White);
+                controller.spriteBatch.Draw(bruinkonijn, new Rectangle(210, bruinkoy, (int)(bruinkonijn.Width * 0.8), (int)(bruinkonijn.Height * 0.8)), Color.White);
+                controller.spriteBatch.Draw(grijskonijn, new Rectangle(620, grijskoy, (int)(grijskonijn.Width * 0.8), (int)(grijskonijn.Height * 0.8)), Color.White);
+                controller.spriteBatch.Draw(goudwortel, new Rectangle(winnerx, wortely, goudwortel.Width, goudwortel.Height), Color.White * wortelfade);
+                controller.spriteBatch.DrawString(font, "Player " + winner + " Wins!", new Vector2(winnerx,200), Color.DarkBlue * textfade);
+                controller.spriteBatch.DrawString(font, "Created By:", new Vector2(loserx, 200), Color.DarkBlue * textfade);
+                controller.spriteBatch.DrawString(font, "Wander van der Wal", new Vector2(loserx, 250), Color.DarkBlue * textfade);
+                controller.spriteBatch.DrawString(font, "Sandra Elzinga", new Vector2(loserx, 300), Color.DarkBlue * textfade);
+                controller.spriteBatch.DrawString(font, "Henkjan Braaksma", new Vector2(loserx, 350), Color.DarkBlue * textfade);
+                controller.spriteBatch.DrawString(font, "Nijwanda Janga", new Vector2(loserx, 400), Color.DarkBlue * textfade);
+                controller.spriteBatch.DrawString(font, "Jeroen Jonker", new Vector2(loserx, 450), Color.DarkBlue * textfade);
+                controller.spriteBatch.DrawString(font, "Press any key to exit", new Vector2(loserx, 600), Color.DarkBlue * textfade);
+            }
     }
 }
 }

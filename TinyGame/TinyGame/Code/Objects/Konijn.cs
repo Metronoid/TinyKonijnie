@@ -114,7 +114,7 @@ namespace TinyGame
                     startLocation = location;
                     startAngle = angle;
 
-                     if (laps == 6)
+                     if (laps == 2)
                     {
                         Endscreen.winner = playerid;
                         SceneManager.state = SceneManager.Scenes.end;
