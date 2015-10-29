@@ -111,6 +111,12 @@ namespace TinyGame
                     checks = 0;
                     startLocation = location;
                     startAngle = angle;
+
+                    /*if (laps == 2)
+                    {
+                        Endscreen.winner = playerid;
+                        SceneManager.state = SceneManager.Scenes.end;
+                    } */
                 }
 
                 if (trigger == "Pitstop")

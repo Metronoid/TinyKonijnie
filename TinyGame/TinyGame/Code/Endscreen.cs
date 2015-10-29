@@ -73,6 +73,15 @@ namespace TinyGame
         {
 
             // TODO: Add your drawing code here
+            if (winner == 1)
+            {
+
+            }
+
+            if (winner == 2)
+            {
+
+            }
         }
     }
 }
