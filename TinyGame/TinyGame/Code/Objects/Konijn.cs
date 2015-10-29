@@ -14,6 +14,7 @@ namespace TinyGame
         public int columns { get; set; }
         private int currentFrame;
         private int totalFrames;
+        private Controls controls;
         public Texture2D boundsimage;
         public Vector2 velocity;
         public GameTime gameTime;
@@ -38,13 +39,14 @@ namespace TinyGame
         /// <param name="location"></param>
         /// <param name="image"></param>
         /// <param name="boundImage"></param>
-        public Konijn(int playerid, Vector2 location, float ang, Texture2D image, Texture2D boundImage)
+        public Konijn(int playerid,Controls controlScheme, Vector2 location, float ang, Texture2D image, Texture2D boundImage)
         {
             this.location = location;
             this.startLocation = location;
             this.startAngle = ang;
             this.angle = ang;
             this.image = image;
+            controls = controlScheme;
             rows = 4;
             columns = 1;
             currentFrame = 0;
@@ -173,16 +175,41 @@ namespace TinyGame
             }
 
             velocity = new Vector2(0, 0);
-                    
-                    
+
+            Keys[] allKeys = Keyboard.GetState().GetPressedKeys();
+            KeyboardState keyState = new KeyboardState();
+            Keys[] commands = new Keys[4];
+            foreach (Keys k in allKeys)
+            {
+                    Console.WriteLine(k);
+                    if (k == controls.up)
+                {
+                    commands[0] = k;
+                }
+                if (k == controls.left)
+                {
+                        commands[1] = k;
+                }
+                if (k == controls.right)
+                {
+                        commands[2] = k;
+                }
+                if (k == controls.back)
+                {
+                        commands[3] = k;
+                }
+            }
+            keyState = new KeyboardState(commands);
+
+            if (keyState != null) { 
             //Als knop A en down wordt ingedrukt
-                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.A) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Left))
+                if (keyState.IsKeyDown(controls.left))
                     angle -= speed / 3000;
                 //Als knop D en right wordt ingedrukt
-                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.D) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Right))
+                if (keyState.IsKeyDown(controls.right))
                     angle += speed / 3000;
                 //Als knop S en down wordt ingedrukt
-                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.S) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Down))
+                if (keyState.IsKeyDown(controls.back))
                 {
                     if (speed > -80)
                         speed -= 2 * boost;
@@ -190,7 +217,7 @@ namespace TinyGame
                         speed -= boost;
                 }
                 //Als knop W en up wordt ingedrukt
-                if (playerid == 1 && Keyboard.GetState().IsKeyDown(Keys.W) || playerid == 2 && Keyboard.GetState().IsKeyDown(Keys.Up))
+                if (keyState.IsKeyDown(controls.up))
                 {
                     if (speed < (waterComponent.water * 2.75f) + 120)
                         speed += boost;
@@ -210,7 +237,7 @@ namespace TinyGame
                     if (speed < 0)
                         speed += boost;
                 }
-
+            }
             velocity.Y += (float)Math.Sin(angle) * speed;
             velocity.X += (float)Math.Cos(angle) * speed;
             // geeft de speed en laps door aan de GUI per konijn.

@@ -15,6 +15,7 @@ namespace TinyGame
 
         MainGame game;
         Introscreen intro;
+        //Endscreen end;
         public enum Scenes
         {
             none,intro,menu,game,end
@@ -42,7 +43,7 @@ namespace TinyGame
             // TODO: Add your initialization logic here
             graphics.PreferredBackBufferWidth = 1024;  // set this value to the desired width of your window
             graphics.PreferredBackBufferHeight = 768;   // set this value to the desired height of your window
-            graphics.IsFullScreen = true;
+           // graphics.IsFullScreen = true;
             graphics.ApplyChanges();
             base.Initialize();
         }

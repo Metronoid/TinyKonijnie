@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Code\Circle.cs" />
+    <Compile Include="Code\Controls.cs" />
     <Compile Include="Code\Introscreen.cs" />
     <Compile Include="Code\Objects\Checkpoint.cs" />
     <Compile Include="Code\Objects\CollisionSystem.cs" />
