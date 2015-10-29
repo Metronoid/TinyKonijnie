@@ -200,7 +200,7 @@ namespace TinyGame
                 {
                         commands[2] = k;
                 }
-                if (k == controls.back)
+                if (k == controls.down)
                 {
                         commands[3] = k;
                 }
@@ -215,7 +215,7 @@ namespace TinyGame
                 if (keyState.IsKeyDown(controls.right))
                     angle += speed / 3000;
                 //Als knop S en down wordt ingedrukt
-                if (keyState.IsKeyDown(controls.back))
+                if (keyState.IsKeyDown(controls.down))
                 {
                     if (speed > -80)
                         speed -= 2 * boost;
