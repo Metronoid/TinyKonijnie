@@ -113,6 +113,12 @@ namespace TinyGame
                     checks = 0;
                     startLocation = location;
                     startAngle = angle;
+
+                     /*if (laps == 2)
+                    {
+                        Endscreen.winner = playerid;
+                        SceneManager.state = SceneManager.Scenes.end;
+                    } */
                 }
 
                 if (trigger == "Pitstop")
@@ -219,10 +225,10 @@ namespace TinyGame
                 //Als knop W en up wordt ingedrukt
                 if (keyState.IsKeyDown(controls.up))
                 {
-                    if (speed < (waterComponent.water * 2.75f) + 120)
+                    if (speed < (waterComponent.water * 2.5f) + 150)
                         speed += boost;
 
-                    if (speed > (waterComponent.water * 2.75f) + 120)
+                    if (speed > (waterComponent.water * 2.5f) + 150)
                         if (powercounter < 100)
                             powercounter++;
                         else

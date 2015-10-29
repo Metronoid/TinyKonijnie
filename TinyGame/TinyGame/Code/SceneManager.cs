@@ -15,7 +15,7 @@ namespace TinyGame
 
         MainGame game;
         Introscreen intro;
-        //Endscreen end;
+        Endscreen end;
         public enum Scenes
         {
             none,intro,menu,game,end
@@ -40,6 +40,7 @@ namespace TinyGame
         {
             game = new MainGame();
             intro = new Introscreen();
+            end = new Endscreen();
             // TODO: Add your initialization logic here
             graphics.PreferredBackBufferWidth = 1024;  // set this value to the desired width of your window
             graphics.PreferredBackBufferHeight = 768;   // set this value to the desired height of your window
@@ -94,7 +95,8 @@ namespace TinyGame
                         game.LoadContent(this);
                         break;
                     case Scenes.end:
-                        //Handle
+                        end.Initialize();
+                        end.LoadContent(this);
                         break;
                 }
                 lastState = state;
@@ -113,7 +115,7 @@ namespace TinyGame
                     game.Update(gameTime);
                     break;
                 case Scenes.end:
-                    //Handle
+                    end.Update(gameTime);
                     break;
             }
 
@@ -142,7 +144,7 @@ namespace TinyGame
                     game.Draw();
                     break;
                 case Scenes.end:
-                    //Handle
+                    end.Draw(gameTime);
                     break;
             }
             spriteBatch.End();
